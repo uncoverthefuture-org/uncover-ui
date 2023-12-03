@@ -1,0 +1,32 @@
+.select-border-left-0 {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.select-border-right-0 {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.PhoneInput {
+    width: 100%;
+    min-width: 0px;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    position: relative;
+    appearance: none;
+    transition-property: var(--chakra-transition-property-common);
+    transition-duration: var(--chakra-transition-duration-normal);
+    font-size: var(--chakra-fontSizes-md);
+    padding-inline-start: var(--chakra-space-4);
+    padding-inline-end: var(--chakra-space-4);
+    height: var(--chakra-sizes-10);
+    border-radius: var(--chakra-radii-md);
+    border: 1px solid;
+    border-color: inherit;
+    background: inherit;
+
+    input:focus {
+        outline: none !important;
+    }
+}

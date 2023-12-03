@@ -2,7 +2,7 @@
     "name": "@uncover-ui/react",
     "author": "uncoverthefuture",
     "module": "dist/react.esm.js",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Resuable ui component for react web development",
     "license": "MIT",
     "main": "dist/index.js",
