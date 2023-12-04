@@ -1,18 +1,26 @@
-import './styles.css';
-import { FormControl, FormControlProps, FormErrorMessage, FormErrorMessageProps, FormHelperText, FormLabel, FormLabelProps, FormHelperTextProps, InputElementProps, InputGroup, InputLeftElement, InputRightElement, InputLeftAddon, InputRightAddon, InputAddonProps, InputGroupProps } from "@chakra-ui/react";
+import './styles.scss';
+import { FormControl, FormControlProps, FormErrorMessage, FormErrorMessageProps, FormHelperText, FormLabel, FormLabelProps, FormHelperTextProps, InputElementProps, InputGroup, InputLeftElement, InputRightElement, InputLeftAddon, InputRightAddon, InputAddonProps } from "@chakra-ui/react";
+import { ActionMeta, InputActionMeta, MultiValue, SingleValue, Select, useChakraSelectProps } from 'chakra-react-select';
 import { SizeProp } from 'chakra-react-select/dist/types/types';
 import React from 'react';
 
 
 
-export interface PrimaryInputWrapperProp {
+export interface PrimaryMultiSelectOption {
+    label: string;
+    value: string | number;
+    [x: string]: any;
+    // back
+}
+export interface PrimaryMultiSelectProp {
     label?: string;
     labelProps?: FormLabelProps;
     formControlProps?: FormControlProps;
-    inputGroupProps?: InputGroupProps;
+    name?: string;
     error?: boolean;
-    size?: SizeProp;
+    options?: PrimaryMultiSelectOption[];
     bottomText?: string | React.ReactElement;
+    setValue?: (value: string) => void;
     leftComponent?: React.ReactNode;
     rightComponent?: React.ReactNode;
     leftAddon?: React.ReactNode;
@@ -23,23 +31,39 @@ export interface PrimaryInputWrapperProp {
     rightAddonProps?: InputAddonProps;
     errorTextProps?: FormErrorMessageProps;
     bottomTextProps?: FormHelperTextProps;
+    placeholder?: string;
     isRequired?: boolean;
     isReadOnly?: boolean;
     isDisabled?: boolean;
+    selectProps?: boolean;
     isLoading?: boolean;
-    children?: React.ReactNode
+    size?: SizeProp;
+    value?: any;
+    isMulti?: boolean;
+    inputValue?: any,
+    useBasicStyles?: boolean,
+    onInputChange?: ((newValue: string, actionMeta: InputActionMeta) => void),
+    onChange?: (newValue: SingleValue<any>, actionMeta: ActionMeta<any>) => void,
+    onMultiChange?: (newValue: MultiValue<any>, actionMeta: ActionMeta<any>) => void,
+    downChevron?: React.ReactElement,
+    isClearable?: boolean;
+    createOptionPosition?: "first" | "last"
+    allowCreateWhileLoading?: boolean;
+    canCreate?: boolean
 }
 
 
-export const PrimaryInputWrapper: React.FC<PrimaryInputWrapperProp> = ({
+
+export const PrimaryMultiSelect: React.FC<PrimaryMultiSelectProp> = ({
     label,
     labelProps,
+    setValue,
+    options = [],
     error,
     bottomText,
     leftComponent,
     rightComponent,
     formControlProps,
-    inputGroupProps,
     leftComponentProps,
     rightComponentProps,
     leftAddon,
@@ -48,23 +72,52 @@ export const PrimaryInputWrapper: React.FC<PrimaryInputWrapperProp> = ({
     rightAddonProps,
     errorTextProps,
     bottomTextProps,
+    placeholder,
     isRequired,
     isReadOnly,
     isDisabled,
+    isLoading,
     size = "md",
-    children,
+    isMulti,
+    onChange,
+    onMultiChange,
+    name,
+    value,
+    inputValue,
+    onInputChange,
+    useBasicStyles = true,
+    canCreate,
+    ...rest
 }) => {
+    const leftAddonClass = (Boolean(leftAddon) ? 'select-border-left-0' : '');
+    const rightAddonClass = (Boolean(rightAddon) ? 'select-border-right-0' : '');
+    const selectProps = useChakraSelectProps({
+        name,
+        size,
+        isMulti,
+        useBasicStyles,
+        value,
+        inputValue,
+        onInputChange,
+        isDisabled,
+        options,
+        isLoading,
+        placeholder,
+        isInvalid: error,
+        onChange: isMulti ? onMultiChange : onChange,
+        ...rest
+    });
+
 
     return (
         <FormControl
             isInvalid={error}
             isRequired={isRequired}
             isReadOnly={isReadOnly}
-            isDisabled={isDisabled}
             {...formControlProps}
         >
             {Boolean(label) && (<FormLabel {...labelProps}>{label}</FormLabel>)}
-            <InputGroup size={size} isolation={'unset'} {...inputGroupProps}>
+            <InputGroup size={size} isolation={'unset'}>
                 {/* left component goes here  */}
                 {Boolean(leftComponent) && (
                     <InputLeftElement  {...leftComponentProps}>
@@ -78,7 +131,12 @@ export const PrimaryInputWrapper: React.FC<PrimaryInputWrapperProp> = ({
                     </InputLeftAddon>
                 )}
 
-                {children}
+                <Select
+                    colorScheme="purple"
+                    tagVariant="solid"
+                    className={`w-100 primary-multi-select ${leftAddonClass} ${rightAddonClass} bg-white`}
+                    {...selectProps}
+                />
 
                 {Boolean(rightAddon) && (
                     <InputRightAddon {...rightAddonProps}>

@@ -1,20 +1,18 @@
+import './styles.scss';
+import { FormControl, FormControlProps, FormErrorMessage, FormErrorMessageProps, FormHelperText, FormLabel, FormLabelProps, FormHelperTextProps, InputElementProps, InputGroup, InputLeftElement, InputRightElement, InputLeftAddon, InputRightAddon, InputAddonProps, InputGroupProps } from "@chakra-ui/react";
+import { SizeProp } from 'chakra-react-select/dist/types/types';
 import React from 'react';
-import './styles.css';
-import { FormControl, FormControlProps, FormErrorMessage, FormErrorMessageProps, FormHelperText, FormLabel, FormLabelProps, FormHelperTextProps, Select, InputElementProps, InputGroup, InputLeftElement, SelectProps, InputRightElement, InputLeftAddon, InputRightAddon, InputAddonProps } from "@chakra-ui/react"
 
 
 
-export interface PrimarySelectOption {
-    text: string | number, props?: React.DetailedHTMLProps<React.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>
-}
-export interface PrimarySelectProp extends SelectProps {
+export interface PrimaryInputWrapperProp {
     label?: string;
     labelProps?: FormLabelProps;
     formControlProps?: FormControlProps;
+    inputGroupProps?: InputGroupProps;
     error?: boolean;
-    options?: PrimarySelectOption[];
+    size?: SizeProp;
     bottomText?: string | React.ReactElement;
-    setValue?: (value: string) => void;
     leftComponent?: React.ReactNode;
     rightComponent?: React.ReactNode;
     leftAddon?: React.ReactNode;
@@ -25,20 +23,23 @@ export interface PrimarySelectProp extends SelectProps {
     rightAddonProps?: InputAddonProps;
     errorTextProps?: FormErrorMessageProps;
     bottomTextProps?: FormHelperTextProps;
-    placeholder?: string;
-    children?: React.ReactNode;
+    isRequired?: boolean;
+    isReadOnly?: boolean;
+    isDisabled?: boolean;
+    isLoading?: boolean;
+    children?: React.ReactNode
 }
 
-export const PrimarySelect: React.FC<PrimarySelectProp> = ({
+
+export const PrimaryInputWrapper: React.FC<PrimaryInputWrapperProp> = ({
     label,
     labelProps,
-    setValue,
-    options = [],
     error,
     bottomText,
     leftComponent,
     rightComponent,
     formControlProps,
+    inputGroupProps,
     leftComponentProps,
     rightComponentProps,
     leftAddon,
@@ -47,22 +48,23 @@ export const PrimarySelect: React.FC<PrimarySelectProp> = ({
     rightAddonProps,
     errorTextProps,
     bottomTextProps,
-    placeholder,
+    isRequired,
+    isReadOnly,
+    isDisabled,
+    size = "md",
     children,
-    ...rest
 }) => {
-    const leftAddonClass = (Boolean(leftAddon) ? 'select-border-left-0' : '');
-    const rightAddonClass = (Boolean(rightAddon) ? 'select-border-right-0' : '');
 
     return (
         <FormControl
             isInvalid={error}
-            isRequired={rest.isRequired}
-            isReadOnly={rest.isReadOnly}
+            isRequired={isRequired}
+            isReadOnly={isReadOnly}
+            isDisabled={isDisabled}
             {...formControlProps}
         >
             {Boolean(label) && (<FormLabel {...labelProps}>{label}</FormLabel>)}
-            <InputGroup size={rest.size}>
+            <InputGroup size={size} isolation={'unset'} {...inputGroupProps}>
                 {/* left component goes here  */}
                 {Boolean(leftComponent) && (
                     <InputLeftElement  {...leftComponentProps}>
@@ -76,16 +78,7 @@ export const PrimarySelect: React.FC<PrimarySelectProp> = ({
                     </InputLeftAddon>
                 )}
 
-                <Select 
-                {...rest} 
-                className={`py-3 h-auto ${leftAddonClass} ${rightAddonClass}`}
-                >
-                    {(placeholder && placeholder.length) && <option value="" disabled>{placeholder}</option>}
-                    {(options).map((item, index) => (
-                        <option key={index} {...item.props}>{item.text}</option>
-                    ))}
-                    {children}
-                </Select>
+                {children}
 
                 {Boolean(rightAddon) && (
                     <InputRightAddon {...rightAddonProps}>

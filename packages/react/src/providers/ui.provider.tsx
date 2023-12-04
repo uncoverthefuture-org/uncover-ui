@@ -1,6 +1,7 @@
-import "../assets/css/app.scss"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import "../assets/css/app.scss"
+
 import React from "react";
 import { createContext, useContext } from "react";
 import { ChakraProviderLoader } from "./chakra.provider";
