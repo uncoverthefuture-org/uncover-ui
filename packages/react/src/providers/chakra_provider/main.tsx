@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { chakraCustomTheme } from "../themes";
 import React from "react";
+import { ChakraTheme } from "../../themes";
 
 export const ChakraProviderLoader: React.FC<{
   children: React.ReactNode;
@@ -21,7 +21,7 @@ export const ChakraProviderLoader: React.FC<{
           },
         },
       }}
-      theme={chakraCustomTheme}
+      theme={ChakraTheme}
     >
       {children}
     </ChakraProvider>

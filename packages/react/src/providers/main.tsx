@@ -1,10 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../assets/css/app.scss"
-
 import React from "react";
 import { createContext, useContext } from "react";
-import { ChakraProviderLoader } from "./chakra.provider";
+import { ChakraProviderLoader } from "./chakra_provider";
+import { ThemeModesProvider } from "./theme_modes_provider";
+import { UIMainProviderProps } from "./interface";
 
 type UncoverUIProviderProv = {
 };
@@ -13,14 +13,18 @@ export const UncoverUIProviderContext = createContext<UncoverUIProviderProv>({
     initNotification: () => { },
 });
 
-export const UncoverUIProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const UncoverUIProvider: React.FC<UIMainProviderProps> = ({ 
+    themeModesProviderProps,
+    children 
+}) => {
     return (
         <UncoverUIProviderContext.Provider
-            value={{
-            }}
+            value={{}}
         >
             <ChakraProviderLoader>
-                {children}
+                <ThemeModesProvider {...themeModesProviderProps}>
+                    {children}
+                </ThemeModesProvider>
             </ChakraProviderLoader>
         </UncoverUIProviderContext.Provider>
     )

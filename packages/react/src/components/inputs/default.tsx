@@ -1,5 +1,6 @@
 import React from "react";
 import { FormControl, FormControlProps, FormErrorMessage, FormErrorMessageProps, FormHelperText, FormLabel, FormLabelProps, FormHelperTextProps, Input, InputElementProps, InputGroup, InputLeftElement, InputProps, InputRightElement, InputAddonProps, InputLeftAddon, InputRightAddon, InputGroupProps } from "@chakra-ui/react"
+import { useThemeMode } from "../../providers/hooks";
 
 export interface PrimaryInputProp extends InputProps {
     inputRef?: React.LegacyRef<HTMLInputElement>,
@@ -46,6 +47,7 @@ export const PrimaryInput: React.FC<PrimaryInputProp> = ({
     bottomTextProps,
     ...rest
 }) => {
+    const { colors } = useThemeMode();
     return (
         <FormControl
             isInvalid={error}
@@ -77,7 +79,14 @@ export const PrimaryInput: React.FC<PrimaryInputProp> = ({
                     className="py-3 h-auto"
                     isInvalid={error}
                     isRequired={rest.isRequired}
-                    errorBorderColor='red.300'
+                    borderColor={colors.neutral_grey_3}
+                    focusBorderColor={colors.primary}
+                    errorBorderColor={colors.danger_tint_3}
+                    _focusVisible={{
+                        boxShadow: 'none',
+                        borderColor: colors.primary,
+                        ...rest?._focusVisible
+                    }}                    
                     {...rest}
                 />
 

@@ -1,0 +1,36 @@
+import { Button, ButtonProps } from "@chakra-ui/react";
+import React from 'react';
+import { useThemeMode } from "../../providers/hooks";
+
+
+export interface PrimaryButtonProps extends ButtonProps {
+  value?: string;
+}
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  value,
+  children,
+  ...rest
+}) => {
+  const { colors } = useThemeMode()
+
+  return (
+    <Button
+      color={colors.white}
+      backgroundColor={colors.primary}
+      loadingText="Submitting"
+      fontSize={"small"}
+      size={'lg'}
+      height="auto"
+      _hover={{ backgroundColor: colors.primary_tint_4 }}
+      _focus={{
+        backgroundColor: colors.primary_tint_4,
+        color: colors.neutral_grey_3
+      }}
+      {...rest}
+    >
+      {value}
+      {children}
+    </Button>
+  );
+}
+

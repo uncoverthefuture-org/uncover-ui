@@ -1,2 +1,2 @@
-export * from './emotion.theme'
-export * from './chakra.theme'
+export * from './emotion_theme'
+export * from './chakra_theme'
