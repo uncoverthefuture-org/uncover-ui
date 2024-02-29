@@ -16,7 +16,7 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
     extendTheme,
     children
 }) => {
-    const theme = reactLocalStorage.get("@uncover_theme_mode");
+    const theme = (window) ? reactLocalStorage.get("@uncover_theme_mode") : null;
     const lightTheme = { ...EmotionTheme.light, ...extendTheme?.light }
     const darkTheme = { ...EmotionTheme.dark, ...extendTheme?.dark }
     const defaultTheme = ((theme != null) ? ((theme === "dark") ? darkTheme : lightTheme) : lightTheme)
@@ -25,7 +25,10 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
     const setTheme = (themeName: EmotionThemeName = EmotionThemeName.LIGHT) => {
         const emotionTheme = EmotionTheme[themeName];
         setActiveTheme(emotionTheme);
-        reactLocalStorage.set("@uncover_theme_mode", themeName);
+
+        if(window){
+            reactLocalStorage.set("@uncover_theme_mode", themeName);
+        }
         return emotionTheme
     }
 
