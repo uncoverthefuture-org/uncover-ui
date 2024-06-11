@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createContext, useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { ThemeModesProviderProps } from "./interface";
@@ -16,7 +16,7 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
     extendTheme,
     children
 }) => {
-    const theme = (window) ? reactLocalStorage.get("@uncover_theme_mode") : null;
+    const theme = (typeof window !== 'undefined') ? reactLocalStorage.get("@uncover_theme_mode") : null;
     const lightTheme = { ...EmotionTheme.light, ...extendTheme?.light }
     const darkTheme = { ...EmotionTheme.dark, ...extendTheme?.dark }
     const defaultTheme = ((theme != null) ? ((theme === "dark") ? darkTheme : lightTheme) : lightTheme)
@@ -26,9 +26,10 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
         const emotionTheme = EmotionTheme[themeName];
         setActiveTheme(emotionTheme);
 
-        if(window){
+        if (typeof window !== 'undefined') {
             reactLocalStorage.set("@uncover_theme_mode", themeName);
         }
+
         return emotionTheme
     }
 
