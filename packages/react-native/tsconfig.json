@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+      "target": "es5",
+      "module": "commonjs",
+      "lib": ["es6"],
+      "allowJs": true,
+      "jsx": "react-native",
+      "declaration": true,
+      "outDir": "lib",
+      "strict": true,
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "paths": {
+        "@assets/*": ["assets/*"],
+        "@components/*": ["components/*"],
+        "@utils/*": ["utils/*"],
+        "@providers/*": ["providers/*"],
+        "@themes/*": ["themes/*"]
+        }
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "lib"]
+  }
+  

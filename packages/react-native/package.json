@@ -1,0 +1,33 @@
+{
+    "name": "@uncover-ui/react-native",
+    "version": "1.0.0",
+    "description": "UncoverUI component library for React Native",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "keywords": [
+        "react-native",
+        "components",
+        "ui-library",
+        "uncover-ui"
+    ],
+    "author": "uncoverthefuture",
+    "license": "MIT",
+    "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf lib"
+  },
+    "dependencies": {
+        "react": ">=16.8.0",
+        "react-native": ">=0.60.0"
+    },
+    "devDependencies": {
+        "typescript": "^4.0.0",
+        "@types/react": "^16.9.0",
+        "@types/react-native": "^0.63.0"
+    },
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "react-native": ">=0.60.0"
+    }
+}
