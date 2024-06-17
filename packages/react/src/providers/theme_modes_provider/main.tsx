@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { createContext, useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { ThemeModesProviderProps } from "./interface";
