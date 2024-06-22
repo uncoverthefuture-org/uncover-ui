@@ -13,21 +13,45 @@
     "author": "uncoverthefuture",
     "license": "MIT",
     "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "clean": "rm -rf lib"
-  },
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "clean": "rm -rf lib"
+    },
     "dependencies": {
+        "@emotion/native": "^11.11.0",
+        "@emotion/react": "^11.11.4",
+        "@react-native-async-storage/async-storage": "^1.23.1",
+        "@react-native-picker/picker": "^2.7.7",
+        "@react-navigation/native": "^6.1.17",
+        "he": "^1.2.0",
+        "moment": "^2.30.1",
         "react": ">=16.8.0",
-        "react-native": ">=0.60.0"
+        "react-native": ">=0.60.0",
+        "react-native-actions-sheet": "^0.9.3",
+        "react-native-flash-message": "^0.4.2",
+        "react-native-gesture-handler": "^2.17.1",
+        "react-native-responsive-fontsize": "^0.5.1",
+        "react-native-responsive-screen": "^1.4.2"
     },
     "devDependencies": {
-        "typescript": "^4.0.0",
         "@types/react": "^16.9.0",
-        "@types/react-native": "^0.63.0"
+        "@types/react-native": "^0.63.0",
+        "typescript": "^4.0.0"
     },
     "peerDependencies": {
+        "@emotion/native": "^11.11.0",
+        "@emotion/react": "^11.11.4",
+        "@react-native-async-storage/async-storage": "^1.23.1",
+        "@react-native-picker/picker": "^2.7.7",
+        "@react-navigation/native": "^6.1.17",
+        "he": "^1.2.0",
+        "moment": "^2.30.1",
         "react": ">=16.8.0",
-        "react-native": ">=0.60.0"
+        "react-native": ">=0.60.0",
+        "react-native-actions-sheet": "^0.9.3",
+        "react-native-flash-message": "^0.4.2",
+        "react-native-gesture-handler": "^2.17.1",
+        "react-native-responsive-fontsize": "^0.5.1",
+        "react-native-responsive-screen": "^1.4.2"
     }
 }
