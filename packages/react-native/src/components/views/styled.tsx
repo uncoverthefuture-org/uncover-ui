@@ -1,7 +1,7 @@
 import styled from "@emotion/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Animated, ColorValue, DimensionValue, Platform, TouchableOpacity, ViewStyle } from "react-native";
-import { wp, heightPixel, widthPixel } from "utils";
+import { wp, heightPixel, widthPixel } from "utilities";
 import { RFSpacingSize, spacingSize } from "./sizes";
 export interface StyledViewProps extends ViewStyle {
 

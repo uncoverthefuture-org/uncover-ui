@@ -1,10 +1,9 @@
 import React from 'react';
 import { useTheme } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacityProps } from 'react-native';
 import { FloatingTouchableOpacity } from './styled';
 import { RFValue } from 'react-native-responsive-fontsize';
-
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 
 interface FloatingButtonProps extends TouchableOpacityProps {

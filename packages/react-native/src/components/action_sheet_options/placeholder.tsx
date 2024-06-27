@@ -1,12 +1,12 @@
 import styled from "@emotion/native";
 import React from "react";
-import { RegularText } from "../text/styled";
+import { RegularText } from "../texts/styled";
 import AntDesign from "@expo/vector-icons/build/AntDesign";
 import {
   fontPixel,
   heightPixel,
   widthPixel,
-} from "utils/pxToDpConvert";
+} from "utilities/pxToDpConvert";
 import {
   widthPercentageToDP as wp
 } from "react-native-responsive-screen";

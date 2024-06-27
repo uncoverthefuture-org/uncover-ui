@@ -1,6 +1,6 @@
 import FlashMessage from "react-native-flash-message";
 import { StyleSheet } from "react-native";
-import { font } from "utils/fonts";
+import { font } from "utilities/fonts";
 import { RFValue } from "react-native-responsive-fontsize";
 import React from "react";
 

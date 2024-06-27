@@ -4,7 +4,7 @@ import { ThemeProvider } from "@emotion/react";
 import { ThemeModesProviderProps } from "./interface";
 import { EmotionTheme, EmotionThemeName, ExtendEmotionTheme } from "themes";
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { app_theme_color_storage } from 'utils/constants';
+import { app_theme_color_storage } from 'utilities/constants';
 
 
 export const ThemeModeProviderContext = createContext({

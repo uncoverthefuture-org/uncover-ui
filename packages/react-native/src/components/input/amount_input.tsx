@@ -1,8 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import currencyFormatter from "utils/currencyFormatter";
-import { sterilizeNumber } from "utils/general";
-import { fontPixel, heightPixel } from "utils/pxToDpConvert";
+import currencyFormatter from "utilities/currencyFormatter";
+import { sterilizeNumber } from "utilities/general";
+import { fontPixel, heightPixel } from "utilities/pxToDpConvert";
 import { PrimaryInput } from "./main";
 
 export const AmountInput: React.FC<{

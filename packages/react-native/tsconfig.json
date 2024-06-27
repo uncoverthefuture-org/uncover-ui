@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
+      "baseUrl": "src",
       "target": "es5",
       "module": "commonjs",
       "lib": ["es6"],
       "allowJs": true,
-      "jsx": "react-native",
+      "jsx": "react-jsx",
       "declaration": true,
       "outDir": "lib",
       "strict": true,
@@ -15,7 +15,7 @@
       "paths": {
         "@assets/*": ["assets/*"],
         "@components/*": ["components/*"],
-        "@utils/*": ["utils/*"],
+        "@utilities/*": ["utilities/*"],
         "@providers/*": ["providers/*"],
         "@themes/*": ["themes/*"]
         }

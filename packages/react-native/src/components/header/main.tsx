@@ -1,7 +1,7 @@
 import { AntDesign } from "@expo/vector-icons";
 import React, { ReactNode } from "react";
 import { TouchableOpacityProps, useWindowDimensions } from "react-native";
-import { BoldText } from '../text/styled';
+import { BoldText } from '../texts/styled';
 import { useNavigation } from "@react-navigation/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useThemeMode } from "@providers/hooks";

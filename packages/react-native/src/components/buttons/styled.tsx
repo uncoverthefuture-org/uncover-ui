@@ -1,10 +1,10 @@
-import { BoldText, RFFontSize, RFLineHeight } from "components/text";
+import { BoldText, RFFontSize, RFLineHeight } from "@components/texts";
 import styled from "@emotion/native";
 import { ColorValue, TouchableOpacity, ViewStyle } from "react-native";
-import { widthPixel } from "utils/pxToDpConvert";
+import { widthPixel } from "utilities/pxToDpConvert";
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { ButtonStylePropsExtra } from "./interface";
-import { font } from "@utils/fonts";
+import { font } from "utilities/fonts";
 import { StyledTouchableOpacity } from "components/views/styled";
 import { spacingSize } from "@components/views/sizes";
 

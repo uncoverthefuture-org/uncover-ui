@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { fontPixel, heightPixel, widthPixel } from "utils";
+import { fontPixel, heightPixel, widthPixel } from "utilities";
 import { StyleSheet } from "react-native";
 import OTPTextInput from 'react-native-otp-textinput';
 import styled from "@emotion/native";

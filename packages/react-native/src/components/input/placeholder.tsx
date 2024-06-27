@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { TextStyle, ViewStyle } from "react-native";
 import { InputColorState, PrimaryInputProps } from "./main";
-import { fontPixel } from 'utils/pxToDpConvert';
-import { RegularText } from "../text/styled";
+import { fontPixel } from 'utilities/pxToDpConvert';
+import { RegularText } from "../texts/styled";
 import { useThemeMode } from "providers/hooks";
 import { InputPlaceholderTextSection, InputPlaceholderPressable, Label } from "./styled";
 

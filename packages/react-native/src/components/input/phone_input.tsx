@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import PhoneInput from "react-native-phone-number-input";
-import { font } from "utils/fonts";
-import { widthPixel } from "utils/pxToDpConvert";
+import { font } from "utilities/fonts";
+import { widthPixel } from "utilities/pxToDpConvert";
 import { useThemeMode } from "providers/hooks";
 import { BottomText, InputWrapper, Label } from "./styled";
 import { InputColorState, PrimaryInputProps } from "./main";

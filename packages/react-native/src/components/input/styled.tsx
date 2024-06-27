@@ -1,6 +1,6 @@
-import { RFFontSize, RFLineHeight, RegularText } from "components/text";
+import { RFFontSize, RFLineHeight, RegularText } from "@components/texts";
 import styled from "@emotion/native";
-import { font, heightPixel, widthPixel } from "utils";
+import { font, heightPixel, widthPixel } from "utilities";
 import { Platform } from "react-native";
 import { StyledInputProps, InputBoxProps } from "./interface";
 import { spacingSize } from "@components/views";
