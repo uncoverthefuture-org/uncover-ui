@@ -10,7 +10,6 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "publish": "lerna publish",
     "reinstall": "rimraf ./node_modules && yarn"
   },
   "devDependencies": {
