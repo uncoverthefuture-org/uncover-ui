@@ -4,17 +4,22 @@ const cssnano = require('cssnano')
 const copy = require('rollup-plugin-copy');
 const scss = require('rollup-plugin-scss');
 const sass = require('rollup-plugin-sass');
+const replace = require('@rollup/plugin-replace');
+
 
 // Not transpiled with TypeScript or Babel, so use plain Es6/Node.js!
 module.exports = {
-  outDir: 'dist',
+  outDir: 'lib',
   // This function will run for each entry/format/env combination
   rollup(config, options) {
     config.plugins.push(
+      replace({
+        preventAssignment: true,
+      }),
       copy({
         targets: [
-          { src: './src/assets/css/*', dest: './dist/assets/css', },
-          { src: './src/assets/fonts/plus-jakarta-sans/*', dest: './dist/assets/fonts/plus-jakarta-sans' }
+          { src: `.${__dirname}/src/assets/css/*`, dest: `.${__dirname}/lib/assets/css`, },
+          { src: `.${__dirname}/src/assets/fonts/plus-jakarta-sans/*`, dest: `.${__dirname}/lib/assets/fonts/plus-jakarta-sans` }
         ],
       }),
       postcss({

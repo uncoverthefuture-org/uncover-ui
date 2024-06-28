@@ -6,22 +6,20 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "examples/*"
+    "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "publish": "lerna publish",
-    "repair": "lerna repair",
-    "publish:react-native": "lerna publish from-package --scope=@uncover-ui/react-native"
+    "reinstall": "rimraf ./node_modules && yarn"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^8.1.5",
+    "rimraf": "^5.0.7"
   },
   "resolutions": {
-    "**/@types/react": "^17.0.0",
-    "**/react": "^17.0.2"
+    "**/@types/react": "^18.2.41",
+    "**/react": ">=18"
   },
   "repository": {
     "type": "git",

@@ -5,3 +5,4 @@ declare module '*.gif';
 declare module 'reactjs-localstorage';
 declare module 'react-pdf';
 declare module 'react-toastify';
+declare module 'react-bootstrap';
