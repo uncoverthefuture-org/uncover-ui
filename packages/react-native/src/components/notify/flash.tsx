@@ -1,8 +1,9 @@
-import FlashMessage from "react-native-flash-message";
+import FlashMessage, {FlashMessageProps} from "react-native-flash-message";
 import { StyleSheet } from "react-native";
 import { font } from "utilities/fonts";
 import { RFValue } from "react-native-responsive-fontsize";
 import React from "react";
+import { useExtendedStyle } from "hooks/extended_style_hook";
 
 const CustomFlash = StyleSheet.create({
     text: {
@@ -15,7 +16,15 @@ const CustomFlash = StyleSheet.create({
     }
 });
 
-export const CustomFlashMessage = () => {
+export interface PrimaryFlashMessgeProps extends FlashMessageProps{
+
+}
+
+export const PrimaryFlashMessge: React.FC<PrimaryFlashMessgeProps> = ({
+    ...rest
+}) => {
+    const { primaryFlashMessge: props } = useExtendedStyle({ primaryFlashMessge: { ...rest } });
+
     return (
         <FlashMessage 
             position="top"
@@ -23,6 +32,7 @@ export const CustomFlashMessage = () => {
             titleStyle={CustomFlash.title}
             floating={true}
             hideStatusBar={false}
+            {...props}
         />
     )
 };

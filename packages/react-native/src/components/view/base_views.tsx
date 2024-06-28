@@ -1,23 +1,28 @@
 import React from "react";
-import { ColorValue, KeyboardAvoidingViewProps, Platform, ScrollView, ScrollViewProps, StatusBarStyle } from "react-native";
-import { BaseViewContainer } from "./styled";
+import { ColorValue, KeyboardAvoidingViewProps, Platform, ScrollView, ScrollViewProps, StatusBarProps, StatusBarStyle } from "react-native";
+import { BaseViewContainer, StyledViewProps } from "./styled";
 import { FocusAwareStatusBar } from "../status_bar";
 import { useThemeMode } from "providers/hooks";
 import { SafeAreaView, SafeAreaViewProps } from "react-native-safe-area-context";
+import { useExtendedStyle } from "hooks/extended_style_hook";
 
 
-export interface BaseViewProps extends KeyboardAvoidingViewProps {
+export interface BaseViewProps extends KeyboardAvoidingViewProps,StyledViewProps {
     focusBarStyle?: StatusBarStyle,
-    backgroundColor?: ColorValue,
+    focusStatusBarProps?: StatusBarProps;
 }
 
 export const BaseView: React.FC<BaseViewProps> = ({
-    focusBarStyle = 'dark-content',
-    backgroundColor,
-    children
+    ...rest
 }) => {
     const { colors } = useThemeMode();
-    const focusBarScheme = focusBarStyle ?? "light-content";
+    const { baseView: props } = useExtendedStyle({ baseView: {
+        focusBarStyle: 'dark-content',
+        backgroundColor: colors.background,
+         ...rest 
+    } });
+    const focusBarScheme = props?.focusBarStyle ?? "light-content";
+
     // const height = useHeaderHeight();
 
     return (
@@ -29,19 +34,22 @@ export const BaseView: React.FC<BaseViewProps> = ({
                 // android: height + heightPixel(100)
             })}
             enabled={true}
-            backgroundColor={colors.background ?? backgroundColor}
+            backgroundColor={props?.backgroundColor}
+            {...props}
         >
             <FocusAwareStatusBar
                 backgroundColor={'transparent'}
                 translucent={true}
                 barStyle={focusBarScheme}
+                {...props?.focusStatusBarProps}
             />
 
-            {children}
+            {props?.children}
         </BaseViewContainer>
     )
 }
 
+// base safe view
 export interface BaseSafeViewProps extends SafeAreaViewProps {
     baseViewProps?: BaseViewProps;
 }
@@ -60,21 +68,3 @@ export const BaseSafeView: React.FC<BaseSafeViewProps> = ({
     )
 }
 
-export interface BaseSafeScrollViewProps extends ScrollViewProps {
-    baseViewProps?: BaseViewProps;
-    safeAreaViewProps?: SafeAreaViewProps;
-}
-export const BaseSafeScrollView: React.FC<BaseSafeScrollViewProps> = ({
-    baseViewProps,
-    safeAreaViewProps,
-    children,
-    ...rest
-}) => {
-    return (
-        <BaseSafeView baseViewProps={baseViewProps} {...safeAreaViewProps}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} {...rest}>
-                {children}
-            </ScrollView>
-        </BaseSafeView>
-    )
-}

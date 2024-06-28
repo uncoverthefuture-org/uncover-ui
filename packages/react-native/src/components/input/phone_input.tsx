@@ -5,6 +5,7 @@ import { widthPixel } from "utilities/pxToDpConvert";
 import { useThemeMode } from "providers/hooks";
 import { BottomText, InputWrapper, Label } from "./styled";
 import { InputColorState, PrimaryInputProps } from "./main";
+import { useExtendedStyle } from "hooks/extended_style_hook";
 
 
 export interface PrimaryPhoneInputProps extends Omit<PrimaryInputProps, 'onChange'> {
@@ -14,37 +15,31 @@ export interface PrimaryPhoneInputProps extends Omit<PrimaryInputProps, 'onChang
 }
 
 export const PrimaryPhoneInput: React.FC<PrimaryPhoneInputProps> = ({
-    label,
-    labelProps,
-    placeholder = "Phone Number",
-    inputError,
-    bottomText,
-    showBottomText,
-    value,
-    singleCountry,
-    onChange,
     ...rest
 }) => {
-    const [active, setActive] = useState<boolean>();
     const { colors } = useThemeMode();
+    const { primaryPhoneInput: props } = useExtendedStyle({ primaryPhoneInput: { 
+        placeholder: "Phone Number",
+        ...rest
+      } });
+    const [active, setActive] = useState<boolean>();
     const phoneInput = useRef<PhoneInput>(null);
 
     return (
         <>
-            {label ? (
-                <Label color={colors.black_2} {...labelProps}>
-                    {label}
+            {props?.label ? (
+                <Label color={colors.black_2} {...props?.labelProps}>
+                    {props?.label}
                 </Label>
             ) : null}
             <InputWrapper
-                style={{ paddingVertical: 0, ...(InputColorState(colors, active, inputError)) }}
+                style={{ paddingVertical: 0, ...(InputColorState(colors, active, props?.inputError)), ...props?.containerStyle }}
             >
                 <PhoneInput
                     ref={phoneInput}
-                    defaultValue={value}
-                    placeholder={placeholder}
+                    defaultValue={props?.value}
                     defaultCode="NG"
-                    disableArrowIcon={singleCountry}
+                    disableArrowIcon={props?.singleCountry}
                     layout="first"
                     containerStyle={{ backgroundColor: 'transparent', alignItems: 'center' }}
                     textContainerStyle={{ backgroundColor: 'transparent', paddingLeft: widthPixel(10) }}
@@ -52,14 +47,14 @@ export const PrimaryPhoneInput: React.FC<PrimaryPhoneInputProps> = ({
                     textInputStyle={{ fontFamily: font.regular }}
                     textInputProps={{ placeholderTextColor: "#828282" }}
                     flagButtonStyle={{ width: widthPixel(50) }}
-                    onChangeFormattedText={onChange}
-                    {...rest}
+                    onChangeFormattedText={props?.onChange}
+                    {...props}
                 />
 
             </InputWrapper>
-            {(bottomText && showBottomText) || (bottomText && inputError) ? (
-                <BottomText color={inputError ? colors.danger : colors.text}>
-                    {bottomText}
+            {(props?.bottomText && props?.showBottomText) || (props?.bottomText && props?.inputError) ? (
+                <BottomText color={props?.inputError ? colors.danger : colors.text}>
+                    {props?.bottomText}
                 </BottomText>
             ) : null}
         </>

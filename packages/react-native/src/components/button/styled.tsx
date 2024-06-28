@@ -1,12 +1,12 @@
-import { BoldText, RFFontSize, RFLineHeight } from "@components/texts";
+import { BoldText, RFFontSize, RFLineHeight } from "@components/text";
 import styled from "@emotion/native";
 import { ColorValue, TouchableOpacity, ViewStyle } from "react-native";
 import { widthPixel } from "utilities/pxToDpConvert";
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { ButtonStylePropsExtra } from "./interface";
 import { font } from "utilities/fonts";
-import { StyledTouchableOpacity } from "components/views/styled";
-import { spacingSize } from "@components/views/sizes";
+import { StyledTouchableOpacity } from "@components/view/styled";
+import { spacingSize } from "@components/view/sizes";
 
 export const ButtonSolidView = styled(StyledTouchableOpacity)<ButtonStylePropsExtra>(({
     backgroundColor, borderColor, width, borderWidth
@@ -38,7 +38,7 @@ export const ButtonOutlineView = styled(ButtonSolidView)({
     borderWidth: 1.7,
 });
 
-export const StyledTouchable = styled.TouchableOpacity<{
+export const StyledTouchable = styled(StyledTouchableOpacity)<{
     paddingHorizontal?: number,
     paddingVertical?: number,
 }>(({
@@ -53,14 +53,13 @@ export const StyledTouchable = styled.TouchableOpacity<{
     justifyContent: 'center',
 }))
 
-export const ThemedButtonOuter = styled.TouchableOpacity<{ borderColor?: ColorValue }>(({
-    theme,
+export const ThemedButtonOuter = styled(StyledTouchableOpacity)(({
     borderColor = "#000"
 }) => ({
     borderTopWidth: 0,
     borderWidth: 2,
     borderRadius: 12,
-    borderColor: borderColor,
+    borderColor,
     paddingBottom: 5,
     backgroundColor: "transparent",
     position: "absolute",
@@ -90,46 +89,40 @@ export const ThemedButtonInner = styled.View<{
     position: "relative",
 }))
 
-export const FloatingTouchableOpacity = styled.TouchableOpacity<{ 
-    backgroundColor: string 
-}>(({ 
-    backgroundColor 
+export const FloatingTouchableOpacity = styled(StyledTouchableOpacity)(({
+    backgroundColor
 }) => ({
-        backgroundColor,
-        width: wp(12),
-        height: wp(12),
-        borderRadius: wp(6),
-        padding: 5,
-        borderWidth: 1,
-        borderColor: 'transparent',
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 30,
-        zIndex: 999,
-        shadowColor: '#c4c4c4',
-        shadowOpacity: 0.3,
-        bottom: 30,
-        right: wp(5),
-        position: 'absolute'
-    })
-);
+    backgroundColor,
+    width: wp(12),
+    height: wp(12),
+    borderRadius: wp(6),
+    padding: 5,
+    borderWidth: 1,
+    borderColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 30,
+    zIndex: 999,
+    shadowColor: '#c4c4c4',
+    shadowOpacity: 0.3,
+    bottom: 30,
+    right: wp(5),
+    position: 'absolute'
+}));
 
-export const IconButton = styled.TouchableOpacity<ViewStyle>(({
+export const IconButton = styled(StyledTouchableOpacity)(({
     minHeight = 50,
     minWidth = 50,
     ...rest
 }) => ({
     minHeight: (typeof minHeight === 'number') ? widthPixel(minHeight) : minHeight,
     minWidth: (typeof minWidth === 'number') ? widthPixel(minWidth) : minWidth,
-    padding: rest?.padding,
     height: rest?.height ?? 'auto',
     width: rest?.width ?? 'auto',
     flexDirection: rest?.flexDirection ?? 'row',
     alignItems: rest?.alignItems ?? 'center',
     justifyContent: rest?.justifyContent ?? 'center',
-    borderRadius: rest?.borderRadius ?? 5, 
-    borderWidth: rest?.borderWidth, 
-    borderColor: rest?.borderColor, 
-    marginHorizontal: rest?.marginHorizontal, 
+    borderRadius: rest?.borderRadius ?? 5,
+
 
 }));

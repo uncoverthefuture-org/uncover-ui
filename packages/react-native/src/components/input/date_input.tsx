@@ -1,51 +1,50 @@
 import React, { useState } from "react";
 import DateTimePickerModal, { ReactNativeModalDateTimePickerProps } from 'react-native-modal-datetime-picker';
 import moment from 'moment';
-import { Entypo } from "@expo/vector-icons";
-import { InputPlaceholder } from "./placeholder";
-import { PrimaryInputProps } from "./main";
+import { InputPlaceholder, InputPlaceholderProps } from "./placeholder";
+import Entypo from 'react-native-vector-icons/Entypo'
+import { useExtendedStyle } from 'hooks/extended_style_hook';
 
-export interface PrimaryDateTimeProp extends PrimaryInputProps {
-    placeholder: string,
-    date?: string,
-    setDate: (date: string) => void,
+export interface PrimaryDateTimeInputProps extends Omit<InputPlaceholderProps, 'onChange'> {
+    onChange?: (date: string) => void,
     dateFormat?: string,
-    dateProps?: ReactNativeModalDateTimePickerProps,
-};
+    datePickerProps?: ReactNativeModalDateTimePickerProps,
+}
 
 
-export const PrimaryDateTime: React.FC<PrimaryDateTimeProp> = ({
-    placeholder,
-    date,
-    setDate,
-    dateFormat,
-    dateProps,
+export const PrimaryDateTimeInput: React.FC<PrimaryDateTimeInputProps> = ({
+    onChange = () => {},
     ...rest
 }) => {
-    const defaultDate = (date && date.length) ? moment(date).format('dddd, MMMM Do YYYY') : undefined;
+    const { primaryDateTimeInput: props } = useExtendedStyle({ primaryDateTimeInput: {
+        dateFormat: "dddd, MMMM Do YYYY",
+         ...rest 
+    } });
+    const defaultDate = (props?.value && props?.value.length) ? moment(props?.value).format(props?.dateFormat) : undefined;
     const [inputValue, setInputValue] = useState<string>(defaultDate ?? '');
     const [open, setOpen] = useState(false)
 
     return (
         <>
             <InputPlaceholder
-                placeholder={placeholder}
+                placeholder={props?.placeholder}
                 value={inputValue}
                 onPress={() => setOpen(true)}
                 rightComponent={<Entypo name="calendar" size={16} color="#fff" style={{ marginRight: 10 }} />}
                 {...rest}
             />
             <DateTimePickerModal
-                {...dateProps}
-                date={(date && date.length) ? new Date(date) : undefined}
+                date={(props?.value && props?.value.length) ? new Date(props?.value) : undefined}
                 isVisible={open}
                 mode="date"
                 onConfirm={(date: any) => {
-                    setInputValue(moment(date).format('dddd, MMMM Do YYYY'));
-                    setDate(moment(date).format(dateFormat));
+                    setInputValue(moment(date).format(props?.dateFormat));
+                    onChange(moment(date).format(props?.dateFormat));
                     setOpen(false);
                 }}
                 onCancel={() => setOpen(false)}
+                on
+                {...props?.datePickerProps}
             />
         </>
     );

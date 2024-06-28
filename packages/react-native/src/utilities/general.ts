@@ -44,7 +44,7 @@ export const randomString = (length: number = 16, chars: string = '0123456789abc
 }
 
 
-export const maxItems = (data:any[] = [], count?: number) => {
+export const maxItems = (data: any[] = [], count?: number) => {
     if (count && count <= data.length) return data.slice(0, count)
     return data;
 }
@@ -52,7 +52,7 @@ export const maxItems = (data:any[] = [], count?: number) => {
 export const convertObjectToURLParams = (data: any) => {
     const params = Object.keys(data).map(key => {
         const rc = data[key];
-        if(rc !== undefined && rc !== null){
+        if (rc !== undefined && rc !== null) {
             return `${key}=${encodeURIComponent(rc)}`;
         }
     }).join('&');
@@ -60,3 +60,13 @@ export const convertObjectToURLParams = (data: any) => {
     return params;
 }
 
+export const inInExpoEnv = () => {
+    try {
+        require('expo');
+        return true;
+        // Code to be executed if `expo` package is present (likely Expo environment)
+    } catch (e) {
+        // Code to be executed if `expo` package is not found (not necessarily not Expo)
+        return false;
+    }
+}

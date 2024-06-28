@@ -9,7 +9,7 @@ import {
   fontPixel,
   heightPixel
 } from "utilities/pxToDpConvert";
-import { BoldText } from "../texts/styled";
+import { BoldText } from "../text/styled";
 import { Picker } from "@react-native-picker/picker";
 import { FlatList } from "react-native-gesture-handler";
 import { ActionContainer, AndroidOptions, AndroidOptionsContainer, DecisionBar, SelectPlanRender, TitleBox } from "./styled";
@@ -22,7 +22,7 @@ import { ActionSheetDataOption } from "./interface";
 export type ActionSheetOptionsProps = {
   options: ActionSheetDataOption[];
   category?: string;
-  title: string;
+  placeholder?: string;
   editable?: boolean;
   onToggleSheet?: (status: boolean) => void;
   onSelect?: (item: ActionSheetDataOption) => void;
@@ -31,7 +31,7 @@ export type ActionSheetOptionsProps = {
 };
 
 export const ActionSheetOptions: React.FC<ActionSheetOptionsProps> = ({
-  title,
+  placeholder = "Select Option",
   category = "Choose an Option",
   options,
   editable = true,
@@ -83,7 +83,7 @@ export const ActionSheetOptions: React.FC<ActionSheetOptionsProps> = ({
           }
         }}
       >
-        <Picker.Item label={title} value="" />
+        <Picker.Item label={placeholder} value="" />
         {data?.map((item: any) => {
           return (
             <Picker.Item key={item} label={item.label} value={item.value} />
@@ -109,7 +109,7 @@ export const ActionSheetOptions: React.FC<ActionSheetOptionsProps> = ({
               }}
               selected={selected?.value === ""}
             >
-              <BoldText color="rgba(0, 0, 0, 0.43)">{title}</BoldText>
+              <BoldText color="rgba(0, 0, 0, 0.43)">{placeholder}</BoldText>
             </AndroidOptions>
           }
           ListFooterComponent={<View style={{ height: 50 }}></View>}

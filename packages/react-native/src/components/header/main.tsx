@@ -1,13 +1,14 @@
-import { AntDesign } from "@expo/vector-icons";
 import React, { ReactNode } from "react";
-import { TouchableOpacityProps, useWindowDimensions } from "react-native";
-import { BoldText } from '../texts/styled';
+import { TouchableOpacityProps } from "react-native";
+import { BoldText, RegularTextProps } from '../text/styled';
 import { useNavigation } from "@react-navigation/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useThemeMode } from "@providers/hooks";
 import { HeaderContainerProps } from "./interface";
 import { HeaderContainer, SideComponent } from "./styled";
-import { StyledViewProps } from "@components/views";
+import { StyledViewProps } from "@components/view";
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import { useExtendedStyle } from 'hooks/extended_style_hook';
 
 
 export interface NavHeaderProps extends HeaderContainerProps {
@@ -18,69 +19,63 @@ export interface NavHeaderProps extends HeaderContainerProps {
   rightComponentProps?: TouchableOpacityProps & StyledViewProps;
   centerComponentProps?: TouchableOpacityProps & StyledViewProps;
   leftComponentProps?: TouchableOpacityProps & StyledViewProps;
-  backAction?: () => void;
+  onBackPress?: () => void;
   elevation?: number;
-  color?: string;
+  backIconColor?: string;
+  titleColor?: string;
+  titleProps?: RegularTextProps;
 }
 
 export const NavHeader: React.FC<NavHeaderProps> = ({
-  title,
-  leftComponent,
-  centerComponent,
-  rightComponent,
-  rightComponentProps,
-  centerComponentProps,
-  leftComponentProps,
-  elevation,
-  backAction,
-  color,
   ...rest
 }) => {
   const { colors } = useThemeMode();
   const navigation = useNavigation();
-  const { width} = useWindowDimensions()
+  const { navHeader: props } = useExtendedStyle({
+    navHeader: {
+      backIconColor: colors.black,
+      onBackPress: () => navigation.goBack(),
+      ...rest
+    }
+  });
 
   return (
     <HeaderContainer  {...rest}>
       <SideComponent
-        onPress={() => backAction ? backAction() : navigation.goBack()}
-        // backgroundColor={"red"}
+        onPress={props?.onBackPress}
         height={'100%'}
         width={"15%"}
-        {...leftComponentProps}
+        {...props?.leftComponentProps}
       >
-        {(leftComponent) ? leftComponent : (
-          <>
-            <AntDesign
-              name="arrowleft"
-              size={24}
-              color={color ? color : colors.black}
-              style={{marginTop: 3}}
-            />
-            {/* <BackArrow height={RFValue(60)} /> */}
-          </>
+        {(props?.leftComponent) ? props?.leftComponent : (
+          <AntDesign
+            name="arrowleft"
+            size={24}
+            color={props?.backIconColor}
+            style={{ marginTop: 3 }}
+          />
         )}
       </SideComponent>
       <SideComponent
         flexGrow={3}
-        // backgroundColor={"purple"}
-        {...centerComponentProps}
+        {...props?.centerComponentProps}
       >
-        {(centerComponent) ? centerComponent : (
+        {(props?.centerComponent) ? props?.centerComponent : (
           <BoldText
             fontSize={RFValue(12)}
             textAlign="center"
-          >{title}</BoldText>
+            color={props?.titleColor}
+            {...props?.titleProps}
+          >{props?.title}</BoldText>
         )}
       </SideComponent>
       <SideComponent
         alignItems="flex-end"
-        // backgroundColor={"blue"}
         height={'100%'}
         width={"15%"}
-        {...rightComponentProps}
+        {...props?.rightComponentProps}
       >
-        {(rightComponent) ? rightComponent : (
+        {(props?.rightComponent) ? props?.rightComponent : (
           <>
           </>
         )}

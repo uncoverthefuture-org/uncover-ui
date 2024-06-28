@@ -2,34 +2,24 @@ import React, { useEffect, useState } from "react";
 import { TextStyle, ViewStyle } from "react-native";
 import { InputColorState, PrimaryInputProps } from "./main";
 import { fontPixel } from 'utilities/pxToDpConvert';
-import { RegularText } from "../texts/styled";
+import { RegularText } from "../text/styled";
 import { useThemeMode } from "providers/hooks";
 import { InputPlaceholderTextSection, InputPlaceholderPressable, Label } from "./styled";
+import { useExtendedStyle } from "hooks/extended_style_hook";
 
 export interface InputPlaceholderProps extends PrimaryInputProps {
-    placeholder?: string;
-    value?: string;
     containerStyle?: ViewStyle,
-    textStyle?: TextStyle,
-    inputError?: boolean;
     onPress?: () => void;
     rightComponent?: React.ReactElement,
     leftComponent?: React.ReactElement
 }
 
 export const InputPlaceholder: React.FC<InputPlaceholderProps> = ({
-    label,
-    labelProps,
-    placeholder,
-    value,
-    containerStyle,
-    textStyle,
     onPress = () => { },
-    inputError,
-    rightComponent,
-    leftComponent
+    ...rest
 }) => {
     const { colors } = useThemeMode();
+    const { inputPlaceholder: props } = useExtendedStyle({ inputPlaceholder: { ...rest } });
     const [active, setActive] = useState<boolean>(false);
 
     const onPlaceholderPress = () => {
@@ -41,26 +31,28 @@ export const InputPlaceholder: React.FC<InputPlaceholderProps> = ({
         if (active) {
             setActive(false);
         }
-    }, [value])
+    }, [props?.value])
 
     return (
         <>
-            {label ? (
-                <Label color={colors.black_2} {...labelProps}>
-                    {label}
+            {props?.label ? (
+                <Label color={colors.black_2} {...props?.labelProps}>
+                    {props?.label}
                 </Label>
             ) : null}
             <InputPlaceholderPressable
                 onPress={onPlaceholderPress}
-                style={{ ...containerStyle, ...InputColorState(colors, active, inputError) }}
+                style={{ ...InputColorState(colors, active, props?.inputError), ...props?.containerStyle, }}
             >
-                {leftComponent}
+                {props?.leftComponent}
                 <InputPlaceholderTextSection>
-                    <RegularText style={{ fontSize: fontPixel(15), ...textStyle }}>
-                        {(value) ? value : placeholder}
+                    <RegularText
+                        style={{ fontSize: fontPixel(15), ...props?.textStyle }}
+                    >
+                        {(props?.value) ? props?.value : props?.placeholder}
                     </RegularText>
                 </InputPlaceholderTextSection>
-                {rightComponent}
+                {props?.rightComponent}
             </InputPlaceholderPressable>
         </>
 

@@ -5,6 +5,9 @@ import React from "react";
 import { useThemeMode } from "providers/hooks";
 import { ActiveIconProp, InputBoxProps } from "./interface";
 import { BottomText, InputBox, InputWrapper, Label } from "./styled";
+import { useExtendedStyle } from "hooks/extended_style_hook";
+
+
 
 export const InputColorState = (colors: Theme['colors'], active?: boolean, error?: boolean) => {
   let borderColor = active ? colors.primary : colors.black_4;
@@ -18,75 +21,65 @@ export const InputColorState = (colors: Theme['colors'], active?: boolean, error
   };
 }
 
-
 export interface PrimaryInputProps extends TextInputProps, Omit<InputBoxProps, 'textAlign'> {
   leftIcon?: React.ReactElement | ActiveIconProp;
   rightIcon?: React.ReactElement | ActiveIconProp;
   editable?: boolean;
-  placeholder?: string;
   label?: string;
   labelProps?: TextProps & { color: string };
   containerStyle?: ViewStyle;
   bottomText?: string;
   inputError?: boolean;
   bottomTextOnError?: boolean;
-  style?: StyleProp<TextStyle>;
+  textStyle?: TextStyle;
   solid?: boolean;
   isFocused?: (status: boolean) => void;
   onPress?: () => void;
 }
 export const PrimaryInput: React.FC<PrimaryInputProps> = ({
-  leftIcon,
-  rightIcon,
-  label,
-  editable = true,
-  style,
-  labelProps,
-  containerStyle,
-  placeholder,
-  bottomText,
-  bottomTextOnError = true,
-  inputError = false,
-  onPress,
-  solid = false,
-  isFocused,
   ...rest
 }) => {
   const { colors } = useThemeMode();
+  const { primaryInput: props } = useExtendedStyle({
+    primaryInput: {
+      editable: true,
+      bottomTextOnError: true,
+      solid: false,
+      placeholderTextColor: colors.black_4,
+      ...rest
+    }
+  });
   const [active, setActive] = useState<boolean>(Boolean(rest.value));
 
-  useEffect(() => { isFocused && isFocused(active) }, [active]);
+  useEffect(() => { props?.isFocused && props?.isFocused(active) }, [active]);
 
   return (
-    <View style={{ flexGrow: 1}}>
-      {label ? (
-        <Label color={colors.black_2} {...labelProps}>
-          {label}
+    <View style={{ flexGrow: 1 }}>
+      {props?.label ? (
+        <Label color={colors.black_2} {...props?.labelProps}>
+          {props?.label}
         </Label>
       ) : null}
-      <InputWrapper style={{ ...containerStyle, ...(InputColorState(colors, active, inputError)) }}>
-        {((leftIcon as ActiveIconProp)?.active) ? (
-          (active) ? (leftIcon as ActiveIconProp)?.active : (leftIcon as ActiveIconProp)?.inActive
-        ) : (leftIcon as React.ReactElement)}
+      <InputWrapper style={{ ...props?.containerStyle, ...(InputColorState(colors, active, props?.inputError)) }}>
+        {((props?.leftIcon as ActiveIconProp)?.active) ? (
+          (active) ? (props?.leftIcon as ActiveIconProp)?.active : (props?.leftIcon as ActiveIconProp)?.inActive
+        ) : (props?.leftIcon as React.ReactElement)}
         <InputBox
-          {...rest}
-          editable={editable}
-          placeholder={placeholder}
-          placeholderTextColor={colors.black_4}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
-          onPressIn={onPress}
-          hasIcon={Boolean(leftIcon)}
-          style={{ ...(InputColorState(colors, active, inputError)) }}
+          onPressIn={props?.onPress}
+          hasIcon={Boolean(props?.leftIcon)}
+          style={[{ ...(InputColorState(colors, active, props?.inputError)) }, props?.textStyle, rest?.style]}
+          {...props}
         />
-        {((rightIcon as ActiveIconProp)?.active) ? (
-          (active) ? (rightIcon as ActiveIconProp)?.active : (rightIcon as ActiveIconProp)?.inActive
-        ) : (rightIcon as React.ReactElement)}
+        {((props?.rightIcon as ActiveIconProp)?.active) ? (
+          (active) ? (props?.rightIcon as ActiveIconProp)?.active : (props?.rightIcon as ActiveIconProp)?.inActive
+        ) : (props?.rightIcon as React.ReactElement)}
       </InputWrapper>
-      {(bottomText && !bottomTextOnError) ||
-        (bottomText && bottomTextOnError && inputError) ? (
-        <BottomText color={inputError ? colors.primary : colors.text}>
-          {bottomText}
+      {(props?.bottomText && !props?.bottomTextOnError) ||
+        (props?.bottomText && props?.bottomTextOnError && props?.inputError) ? (
+        <BottomText color={props?.inputError ? colors.primary : colors.text}>
+          {props?.bottomText}
         </BottomText>
       ) : null}
     </View>

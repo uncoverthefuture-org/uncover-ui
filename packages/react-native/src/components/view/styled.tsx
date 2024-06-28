@@ -1,38 +1,22 @@
 import styled from "@emotion/native";
-import { LinearGradient } from "expo-linear-gradient";
 import { Animated, ColorValue, DimensionValue, Platform, TouchableOpacity, ViewStyle } from "react-native";
-import { wp, heightPixel, widthPixel } from "utilities";
+import { wp, heightPixel, widthPixel, inInExpoEnv } from "utilities";
 import { RFSpacingSize, spacingSize } from "./sizes";
+
+export const LinearGradient = () => {
+    if(inInExpoEnv()) {
+        return require("expo-linear-gradient").LinearGradient;
+    }else{
+        return require("react-native-linear-gradient");
+    }
+}
+
+
 export interface StyledViewProps extends ViewStyle {
 
 }
 
-export const StyledView = styled(Animated.View)<StyledViewProps>(({
-    ...rest
-}) => ({
-    paddingHorizontal: rest?.paddingHorizontal,
-    paddingVertical: rest?.paddingVertical,
-    borderRadius: rest?.borderRadius,
-    alignItems: rest?.alignItems,
-    justifyContent: rest?.justifyContent,
-    backgroundColor: rest?.backgroundColor,
-    width: rest?.width,
-    height: rest?.height,
-    borderColor: rest?.borderColor,
-    borderWidth: rest?.borderWidth,
-    marginTop: rest?.marginTop,
-    marginBottom: rest?.marginBottom,
-    marginLeft: rest?.marginLeft,
-    marginRight: rest?.marginRight,
-    opacity: rest?.opacity,
-    padding: rest?.padding,
-    zIndex: rest?.zIndex,
-    position: rest?.position,
-}))
-
-export const StyledTouchableOpacity = styled.TouchableOpacity<StyledViewProps>(({
-    ...rest
-}) => ({
+export const ViewStyles  = (rest: StyledViewProps) => ({
     paddingHorizontal: rest?.paddingHorizontal,
     paddingVertical: rest?.paddingVertical,
     borderRadius: rest?.borderRadius,
@@ -53,32 +37,32 @@ export const StyledTouchableOpacity = styled.TouchableOpacity<StyledViewProps>((
     position: rest?.position,
     flex: rest?.flex,
     flexGrow: rest?.flexGrow,
+})
+
+export const StyledView = styled(Animated.View)<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
 }))
 
-export const Row = styled.TouchableOpacity<StyledViewProps>(({
-    justifyContent,
-    alignItems,
-    flexGrow,
-    flexDirection = "row",
-    flex,
-    paddingVertical = 0,
-    paddingHorizontal = 0,
-    backgroundColor,
-    rowGap,
-    columnGap
+export const StyledTouchableOpacity = styled.TouchableOpacity<StyledViewProps>(({
+    ...rest
 }) => ({
-    flex,
-    flexDirection,
-    position: "relative",
-    justifyContent,
-    alignItems,
-    flexGrow,
-    paddingHorizontal,
-    paddingVertical,
-    backgroundColor,
-    rowGap,
-    columnGap
+    ...ViewStyles(rest)
+}))
 
+export const StyledKeyboardAvoidingView = styled.KeyboardAvoidingView<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
+}))
+
+export const Row = styled(StyledTouchableOpacity)<StyledViewProps>(({
+    flexDirection = "row",
+    position = "relative",
+}) => ({
+    flexDirection,
+    position,
 }))
 
 export const Card = styled.Pressable<{
@@ -118,14 +102,17 @@ export const ViewContainer = styled(StyledView)(({
     backgroundColor,
 }));
 
-export const ActionSheetViewContainer = styled.View({
-    paddingHorizontal: widthPixel(20),
-    paddingTop: heightPixel(25),
-    paddingBottom: heightPixel(50),
-});
+export const ActionSheetViewContainer = styled(StyledKeyboardAvoidingView)(({
+    paddingHorizontal = widthPixel(20),
+    paddingTop = heightPixel(25),
+    paddingBottom = heightPixel(50),
+}) => ({
+    paddingHorizontal,
+    paddingTop,
+    paddingBottom,
+}));
 
-export const BaseViewContainer = styled.KeyboardAvoidingView<{
-    backgroundColor?: string | ColorValue;
+export const BaseViewContainer = styled(StyledKeyboardAvoidingView)<{
 }>(({ backgroundColor }) => ({
     backgroundColor,
     flex: 1,
@@ -192,5 +179,3 @@ export const BottomContainer = styled(ViewContainer)<{
     width: wp('100'),
     backgroundColor
 }));
-
-
