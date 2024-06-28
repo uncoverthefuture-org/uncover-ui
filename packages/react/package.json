@@ -104,5 +104,9 @@
         "react-phone-number-input": "^3.3.7",
         "reactjs-localstorage": "^1.0.1"
     },
-    "gitHead": "bd208d8e7a9b75a840515fea709649fc286ae063"
+    "gitHead": "bd208d8e7a9b75a840515fea709649fc286ae063",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react"
+    }
 }
