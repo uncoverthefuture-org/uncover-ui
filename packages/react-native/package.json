@@ -12,6 +12,9 @@
     ],
     "author": "uncoverthefuture",
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "build": "tsc",
         "watch": "tsc --watch",
@@ -66,5 +69,5 @@
         "react-native-responsive-screen": "^1.4.2",
         "react-native-vector-icons": "^10.0.0"
     },
-    "gitHead": "b760a49beb181ae12f65d4a93f01031e7a83c253"
+    "gitHead": "f5368caf93b07cb7e1250f9ad5de7a1e72f56a31"
 }
