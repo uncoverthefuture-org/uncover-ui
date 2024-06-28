@@ -18,7 +18,8 @@
     "scripts": {
         "build": "tsc",
         "watch": "tsc --watch",
-        "clean": "rm -rf lib"
+        "clean": "rm -rf lib",
+        "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn"
     },
     "dependencies": {
         "@emotion/native": "^11.11.0",
@@ -39,6 +40,7 @@
         "react-native-linear-gradient": "^2.8.3",
         "react-native-mmkv": "^2.12.2",
         "react-native-modal-datetime-picker": "^17.1.0",
+        "react-native-otp-textinput": "^1.1.6",
         "react-native-phone-number-input": "^2.1.0",
         "react-native-responsive-fontsize": "^0.5.1",
         "react-native-responsive-screen": "^1.4.2",
@@ -46,9 +48,11 @@
         "yarn": "^1.22.22"
     },
     "devDependencies": {
+        "@types/he": "^1.2.3",
         "@types/react": "^18.3.3",
         "@types/react-native": "^0.73.0",
         "@types/react-native-vector-icons": "^6.4.18",
+        "rimraf": "^5.0.7",
         "typescript": "^4.0.0"
     },
     "peerDependencies": {

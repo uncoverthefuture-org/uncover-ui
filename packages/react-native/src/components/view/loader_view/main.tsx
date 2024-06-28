@@ -27,7 +27,7 @@ export const LoadingView: React.FC<LoadingViewProps> = ({
     return (
         <LoadingSection
             size={hp(props?.margin ?? 5)}
-            background={props?.bgColor}
+            backgroundColor={props?.bgColor}
             {...props}
         >
             <ActivityIndicator

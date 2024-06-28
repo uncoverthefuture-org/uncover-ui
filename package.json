@@ -10,11 +10,12 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "reinstall": "rimraf ./node_modules && yarn"
+    "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn"
   },
   "devDependencies": {
     "lerna": "^8.1.5",
-    "rimraf": "^5.0.7"
+    "rimraf": "^5.0.7",
+    "typescript": "^5.3.2"
   },
   "resolutions": {
     "**/@types/react": "^18.2.41",
