@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "./src",
     "baseUrl": "src",
     "target": "es5",
     "module": "commonjs",
@@ -9,7 +11,7 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "outDir": "lib",
+    "declarationDir": "./lib",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
