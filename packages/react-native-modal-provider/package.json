@@ -50,5 +50,6 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react-native-modal-provider"
-    }
+    },
+    "gitHead": "047e9383a9ea27f484ca54ff52a684805da8a669"
 }
