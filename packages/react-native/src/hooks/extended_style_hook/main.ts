@@ -1,10 +1,10 @@
 import { UncoverStyleProps } from "@components/interface";
-import { useUncover } from "@providers/hooks"
+import { useThemeMode, useUncover } from "@providers/hooks"
 import { useMemo } from "react"
 
 export const useExtendedStyle = (props: UncoverStyleProps = {}) => {
-    const { extendedStyle } = useUncover();
-    const styled: UncoverStyleProps = extendedStyle ?? {};
+    const { styledProps } = useThemeMode();
+    const styled: UncoverStyleProps = styledProps ?? {};
 
     Object.keys(props).map((key) => {
         const prop = key as keyof UncoverStyleProps;

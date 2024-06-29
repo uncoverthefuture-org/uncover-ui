@@ -120,7 +120,7 @@ export const ActionSheetOptions: React.FC<ActionSheetOptionsProps> = ({
                 selected={selected?.value === item.value}
                 onPress={() => setSelected(item)}
               >
-                <BoldText color={isCurrentValue() ? colors.text : colors.black_4}>
+                <BoldText color={isCurrentValue() ? colors.text : colors.placeholder}>
                   {item.label}
                 </BoldText>
               </AndroidOptions>
@@ -152,7 +152,7 @@ export const ActionSheetOptions: React.FC<ActionSheetOptionsProps> = ({
             <BoldText
               fontSize={fontPixel(17)}
               lineHeight={heightPixel(20)}
-              color={colors.black_4}
+              color={colors.placeholder}
             >
               Done
             </BoldText>

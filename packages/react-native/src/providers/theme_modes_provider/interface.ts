@@ -1,6 +1,14 @@
-import { ExtendEmotionTheme } from "../../themes"
+import { EmotionThemeName } from "@themes/emotion_theme";
+import { ExtendUncoverTheme } from "themes/interface"
 
 export interface ThemeModesProviderProps {
-    extendTheme?: Record<string, ExtendEmotionTheme>
+    extendTheme?: Record<string, ExtendUncoverTheme>
     children: React.ReactNode
+}
+
+export interface ThemeModeProviderContextProps {
+    theme: ExtendUncoverTheme;
+    colors: ExtendUncoverTheme['colors'];
+    styledProps: ExtendUncoverTheme['styledProps'];
+    setThemeMode: (themeName: EmotionThemeName) => ExtendUncoverTheme
 }

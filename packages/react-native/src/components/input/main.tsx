@@ -10,7 +10,7 @@ import { useExtendedStyle } from "hooks/extended_style_hook";
 
 
 export const InputColorState = (colors: Theme['colors'], active?: boolean, error?: boolean) => {
-  let borderColor = active ? colors.primary : colors.black_4;
+  let borderColor = active ? colors.primary : colors.border;
   let backgroundColor = active ? colors.white : colors.white;
   borderColor = error ? colors.danger : borderColor;
   backgroundColor = error ? colors.white : backgroundColor;
@@ -45,7 +45,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
       editable: true,
       bottomTextOnError: true,
       solid: false,
-      placeholderTextColor: colors.black_4,
+      placeholderTextColor: colors.placeholder,
       ...rest
     }
   });
@@ -56,7 +56,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
   return (
     <View style={{ flexGrow: 1 }}>
       {props?.label ? (
-        <Label color={colors.black_2} {...props?.labelProps}>
+        <Label color={colors.label} {...props?.labelProps}>
           {props?.label}
         </Label>
       ) : null}

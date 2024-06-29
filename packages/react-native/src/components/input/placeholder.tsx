@@ -36,7 +36,7 @@ export const InputPlaceholder: React.FC<InputPlaceholderProps> = ({
     return (
         <>
             {props?.label ? (
-                <Label color={colors.black_2} {...props?.labelProps}>
+                <Label color={colors.label} {...props?.labelProps}>
                     {props?.label}
                 </Label>
             ) : null}
