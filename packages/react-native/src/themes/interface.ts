@@ -1,7 +1,7 @@
 import { UncoverStyleProps } from './../components/interface';
 import { ExtendEmotionTheme } from './emotion_theme/interface';
 
-export type ColorProfiles = 'light'|'dark'|string;
+export type ColorProfiles = 'light' | 'dark' | string;
 
 export interface ExtendUncoverTheme {
     colors: ExtendEmotionTheme['colors'];
@@ -9,14 +9,14 @@ export interface ExtendUncoverTheme {
 }
 
 export interface CreateUncoverTheme {
-    colors?: ExtendEmotionTheme['colors'];
+    colors?: { [x: string]: string };
     styledProps?: UncoverStyleProps
 }
 
-export interface UncoverThemeProps extends Record<ColorProfiles, ExtendUncoverTheme>{
+export interface UncoverThemeProps extends Record<ColorProfiles, ExtendUncoverTheme> {
 
 }
 
-export interface CreateUncoverThemeProps extends Record<ColorProfiles, CreateUncoverTheme>{
+export interface CreateUncoverThemeProps extends Record<ColorProfiles, CreateUncoverTheme> {
 
 }

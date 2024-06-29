@@ -19,7 +19,6 @@ export type EmotionThemeColors = {
     placeholder: string;
     label: string;
     // other color types  can come in from here 
-    [x: string]: string;
 };
 
 export interface ExtendEmotionTheme {
