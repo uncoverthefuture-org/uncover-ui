@@ -37,7 +37,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   });
   const { colors } = useThemeMode();
   const [pressed, setPressed] = useState(false)
-  const activeBackgroundColor = (props?.isLoading || pressed) ? colors.secondary_dark_shade : colors.primary;
+  const activeBackgroundColor = (props?.isLoading || pressed) ? colors.primary : colors.primary;
 
   return (
     <ButtonSolidView
