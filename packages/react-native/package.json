@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/react-native",
-    "version": "1.1.7",
+    "version": "1.1.6",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -13,7 +13,7 @@
     "author": "uncoverthefuture",
     "license": "MIT",
     "files": [
-        "lib"
+        "lib/*"
     ],
     "publishConfig": {
         "access": "public"
