@@ -1,0 +1,54 @@
+{
+    "name": "react-native-modal-provider",
+    "version": "0.0.1",
+    "description": "UncoverUI component library for React Native",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "keywords": [
+        "react-native",
+        "components",
+        "react-native-modal",
+        "react-native-modal-provider",
+        "provider",
+        "uncover-ui"
+    ],
+    "author": "uncoverthefuture",
+    "license": "MIT",
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "yarn clean && tsc",
+        "watch": "tsc --watch",
+        "clean": "rimraf lib",
+        "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
+        "prepublishOnly": "yarn build"
+    },
+    "dependencies": {
+        "react": "^18.3.1",
+        "react-native": "^0.74.2",
+        "react-native-gesture-handler": "^2.17.1",
+        "react-native-responsive-screen": "^1.4.2",
+        "react-native-vector-icons": "^10.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.3",
+        "@types/react-native": "^0.73.0",
+        "rimraf": "^5.0.7",
+        "typescript": "^4.0.0"
+    },
+    "peerDependencies": {
+        "react": "^18.3.1",
+        "react-native": "^0.74.2",
+        "react-native-gesture-handler": "^2.17.1",
+        "react-native-responsive-screen": "^1.4.2",
+        "react-native-vector-icons": "^10.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react-native-modal-provider"
+    }
+}
