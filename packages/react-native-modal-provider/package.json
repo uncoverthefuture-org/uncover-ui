@@ -31,8 +31,7 @@
         "react": "^18.3.1",
         "react-native": "^0.74.2",
         "react-native-gesture-handler": "^2.17.1",
-        "react-native-responsive-screen": "^1.4.2",
-        "react-native-vector-icons": "^10.0.0"
+        "react-native-responsive-screen": "^1.4.2"
     },
     "devDependencies": {
         "@types/react": "^18.3.3",
@@ -45,7 +44,6 @@
         "react-native": "^0.74.2",
         "react-native-gesture-handler": "^2.17.1",
         "react-native-responsive-screen": "^1.4.2",
-        "react-native-vector-icons": "^10.0.0"
     },
     "repository": {
         "type": "git",
