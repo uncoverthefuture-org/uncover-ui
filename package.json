@@ -24,6 +24,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/uncoverthefuture-org/uncover-ui"
-  },
-  "packageManager": "yarn@3.6.4"
+  }
 }

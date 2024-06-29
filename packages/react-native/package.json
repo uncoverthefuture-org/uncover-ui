@@ -77,7 +77,7 @@
         "react-native-responsive-screen": "^1.4.2",
         "react-native-vector-icons": "^10.0.0"
     },
-    "gitHead": "3b7caced60507800ababe1f9fdb20fd85ab80da4",
+    "gitHead": "a29991a8408abb1a26c96728eb1ab0c8adb0bdcf",
     "repository": {
         "type": "git",
         "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react-native"
