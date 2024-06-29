@@ -1,4 +1,5 @@
 export * from './base_views'
+export * from './base_scroll_view'
 export * from './styled'
-export *  from './sizes'
+export * from './sizes'
 export * from './loader_view'
