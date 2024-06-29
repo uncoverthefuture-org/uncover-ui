@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { font } from 'utilities/fonts';
+import { font } from '@utilities/fonts';
 import { ColorValue, TextProps, TextStyle, ViewStyle } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { fontSize as fSize } from './sizes';

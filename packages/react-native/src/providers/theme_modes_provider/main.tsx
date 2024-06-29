@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { createContext, useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { ThemeModeProviderContextProps, ThemeModesProviderProps } from "./interface";
-import { UncoverTheme, EmotionThemeName, ExtendEmotionTheme, ExtendUncoverTheme } from "themes";
+import { UncoverTheme, EmotionThemeName, ExtendUncoverTheme } from "@themes/index";
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { app_theme_color_storage } from 'utilities/constants';
+import { app_theme_color_storage } from '@utilities/constants';
 
 
 export const ThemeModeProviderContext: React.Context<ThemeModeProviderContextProps> = createContext({

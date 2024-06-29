@@ -1,5 +1,5 @@
 import { EmotionThemeName } from "@themes/emotion_theme";
-import { ExtendUncoverTheme } from "themes/interface"
+import { ExtendUncoverTheme } from "@themes/interface"
 
 export interface ThemeModesProviderProps {
     extendTheme?: Record<string, ExtendUncoverTheme>

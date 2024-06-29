@@ -12,7 +12,7 @@ import {
 } from "react-native-responsive-screen";
 import { ViewStyle, TextStyle } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { useThemeMode } from "providers/hooks";
+import { useThemeMode } from "@providers/hooks";
 import { BottomText, InputWrapper } from "components/input/styled";
 import { InputColorState, PrimaryInputProps } from "components/input/main";
 import { useExtendedStyle } from "hooks/extended_style_hook";

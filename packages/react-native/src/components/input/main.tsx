@@ -2,7 +2,7 @@ import { StyleProp, TextInputProps, TextProps, TextStyle, View, ViewStyle } from
 import { useEffect, useState } from "react";
 import { Theme } from "@emotion/react";
 import React from "react";
-import { useThemeMode } from "providers/hooks";
+import { useThemeMode } from "@providers/hooks";
 import { ActiveIconProp, InputBoxProps } from "./interface";
 import { BottomText, InputBox, InputWrapper, Label } from "./styled";
 import { useExtendedStyle } from "hooks/extended_style_hook";

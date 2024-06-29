@@ -1,14 +1,13 @@
 
-import { LogoutSheetProps } from 'app/(tabs)/profile/components/logout_sheet';
-import { SheetDefinition } from 'react-native-actions-sheet';
+import { ActionSheetProps, SheetDefinition } from 'react-native-actions-sheet';
 
 // We extend some of the types here to give us great intellisense
 // across the app for all registered sheets.
 declare module 'react-native-actions-sheet' {
   interface Sheets {
-    'logout-sheet': SheetDefinition<{
-      payload: LogoutSheetProps,
-      returnValue: {}
+    [x:string]: SheetDefinition<{
+      payload: ActionSheetProps&{[x:string]: any},
+      returnValue: {[x:string]: any}
     }>;
   }
 

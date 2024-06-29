@@ -13,7 +13,7 @@ import { BoldText } from "../text/styled";
 import { Picker } from "@react-native-picker/picker";
 import { FlatList } from "react-native-gesture-handler";
 import { ActionContainer, AndroidOptions, AndroidOptionsContainer, DecisionBar, SelectPlanRender, TitleBox } from "./styled";
-import { useThemeMode } from "providers/hooks";
+import { useThemeMode } from "@providers/hooks";
 import { ActionSheetDataOption } from "./interface";
 
 
