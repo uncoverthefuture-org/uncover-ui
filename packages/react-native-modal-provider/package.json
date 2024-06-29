@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/rn-modal-provider",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
