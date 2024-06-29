@@ -1,5 +1,5 @@
 {
-    "name": "react-native-modal-provider",
+    "name": "@uncover-ui/rn-modal-provider",
     "version": "0.0.3",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
@@ -51,5 +51,5 @@
         "type": "git",
         "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react-native-modal-provider"
     },
-    "gitHead": "047e9383a9ea27f484ca54ff52a684805da8a669"
+    "gitHead": "c90f25977c8058bd61a25f3109276a6d9a5d87fd"
 }
