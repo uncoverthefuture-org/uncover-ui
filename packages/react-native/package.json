@@ -19,9 +19,9 @@
         "access": "public"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "yarn clean && tsc",
         "watch": "tsc --watch",
-        "clean": "rm -rf lib",
+        "clean": "rimraf lib",
         "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn"
     },
     "dependencies": {
