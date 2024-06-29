@@ -16,14 +16,14 @@ const CustomFlash = StyleSheet.create({
     }
 });
 
-export interface PrimaryFlashMessgeProps extends FlashMessageProps{
+export interface PrimaryFlashMessageProps extends FlashMessageProps{
 
 }
 
-export const PrimaryFlashMessge: React.FC<PrimaryFlashMessgeProps> = ({
+export const PrimaryFlashMessage: React.FC<PrimaryFlashMessageProps> = ({
     ...rest
 }) => {
-    const { primaryFlashMessge: props } = useExtendedStyle({ primaryFlashMessge: { ...rest } });
+    const { primaryFlashMessage: props } = useExtendedStyle({ primaryFlashMessage: { ...rest } });
 
     return (
         <FlashMessage 

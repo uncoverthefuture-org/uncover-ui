@@ -6,7 +6,7 @@ import { PrimaryDateTimeInputProps } from "./input/date_input";
 import { PrimaryInputProps } from "./input/main";
 import { PrimaryPhoneInputProps } from "./input/phone_input";
 import { InputPlaceholderProps } from "./input/placeholder";
-import { PrimaryFlashMessgeProps } from "./notify/flash";
+import { PrimaryFlashMessageProps } from "./notify/flash";
 import { PrimarySelectProps } from "./select/main";
 import { BaseViewProps } from "./view/base_views";
 import { LoadingViewProps } from "./view/loader_view/main";
@@ -21,7 +21,7 @@ export interface UncoverStyleProps {
     primaryDateTimeInput?: PrimaryDateTimeInputProps;
     inputPlaceholder?: InputPlaceholderProps;
     primarySelect?: PrimarySelectProps;
-    primaryFlashMessge?: PrimaryFlashMessgeProps;
+    primaryFlashMessage?: PrimaryFlashMessageProps;
     loadingView?: LoadingViewProps;
     baseView?: BaseViewProps;
 
