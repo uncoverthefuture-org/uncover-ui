@@ -1,0 +1,51 @@
+{
+  "name": "@uncover-ui/rn-sheet-provider",
+  "version": "0.0.3",
+  "description": "UncoverUI component library for React Native",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "homepage": "#readme",
+  "author": "uncoverthefuture",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "yarn clean && yarn build:js && yarn build:types",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "build:types": "tsc --emitDeclarationOnly",
+    "watch": "tsc --watch",
+    "clean": "rimraf lib",
+    "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
+    "prepublishOnly": "yarn build"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "react": "^18.3.1",
+    "react-native": "^0.74.2",
+    "react-native-actions-sheet": "^0.9.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/react": "^18.3.3",
+    "@types/react-native": "^0.73.0",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "rimraf": "^5.0.7",
+    "typescript": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-native": "^0.74.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react-native-sheet-provider"
+  }
+}
