@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/react-native",
-    "version": "1.1.17",
+    "version": "1.1.20",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -25,7 +25,8 @@
         "watch": "tsc --watch",
         "clean": "rimraf lib",
         "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
-        "prepublishOnly": "yarn build"
+        "prepublishOnly": "yarn build",
+        "precommit": "lint-staged"
     },
     "dependencies": {
         "@emotion/native": "^11.11.0",
@@ -37,7 +38,6 @@
         "he": "^1.2.0",
         "moment": "^2.30.1",
         "react": "^18.3.1",
-        "react-native": "^0.74.2",
         "react-native-actions-sheet": "^0.9.3",
         "react-native-fade-loading": "^1.0.1",
         "react-native-flash-message": "^0.4.2",
@@ -75,7 +75,7 @@
         "he": "^1.2.0",
         "moment": "^2.30.1",
         "react": "^18.3.1",
-        "react-native": "^0.74.2",
+        "react-native": "^0.72.0",
         "react-native-actions-sheet": "^0.9.3",
         "react-native-flash-message": "^0.4.2",
         "react-native-gesture-handler": "^2.17.1",
@@ -83,6 +83,12 @@
         "react-native-responsive-fontsize": "^0.5.1",
         "react-native-responsive-screen": "^1.4.2",
         "react-native-vector-icons": "^10.0.0"
+    },
+    "lint-staged": {
+        "src/**/*.{js,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ]
     },
     "gitHead": "7cfa5b7cfd467f145fb93e1c8851c2ae393c0b66",
     "repository": {
