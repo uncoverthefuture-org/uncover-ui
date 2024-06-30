@@ -1,7 +1,7 @@
 import { StyledTouchableOpacity, StyledView } from "@components/view/styled";
 import { HeaderContainerProps } from "./interface";
 import styled from "@emotion/native";
-import { heightPixel, widthPixel } from "utilities/pxToDpConvert";
+import { heightPixel, widthPixel } from "@utilities/pxToDpConvert";
 
 export const HeaderContainer = styled(StyledView)<HeaderContainerProps>(({
     elevation,

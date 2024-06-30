@@ -1,9 +1,9 @@
 import FlashMessage, {FlashMessageProps} from "react-native-flash-message";
 import { StyleSheet } from "react-native";
-import { font } from "utilities/fonts";
+import { font } from "@utilities/fonts";
 import { RFValue } from "react-native-responsive-fontsize";
 import React from "react";
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 const CustomFlash = StyleSheet.create({
     text: {

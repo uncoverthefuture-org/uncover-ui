@@ -2,7 +2,7 @@ import React, { ReactNode } from "react"
 import { ViewStyle } from "react-native";
 import { RegularText, RegularTextProps } from "../text/styled"
 import { StyledTouchable } from "./styled"
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
 export interface TouchableTextProps extends RegularTextProps {

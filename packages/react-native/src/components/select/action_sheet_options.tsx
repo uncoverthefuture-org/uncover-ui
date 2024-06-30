@@ -8,7 +8,7 @@ import ActionSheet from "react-native-actions-sheet";
 import {
   fontPixel,
   heightPixel
-} from "utilities/pxToDpConvert";
+} from "@utilities/pxToDpConvert";
 import { BoldText } from "../text/styled";
 import { Picker } from "@react-native-picker/picker";
 import { FlatList } from "react-native-gesture-handler";

@@ -1,5 +1,5 @@
 import styled from "@emotion/native";
-import { heightPixel, widthPixel } from "utilities";
+import { heightPixel, widthPixel } from "@utilities/index";
 
 export const SelectPlanRender = styled.View({
     paddingHorizontal: widthPixel(21),

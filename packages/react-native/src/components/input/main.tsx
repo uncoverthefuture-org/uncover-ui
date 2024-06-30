@@ -5,7 +5,7 @@ import React from "react";
 import { useThemeMode } from "@providers/hooks";
 import { ActiveIconProp, InputBoxProps } from "./interface";
 import { BottomText, InputBox, InputWrapper, Label } from "./styled";
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
 

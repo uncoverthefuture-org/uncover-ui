@@ -9,7 +9,7 @@ import { ButtonOutlineView, ButtonSolidView, ButtonText } from "./styled";
 import { useThemeMode, useUncover } from "@providers/hooks";
 import { StyledViewProps } from "@components/view";
 import { RegularTextProps } from "@components/text";
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
 

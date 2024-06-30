@@ -8,7 +8,7 @@ import { HeaderContainerProps } from "./interface";
 import { HeaderContainer, SideComponent } from "./styled";
 import { StyledViewProps } from "@components/view";
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { useExtendedStyle } from 'hooks/extended_style_hook';
+import { useExtendedStyle } from '@hooks/extended_style_hook';
 
 
 export interface NavHeaderProps extends HeaderContainerProps {

@@ -1,8 +1,8 @@
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import React from "react";
-import currencyFormatter from "utilities/currencyFormatter";
-import { sterilizeNumber } from "utilities/general";
-import { fontPixel, heightPixel } from "utilities/pxToDpConvert";
+import currencyFormatter from "@utilities/currencyFormatter";
+import { sterilizeNumber } from "@utilities/general";
+import { fontPixel, heightPixel } from "@utilities/pxToDpConvert";
 import { PrimaryInput } from "./main";
 
 export const AmountInput: React.FC<{

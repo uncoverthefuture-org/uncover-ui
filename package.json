@@ -9,18 +9,16 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build",
-    "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn"
+    "reinstall": "yarn clean && yarn add rimraf && npx rimraf ./yarn.lock && yarn",
+    "clean": "npx rimraf node_modules && npx rimraf packages/*/node_modules",
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "tsc": "echo 'You are trying to run \"tsc\" in the workspace root. Run it from an individual package instead.' && exit 1"
   },
   "devDependencies": {
-    "lerna": "^8.1.5",
-    "rimraf": "^5.0.7",
-    "typescript": "^5.3.2"
+    "rimraf": "^5.0.7"
   },
-  "resolutions": {
-    "**/@types/react": "^18.2.41",
-    "**/react": ">=18"
-  },
+  "resolutions": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/uncoverthefuture-org/uncover-ui"

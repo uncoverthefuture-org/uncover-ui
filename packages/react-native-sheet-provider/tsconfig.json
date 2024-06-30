@@ -3,38 +3,23 @@
     "outDir": "lib",
     "rootDir": "./src",
     "baseUrl": "src",
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": [ "ESNext" ],
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "es6"
+    ],
     "allowJs": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "forceConsistentCasingInFileNames": true,
     "declarationDir": "./lib",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["*"],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@utilities/*": [
-        "utilities/*"
-      ],
       "@providers/*": [
         "providers/*"
       ],
-      "@themes/*": [
-        "themes/*"
-      ],
-      "@hooks/*": [
-        "hooks/*"
-      ]
     }
   },
   "include": [

@@ -3,7 +3,7 @@ import DateTimePickerModal, { ReactNativeModalDateTimePickerProps } from 'react-
 import moment from 'moment';
 import { InputPlaceholder, InputPlaceholderProps } from "./placeholder";
 import Entypo from 'react-native-vector-icons/Entypo'
-import { useExtendedStyle } from 'hooks/extended_style_hook';
+import { useExtendedStyle } from '@hooks/extended_style_hook';
 
 export interface PrimaryDateTimeInputProps extends Omit<InputPlaceholderProps, 'onChange'> {
     onChange?: (date: string) => void,

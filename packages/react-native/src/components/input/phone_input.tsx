@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import PhoneInput from "react-native-phone-number-input";
-import { font } from "utilities/fonts";
-import { widthPixel } from "utilities/pxToDpConvert";
+import { font } from "@utilities/fonts";
+import { widthPixel } from "@utilities/pxToDpConvert";
 import { useThemeMode } from "@providers/hooks";
 import { BottomText, InputWrapper, Label } from "./styled";
 import { InputColorState, PrimaryInputProps } from "./main";
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
 export interface PrimaryPhoneInputProps extends Omit<PrimaryInputProps, 'onChange'> {

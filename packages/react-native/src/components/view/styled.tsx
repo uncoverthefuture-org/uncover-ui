@@ -1,6 +1,6 @@
 import styled from "@emotion/native";
 import { Animated, ColorValue, DimensionValue, Platform, TouchableOpacity, ViewStyle } from "react-native";
-import { wp, heightPixel, widthPixel, inInExpoEnv } from "utilities";
+import { wp, heightPixel, widthPixel, inInExpoEnv } from "@utilities/index";
 import { RFSpacingSize, spacingSize } from "./sizes";
 
 export const LinearGradient = () => {

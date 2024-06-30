@@ -6,16 +6,16 @@ import {
   fontPixel,
   heightPixel,
   widthPixel,
-} from "utilities/pxToDpConvert";
+} from "@utilities/pxToDpConvert";
 import {
   widthPercentageToDP as wp
 } from "react-native-responsive-screen";
 import { ViewStyle, TextStyle } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useThemeMode } from "@providers/hooks";
-import { BottomText, InputWrapper } from "components/input/styled";
-import { InputColorState, PrimaryInputProps } from "components/input/main";
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { BottomText, InputWrapper } from "@components/input/styled";
+import { InputColorState, PrimaryInputProps } from "@components/input/main";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 const IconWrapper = styled.View({
   flexDirection: "row",

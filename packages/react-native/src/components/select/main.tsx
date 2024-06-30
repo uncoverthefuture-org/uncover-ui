@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SelectInputPlaceholder, SelectInputProps } from "./placeholder";
 import { ActionSheetDataOption } from "@components/select/interface";
 import { ActionSheetOptions, ActionSheetOptionsProps } from "@components/select/action_sheet_options";
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
 export interface PrimarySelectProps extends SelectInputProps, ActionSheetOptionsProps {

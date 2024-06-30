@@ -2,7 +2,7 @@ import React from "react"
 import { ActivityIndicator, ActivityIndicatorProps, ColorValue } from "react-native"
 import { LoadingContainer, LoadingSection } from "./styled"
 import { hp } from "@utilities/general"
-import { useExtendedStyle } from "hooks/extended_style_hook"
+import { useExtendedStyle } from "@hooks/extended_style_hook"
 
 
 export interface LoadingViewProps {

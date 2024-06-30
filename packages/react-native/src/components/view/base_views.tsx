@@ -4,7 +4,7 @@ import { BaseViewContainer, StyledViewProps } from "./styled";
 import { FocusAwareStatusBar } from "../status_bar";
 import { useThemeMode } from "@providers/hooks";
 import { SafeAreaView, SafeAreaViewProps } from "react-native-safe-area-context";
-import { useExtendedStyle } from "hooks/extended_style_hook";
+import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
 export interface BaseViewProps extends KeyboardAvoidingViewProps,StyledViewProps {
