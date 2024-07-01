@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "reinstall": "yarn clean && yarn add rimraf && npx rimraf ./yarn.lock && yarn",
+    "reinstall": "yarn clean && yarn add rimraf && npx rimraf ./yarn.lock && yarn -W",
     "clean": "npx rimraf node_modules && npx rimraf packages/*/node_modules",
     "test": "yarn workspaces run test",
     "tsc": "echo 'You are trying to run \"tsc\" in the workspace root. Run it from an individual package instead.' && exit 1"

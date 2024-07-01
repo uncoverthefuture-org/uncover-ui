@@ -1,3 +1,4 @@
+import React from "react";
 import { ScrollView, ScrollViewProps } from "react-native";
 import { BaseSafeView, BaseViewProps } from "./base_views";
 import { SafeAreaViewProps } from "react-native-safe-area-context";

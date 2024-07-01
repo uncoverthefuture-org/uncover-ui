@@ -7,7 +7,7 @@
     "module": "ESNext",
     "lib": [ "ESNext" ],
     "allowJs": true,
-    "jsx": "react-jsx",
+    "jsx": "react-native",
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "declarationDir": "./lib",

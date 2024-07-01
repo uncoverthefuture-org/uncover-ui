@@ -1,14 +1,14 @@
 {
     "name": "@uncover-ui/react",
     "author": "uncoverthefuture",
-    "module": "dist/react.esm.js",
+    "module": "lib/react.esm.js",
     "version": "0.2.11",
     "description": "Resuable ui component for react web development",
     "license": "MIT",
-    "main": "dist/index.js",
-    "typings": "dist/index.d.ts",
+    "main": "lib/index.js",
+    "typings": "lib/index.d.ts",
     "files": [
-        "dist"
+        "lib"
     ],
     "engines": {
         "node": ">=10"
@@ -17,13 +17,10 @@
         "access": "public"
     },
     "scripts": {
-        "start": "tsdx watch",
-        "build": "yarn clean && tsdx build",
-        "clean": "rimraf ./dist",
+        "build": "yarn clean && rollup -c --bundleConfigAsCjs",
+        "clean": "rimraf ./lib",
         "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
-        "test": "tsdx test --passWithNoTests",
-        "lint": "tsdx lint",
-        "prepare": "tsdx build",
+        "prepare": "yarn build",
         "size": "size-limit",
         "analyze": "size-limit --why",
         "storybook": "start-storybook -p 6006",
@@ -45,16 +42,23 @@
     },
     "size-limit": [
         {
-            "path": "dist/react.cjs.production.min.js",
+            "path": "lib/react.cjs.production.min.js",
             "limit": "10 KB"
         },
         {
-            "path": "dist/react.esm.js",
+            "path": "lib/react.esm.js",
             "limit": "10 KB"
         }
     ],
     "devDependencies": {
-        "@babel/core": "^7.23.5",
+        "@babel/cli": "^7.24.7",
+        "@babel/core": "^7.24.7",
+        "@babel/preset-env": "^7.24.7",
+        "@babel/preset-react": "^7.24.7",
+        "@babel/preset-typescript": "^7.24.7",
+        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-commonjs": "^26.0.1",
+        "@rollup/plugin-node-resolve": "^15.2.3",
         "@size-limit/preset-small-lib": "^11.0.0",
         "@storybook/addon-essentials": "^8.1.11",
         "@storybook/addon-info": "^5.3.21",
@@ -76,6 +80,7 @@
         "react-dom": "^18.2.0",
         "react-is": "^18.2.0",
         "rimraf": "^5.0.7",
+        "rollup": "^4.18.0",
         "rollup-plugin-copy": "^3.5.0",
         "rollup-plugin-postcss": "^4.0.2",
         "rollup-plugin-sass": "^1.12.21",
