@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/rn-modal-provider",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -28,8 +28,6 @@
         "prepublishOnly": "yarn build"
     },
     "dependencies": {
-        "react": "^18.3.1",
-        "react-native-gesture-handler": "^2.17.1",
         "react-native-responsive-screen": "^1.4.2"
     },
     "devDependencies": {
