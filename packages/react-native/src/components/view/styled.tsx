@@ -139,11 +139,9 @@ export const RoundedActionSheet = {
 export const Divider = styled.View<ViewStyle>(({
     height = spacingSize.i20,
     backgroundColor = "#b5b6b7",
-    ...rest
 }) => ({
     height: (typeof height  === "number") ? heightPixel(height) : height,
     backgroundColor,
-    ...rest
 }));
 
 export const Spacer = styled.View<{

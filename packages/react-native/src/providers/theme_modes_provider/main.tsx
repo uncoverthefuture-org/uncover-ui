@@ -5,6 +5,7 @@ import { ThemeModeProviderContextProps, ThemeModesProviderProps } from "./interf
 import { UncoverTheme, EmotionThemeName, ExtendUncoverTheme } from "@themes/index";
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { app_theme_color_storage } from '@utilities/constants';
+import { themeStorage } from '@utilities/storage';
 
 
 export const ThemeModeProviderContext: React.Context<ThemeModeProviderContextProps> = createContext({
@@ -27,17 +28,24 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
         getItem().then((theme) => {
             if (theme) {
                 const defaultTheme = ((theme != null) ? ((theme === "dark") ? darkTheme : lightTheme) : lightTheme)
-                setActiveTheme(defaultTheme)
+                initSetActiveTheme(defaultTheme)
             }
         });
     }, [])
 
     const setThemeMode = (themeName: EmotionThemeName = EmotionThemeName.LIGHT) => {
         const uncoverTheme = ((themeName === "dark") ? darkTheme : lightTheme);
-        setActiveTheme(uncoverTheme);
+        initSetActiveTheme(uncoverTheme);
         setItem(themeName);
 
         return uncoverTheme
+    }
+
+    const initSetActiveTheme = (theme: ExtendUncoverTheme) => {
+        themeStorage.set('fonts', JSON.stringify(theme?.fonts ?? {})) 
+        // themeStorage.set('styledProps', JSON.stringify(theme?.styledProps ?? {})) 
+        // themeStorage.set('colors', JSON.stringify(theme?.colors ?? {})) 
+        setActiveTheme(theme);
     }
 
 
