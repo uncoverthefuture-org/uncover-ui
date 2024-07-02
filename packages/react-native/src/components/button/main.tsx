@@ -6,14 +6,14 @@ import {
   TextStyle, TouchableOpacityProps
 } from "react-native";
 import { ButtonOutlineView, ButtonSolidView, ButtonText } from "./styled";
-import { useThemeMode, useUncover } from "@providers/hooks";
+import { useThemeMode } from "@providers/hooks";
 import { StyledViewProps } from "@components/view";
 import { RegularTextProps } from "@components/text";
 import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
 
-export interface PrimaryButtonProps extends TouchableOpacityProps, StyledViewProps {
+export interface PrimaryButtonProps extends StyledViewProps,TouchableOpacityProps {
   text?: string;
   isLoading?: boolean;
   textProps?: RegularTextProps,

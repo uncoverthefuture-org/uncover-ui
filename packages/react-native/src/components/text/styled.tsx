@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { font } from '@utilities/fonts';
+import { fonts } from '@utilities/fonts';
 import { ColorValue, TextProps, TextStyle, ViewStyle } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { fontSize as fSize } from './sizes';
@@ -25,7 +25,7 @@ export const RegularText = styled.Text<RegularTextProps>(
     marginBottom,
     textTransform,
   }) => ({
-    fontFamily: font.regular,
+    fontFamily: fonts().regular,
     fontSize: RFValue(fontSize),
     lineHeight: RFValue(lineHeight),
     color: color ?? theme.colors.text,
@@ -37,27 +37,27 @@ export const RegularText = styled.Text<RegularTextProps>(
 );
 
 export const BoldText = styled(RegularText)({
-  fontFamily: font.bold
+  fontFamily: fonts().bold
 });
 
 export const SemiBoldText = styled(RegularText)({
-  fontFamily: font.bold
+  fontFamily: fonts().bold
 });
 
 export const ExtraBoldText = styled(RegularText)({
-  fontFamily: font.extraBold
+  fontFamily: fonts().extraBold
 });
 
 export const MediumText = styled(RegularText)({
-  fontFamily: font.medium
+  fontFamily: fonts().medium
 });
 
 export const BlackText = styled(RegularText)({
-  fontFamily: font.black
+  fontFamily: fonts().black
 });
 
 export const LightText = styled(RegularText)({
-  fontFamily: font.light
+  fontFamily: fonts().light
 });
 
 

@@ -1,7 +1,5 @@
-import { themeStorage } from "./storage"
-
-const themeFontString = themeStorage.getString('fonts') // { 'username': 'Marc', 'age': 21 }
-const themeFontJson = themeFontString ? JSON.parse(themeFontString) : {};
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { app_theme_font_storage } from "./constants";
 
 export interface ThemeFonts {
   light: string;
@@ -23,8 +21,26 @@ export const font: ThemeFonts = {
   bold: 'PlusJakartaSansBold',
   extraBold: 'PlusJakartaSansExtraBold',
   black: 'PlusJakartaSansBlack',
-  ...themeFontJson
 }
+
+export const fonts = (): ThemeFonts => {
+  let themeFontJson = {};
+  AsyncStorage.getItem(app_theme_font_storage, (error, themeFontString) => {
+    if (!error && themeFontString) {
+      themeFontJson = JSON.parse(themeFontString);
+      console.log("in function", themeFontJson, themeFontString)
+    } else {
+      console.warn("Could not find theme font!, setting default theme font...");
+    }
+  });
+
+  return ({
+    ...font,
+    ...themeFontJson
+  });
+}
+
+
 
 
 export const loadUncoverFonts = () => ({
@@ -34,5 +50,5 @@ export const loadUncoverFonts = () => ({
   PlusJakartaSansSemiBold: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-SemiBold.ttf"),
   PlusJakartaSansBold: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-Bold.ttf"),
   PlusJakartaSansExtraBold: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-ExtraBold.ttf"),
-  PlusJakartaSansBlack: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-Black.ttf"),
+  PlusJakartaSansBlack: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-ExtraBold.ttf"),
 })

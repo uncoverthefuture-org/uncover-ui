@@ -1,24 +1,19 @@
 import { BoldText, RFFontSize, RFLineHeight } from "@components/text";
 import styled from "@emotion/native";
-import { ColorValue, TouchableOpacity, ViewStyle } from "react-native";
+import { ColorValue } from "react-native";
 import { widthPixel } from "@utilities/pxToDpConvert";
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { ButtonStylePropsExtra } from "./interface";
-import { font } from "@utilities/fonts";
+import { fonts } from "@utilities/fonts";
 import { StyledTouchableOpacity } from "@components/view/styled";
 import { spacingSize } from "@components/view/sizes";
 
-export const ButtonSolidView = styled(StyledTouchableOpacity)<ButtonStylePropsExtra>(({
-    backgroundColor, borderColor, width, borderWidth
+export const ButtonSolidView = styled(StyledTouchableOpacity)(({
+     
 }) => ({
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor,
-    borderColor,
     paddingVertical: 12,
-    width: width,
-    borderWidth,
 })
 );
 
@@ -28,7 +23,7 @@ export const ButtonText = styled(BoldText)({
     color: props.color,
     fontSize: RFFontSize.sm,
     lineHeight: RFLineHeight.sm,
-    fontFamily: font.medium,
+    fontFamily: fonts().medium,
     paddingVertical: widthPixel(spacingSize.i5),
     paddingHorizontal: widthPixel(spacingSize.i20),
 })

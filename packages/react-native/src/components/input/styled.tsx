@@ -1,6 +1,6 @@
 import { RFFontSize, RFLineHeight, RegularText } from "@components/text";
 import styled from "@emotion/native";
-import { font, heightPixel, widthPixel } from "@utilities/index";
+import { fonts, heightPixel, widthPixel } from "@utilities/index";
 import { Platform } from "react-native";
 import { StyledInputProps, InputBoxProps } from "./interface";
 import { spacingSize } from "@components/view";
@@ -38,7 +38,7 @@ export const InputBox = styled(StyledInput)<InputBoxProps>(({
   hasIcon = false,
   fontSize = RFFontSize.sm,
   lineHeight = fontSize * 1.2,
-  fontFamily = font.medium,
+  fontFamily = fonts().medium,
   color = theme.colors.text
 }) => ({
   paddingLeft: widthPixel((!hasIcon) ? 0 : spacingSize.i10),
@@ -76,7 +76,7 @@ export const Label = styled(RegularText)(({
   color,
   theme
 }) => ({
-  fontFamily: font.medium,
+  fontFamily: fonts().medium,
   fontSize: RFFontSize.xs,
   lineHeight: RFLineHeight.xs,
   paddingBottom: heightPixel(spacingSize.i10),

@@ -1,6 +1,6 @@
 import React, { ComponentProps, ComponentType, useState } from 'react';
 import { createContext } from "react";
-import { Sheet, SheetHideOtherOptions, SheetHideProps, SheetID, SheetShowOtherOptions, SheetShowProps, SheetsProviderProps } from "./interface";
+import { Sheet, SheetHideOtherOptions, SheetHideProps, SheetID, SheetsProviderProps } from "./interface";
 import { SheetManager, SheetProvider } from 'react-native-actions-sheet';
 
 

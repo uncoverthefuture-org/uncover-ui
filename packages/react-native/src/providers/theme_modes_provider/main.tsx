@@ -3,9 +3,9 @@ import { createContext, useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { ThemeModeProviderContextProps, ThemeModesProviderProps } from "./interface";
 import { UncoverTheme, EmotionThemeName, ExtendUncoverTheme } from "@themes/index";
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { app_theme_color_storage } from '@utilities/constants';
-import { themeStorage } from '@utilities/storage';
+import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { app_theme_color_storage, app_theme_font_storage } from '@utilities/constants';
+import { font } from '@/utilities/fonts';
 
 
 export const ThemeModeProviderContext: React.Context<ThemeModeProviderContextProps> = createContext({
@@ -28,24 +28,27 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
         getItem().then((theme) => {
             if (theme) {
                 const defaultTheme = ((theme != null) ? ((theme === "dark") ? darkTheme : lightTheme) : lightTheme)
-                initSetActiveTheme(defaultTheme)
+                setActiveTheme(defaultTheme)
             }
         });
     }, [])
 
+    useEffect(() => {
+        initSetThemeStorage(activeTheme)
+    },[activeTheme])
+
     const setThemeMode = (themeName: EmotionThemeName = EmotionThemeName.LIGHT) => {
         const uncoverTheme = ((themeName === "dark") ? darkTheme : lightTheme);
-        initSetActiveTheme(uncoverTheme);
+        setActiveTheme(uncoverTheme);
         setItem(themeName);
 
         return uncoverTheme
     }
 
-    const initSetActiveTheme = (theme: ExtendUncoverTheme) => {
-        themeStorage.set('fonts', JSON.stringify(theme?.fonts ?? {})) 
+    const initSetThemeStorage = (theme: ExtendUncoverTheme) => {
+        AsyncStorage.setItem(app_theme_font_storage, JSON.stringify(theme?.fonts ?? font)) 
         // themeStorage.set('styledProps', JSON.stringify(theme?.styledProps ?? {})) 
         // themeStorage.set('colors', JSON.stringify(theme?.colors ?? {})) 
-        setActiveTheme(theme);
     }
 
 

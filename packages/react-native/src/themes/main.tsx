@@ -1,5 +1,6 @@
 import { CreateUncoverThemeProps, UncoverThemeProps } from './interface';
 import { EmotionThemeColorBase } from './emotion_theme/main'
+import { font } from '@/utilities';
 
 export const UncoverTheme: UncoverThemeProps = {
     light: {
@@ -7,12 +8,14 @@ export const UncoverTheme: UncoverThemeProps = {
             ...EmotionThemeColorBase
         },
         styledProps: {},
+        fonts: font,
     },
     dark: {
         colors: {
             ...EmotionThemeColorBase
         },
         styledProps: {},
+        fonts: font,
     },
 };
 
@@ -24,9 +27,14 @@ export const createUncoverTheme = (theme: CreateUncoverThemeProps) => {
         if (theme[key]?.colors) {
             newTheme[key]['colors'] = { ...(newTheme[key]['colors'] ?? {}), ...theme[key].colors };
         }
-        // extend the styledPropss for each styledProps profiles
+        // extend the styledProps for each styledProps profiles
         if (theme[key]?.styledProps) {
             newTheme[key]['styledProps'] = { ...(newTheme[key]['styledProps'] ?? {}), ...theme[key].styledProps };
+        }
+
+        // extend the fonts for each fonts profiles
+        if (theme[key]?.fonts) {
+            newTheme[key]['fonts'] = { ...(newTheme[key]['fonts'] ?? font), ...theme[key].fonts };
         }
     })
 
