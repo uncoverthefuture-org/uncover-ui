@@ -5,7 +5,7 @@ import { FloatingTouchableOpacity } from './styled';
 import { RFValue } from 'react-native-responsive-fontsize';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useExtendedStyle } from '@hooks/extended_style_hook';
-import { StyledViewProps } from '@components/view';
+import { StyledViewProps } from '@components/view/interface';
 
 
 export interface FloatingButtonProps extends TouchableOpacityProps,StyledViewProps {

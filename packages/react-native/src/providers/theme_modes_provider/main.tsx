@@ -3,14 +3,19 @@ import { createContext, useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { ThemeModeProviderContextProps, ThemeModesProviderProps } from "./interface";
 import { UncoverTheme, EmotionThemeName, ExtendUncoverTheme } from "@themes/index";
-import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { app_theme_color_storage, app_theme_font_storage } from '@utilities/constants';
-import { font } from '@/utilities/fonts';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { app_theme_color_storage } from '@utilities/constants';
 
+const initSetThemeStorage = (theme: ExtendUncoverTheme) => {
+    // AsyncStorage.setItem(app_theme_font_storage, JSON.stringify(theme?.fonts ?? font)) 
+    // themeStorage.set('styledProps', JSON.stringify(theme?.styledProps ?? {})) 
+    // themeStorage.set('colors', JSON.stringify(theme?.colors ?? {})) 
+}
 
 export const ThemeModeProviderContext: React.Context<ThemeModeProviderContextProps> = createContext({
     theme: UncoverTheme.light,
     colors: UncoverTheme.light.colors,
+    fonts: UncoverTheme.light.fonts,
     styledProps: UncoverTheme?.light?.styledProps,
     setThemeMode: (themeName) => UncoverTheme[themeName],
 });
@@ -19,9 +24,9 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
     extendTheme,
     children
 }) => {
+    const lightTheme = { ...UncoverTheme.light, ...extendTheme?.light };
+    const darkTheme = { ...UncoverTheme.dark, ...extendTheme?.dark };
     const { getItem, setItem } = useAsyncStorage(app_theme_color_storage);
-    const lightTheme = { ...UncoverTheme.light, ...extendTheme?.light }
-    const darkTheme = { ...UncoverTheme.dark, ...extendTheme?.dark }
     const [activeTheme, setActiveTheme] = useState<ExtendUncoverTheme>(lightTheme);
 
     useEffect(() => {
@@ -33,9 +38,9 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
         });
     }, [])
 
-    useEffect(() => {
-        initSetThemeStorage(activeTheme)
-    },[activeTheme])
+    // useEffect(() => {
+    //     initSetThemeStorage(activeTheme)
+    // },[activeTheme])
 
     const setThemeMode = (themeName: EmotionThemeName = EmotionThemeName.LIGHT) => {
         const uncoverTheme = ((themeName === "dark") ? darkTheme : lightTheme);
@@ -45,18 +50,13 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
         return uncoverTheme
     }
 
-    const initSetThemeStorage = (theme: ExtendUncoverTheme) => {
-        AsyncStorage.setItem(app_theme_font_storage, JSON.stringify(theme?.fonts ?? font)) 
-        // themeStorage.set('styledProps', JSON.stringify(theme?.styledProps ?? {})) 
-        // themeStorage.set('colors', JSON.stringify(theme?.colors ?? {})) 
-    }
-
 
     return (
         <ThemeModeProviderContext.Provider
             value={{
                 theme: activeTheme,
                 colors: activeTheme.colors,
+                fonts: activeTheme.fonts,
                 styledProps: activeTheme.styledProps,
                 setThemeMode,
             }}

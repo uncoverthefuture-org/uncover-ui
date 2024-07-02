@@ -1,63 +1,74 @@
 import styled from '@emotion/native';
-import { fonts } from '@utilities/fonts';
-import { ColorValue, TextProps, TextStyle, ViewStyle } from 'react-native';
+import { TextProps, TextStyle } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { fontSize as fSize } from './sizes';
 
-export interface RegularTextProps extends TextProps {
-  fontSize?: TextStyle['fontSize'];
-  lineHeight?: TextStyle['lineHeight'];
-  color?: string | ColorValue;
-  marginTop?: ViewStyle['marginTop'];
-  textAlign?: TextStyle['textAlign'];
-  textTransform?: TextStyle['textTransform'];
-  marginBottom?: ViewStyle['marginBottom'];
+export interface StyledTextProps extends TextStyle, TextProps {
+
 }
 
-export const RegularText = styled.Text<RegularTextProps>(
+export const TextStyles = (rest: StyledTextProps) => ({
+  paddingHorizontal: rest?.paddingHorizontal,
+  paddingVertical: rest?.paddingVertical,
+  borderRadius: rest?.borderRadius,
+  alignItems: rest?.alignItems,
+  justifyContent: rest?.justifyContent,
+  backgroundColor: rest?.backgroundColor,
+  width: rest?.width,
+  height: rest?.height,
+  borderColor: rest?.borderColor,
+  borderWidth: rest?.borderWidth,
+  marginTop: rest?.marginTop,
+  marginBottom: rest?.marginBottom,
+  marginLeft: rest?.marginLeft,
+  marginRight: rest?.marginRight,
+  opacity: rest?.opacity,
+  padding: rest?.padding,
+  zIndex: rest?.zIndex,
+  position: rest?.position,
+  flex: rest?.flex,
+  flexGrow: rest?.flexGrow,
+})
+
+export const RegularText = styled.Text<StyledTextProps>(
   ({
+    theme,
     fontSize = fSize.xs,
     lineHeight = fontSize * 1.6,
-    color,
-    marginTop,
-    textAlign,
-    theme,
-    marginBottom,
-    textTransform,
+    color = theme.colors.text,
+    fontFamily = theme.fonts?.regular,
+    ...rest
   }) => ({
-    fontFamily: fonts().regular,
+    fontFamily,
     fontSize: RFValue(fontSize),
     lineHeight: RFValue(lineHeight),
-    color: color ?? theme.colors.text,
-    marginTop,
-    textAlign,
-    marginBottom,
-    textTransform
+    color,
+    ...TextStyles(rest)
   })
 );
 
-export const BoldText = styled(RegularText)({
-  fontFamily: fonts().bold
-});
+export const BoldText = styled(RegularText)(({ theme }) => ({
+  fontFamily: theme.fonts?.regular,
+}));
 
-export const SemiBoldText = styled(RegularText)({
-  fontFamily: fonts().bold
-});
+export const SemiBoldText = styled(RegularText)(({ theme }) => ({
+  fontFamily: theme.fonts?.bold,
+}));
 
-export const ExtraBoldText = styled(RegularText)({
-  fontFamily: fonts().extraBold
-});
+export const ExtraBoldText = styled(RegularText)(({ theme }) => ({
+  fontFamily: theme.fonts?.extraBold,
+}));
 
-export const MediumText = styled(RegularText)({
-  fontFamily: fonts().medium
-});
+export const MediumText = styled(RegularText)(({ theme }) => ({
+  fontFamily: theme.fonts?.medium,
+}));
 
-export const BlackText = styled(RegularText)({
-  fontFamily: fonts().black
-});
+export const BlackText = styled(RegularText)(({ theme }) => ({
+  fontFamily: theme.fonts?.black,
+}));
 
-export const LightText = styled(RegularText)({
-  fontFamily: fonts().light
-});
+export const LightText = styled(RegularText)(({ theme }) => ({
+  fontFamily: theme.fonts?.light,
+}));
 
 

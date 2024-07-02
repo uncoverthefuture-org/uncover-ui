@@ -1,4 +1,4 @@
-import { ThemeFonts } from '@/utilities/fonts';
+import { ThemeFonts } from '@utilities/fonts';
 import { UncoverStyleProps } from './../components/interface';
 import { ExtendEmotionTheme } from './emotion_theme/interface';
 

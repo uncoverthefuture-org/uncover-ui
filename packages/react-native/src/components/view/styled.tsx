@@ -2,6 +2,7 @@ import styled from "@emotion/native";
 import { Animated, ColorValue, DimensionValue, Platform, TouchableOpacity, ViewStyle } from "react-native";
 import { wp, heightPixel, widthPixel, inInExpoEnv } from "@utilities/index";
 import { RFSpacingSize, spacingSize } from "./sizes";
+import { StyledViewProps } from "./interface";
 
 export const LinearGradient = () => {
     if(inInExpoEnv()) {
@@ -11,26 +12,21 @@ export const LinearGradient = () => {
     }
 }
 
-
-export interface StyledViewProps extends ViewStyle {
-
-}
-
 export const ViewStyles  = (rest: StyledViewProps) => ({
     paddingHorizontal: rest?.paddingHorizontal,
     paddingVertical: rest?.paddingVertical,
     borderRadius: rest?.borderRadius,
     alignItems: rest?.alignItems,
     justifyContent: rest?.justifyContent,
-    backgroundColor: rest?.backgroundColor,
+    backgroundColor: rest?.bgColor ?? rest?.backgroundColor,
     width: rest?.width,
     height: rest?.height,
     borderColor: rest?.borderColor,
     borderWidth: rest?.borderWidth,
-    marginTop: rest?.marginTop,
-    marginBottom: rest?.marginBottom,
-    marginLeft: rest?.marginLeft,
-    marginRight: rest?.marginRight,
+    marginTop: rest?.mt ?? rest?.marginTop,
+    marginBottom: rest?.mb ?? rest?.marginBottom,
+    marginLeft: rest?.ml ?? rest?.marginLeft,
+    marginRight: rest?.mr ?? rest?.marginRight,
     opacity: rest?.opacity,
     padding: rest?.padding,
     zIndex: rest?.zIndex,

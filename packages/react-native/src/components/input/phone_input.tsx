@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import PhoneInput from "react-native-phone-number-input";
-import { fonts } from "@utilities/fonts";
 import { widthPixel } from "@utilities/pxToDpConvert";
 import { useThemeMode } from "@providers/hooks";
 import { BottomText, InputWrapper, Label } from "./styled";
@@ -17,7 +16,7 @@ export interface PrimaryPhoneInputProps extends Omit<PrimaryInputProps, 'onChang
 export const PrimaryPhoneInput: React.FC<PrimaryPhoneInputProps> = ({
     ...rest
 }) => {
-    const { colors } = useThemeMode();
+    const { colors, fonts   } = useThemeMode();
     const { primaryPhoneInput: props } = useExtendedStyle({ primaryPhoneInput: { 
         placeholder: "Phone Number",
         ...rest
@@ -43,8 +42,8 @@ export const PrimaryPhoneInput: React.FC<PrimaryPhoneInputProps> = ({
                     layout="first"
                     containerStyle={{ backgroundColor: 'transparent', alignItems: 'center' }}
                     textContainerStyle={{ backgroundColor: 'transparent', paddingLeft: widthPixel(10) }}
-                    codeTextStyle={{ fontFamily: fonts().bold }}
-                    textInputStyle={{ fontFamily: fonts().regular }}
+                    codeTextStyle={{ fontFamily: fonts?.bold }}
+                    textInputStyle={{ fontFamily: fonts?.regular }}
                     textInputProps={{ placeholderTextColor: "#828282" }}
                     flagButtonStyle={{ width: widthPixel(50) }}
                     onChangeFormattedText={props?.onChange}

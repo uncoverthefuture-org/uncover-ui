@@ -1,3 +1,5 @@
+import { ThemeFonts } from "@utilities/fonts";
+
 export enum EmotionThemeName {
     LIGHT = "light",
     DARK = "dark",
@@ -23,5 +25,6 @@ export type EmotionThemeColors = {
 };
 
 export interface ExtendEmotionTheme {
-    colors: EmotionThemeColors
+    colors: EmotionThemeColors;
+    fonts?: ThemeFonts
 }

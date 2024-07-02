@@ -1,6 +1,6 @@
 import { CreateUncoverThemeProps, UncoverThemeProps } from './interface';
 import { EmotionThemeColorBase } from './emotion_theme/main'
-import { font } from '@/utilities';
+import { font } from '@utilities/fonts';
 
 export const UncoverTheme: UncoverThemeProps = {
     light: {

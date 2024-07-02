@@ -1,8 +1,8 @@
 import styled from '@emotion/native';
-import { ColorValue } from 'react-native';
 import { FadeLoading } from 'react-native-fade-loading';
 import { heightPixel, widthPixel } from '@utilities/pxToDpConvert';
-import { StyledView, StyledViewProps, ViewStyles } from '../styled';
+import { StyledView, ViewStyles } from '../styled';
+import { StyledViewProps } from '../interface';
 
 
 export const LoadingContainer = styled.View({

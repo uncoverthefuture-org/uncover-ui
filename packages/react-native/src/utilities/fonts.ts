@@ -1,6 +1,3 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { app_theme_font_storage } from "./constants";
-
 export interface ThemeFonts {
   light: string;
   regular: string;
@@ -22,25 +19,6 @@ export const font: ThemeFonts = {
   extraBold: 'PlusJakartaSansExtraBold',
   black: 'PlusJakartaSansBlack',
 }
-
-export const fonts = (): ThemeFonts => {
-  let themeFontJson = {};
-  AsyncStorage.getItem(app_theme_font_storage, (error, themeFontString) => {
-    if (!error && themeFontString) {
-      themeFontJson = JSON.parse(themeFontString);
-      console.log("in function", themeFontJson, themeFontString)
-    } else {
-      console.warn("Could not find theme font!, setting default theme font...");
-    }
-  });
-
-  return ({
-    ...font,
-    ...themeFontJson
-  });
-}
-
-
 
 
 export const loadUncoverFonts = () => ({

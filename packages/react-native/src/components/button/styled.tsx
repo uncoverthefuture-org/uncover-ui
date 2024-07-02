@@ -3,19 +3,20 @@ import styled from "@emotion/native";
 import { ColorValue } from "react-native";
 import { widthPixel } from "@utilities/pxToDpConvert";
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { fonts } from "@utilities/fonts";
 import { StyledTouchableOpacity } from "@components/view/styled";
 import { spacingSize } from "@components/view/sizes";
 
 export const ButtonSolidView = styled(StyledTouchableOpacity)(({
-     
+    borderRadius = 8,
+    justifyContent = "center",
+    alignItems = "center",
+    paddingVertical = 12,
 }) => ({
-    borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 12,
-})
-);
+    borderRadius,
+    justifyContent,
+    alignItems,
+    paddingVertical,
+}));
 
 export const ButtonText = styled(BoldText)({
     textAlign: "center",
@@ -23,7 +24,7 @@ export const ButtonText = styled(BoldText)({
     color: props.color,
     fontSize: RFFontSize.sm,
     lineHeight: RFLineHeight.sm,
-    fontFamily: fonts().medium,
+    fontFamily: props?.theme?.fonts?.medium,
     paddingVertical: widthPixel(spacingSize.i5),
     paddingHorizontal: widthPixel(spacingSize.i20),
 })
@@ -33,11 +34,7 @@ export const ButtonOutlineView = styled(ButtonSolidView)({
     borderWidth: 1.7,
 });
 
-export const StyledTouchable = styled(StyledTouchableOpacity)<{
-    paddingHorizontal?: number,
-    paddingVertical?: number,
-}>(({
-    theme,
+export const StyledTouchable = styled(StyledTouchableOpacity)(({
     paddingHorizontal = spacingSize.i10,
     paddingVertical = spacingSize.i10,
 }) => ({
@@ -118,6 +115,4 @@ export const IconButton = styled(StyledTouchableOpacity)(({
     alignItems: rest?.alignItems ?? 'center',
     justifyContent: rest?.justifyContent ?? 'center',
     borderRadius: rest?.borderRadius ?? 5,
-
-
 }));

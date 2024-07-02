@@ -1,7 +1,6 @@
-import { ColorValue } from "react-native";
+import { StyledViewProps } from "@components/view/interface";
+import { TouchableOpacityProps } from "react-native/Libraries/Components/Touchable/TouchableOpacity";
 
-export interface ButtonStylePropsExtra {
-  backgroundColor: string | ColorValue;
-  borderColor?: string | ColorValue;
-  borderWidth?: number;
+export interface ButtonStylePropsExtra extends StyledViewProps, TouchableOpacityProps{
+    focusedBackgroundColor?: string;
 }

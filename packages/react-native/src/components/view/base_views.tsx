@@ -1,10 +1,11 @@
 import React from "react";
 import { KeyboardAvoidingViewProps, Platform, StatusBarProps, StatusBarStyle } from "react-native";
-import { BaseViewContainer, StyledViewProps } from "./styled";
+import { BaseViewContainer } from "./styled";
 import { FocusAwareStatusBar } from "../status_bar";
 import { useThemeMode } from "@providers/hooks";
 import { SafeAreaView, SafeAreaViewProps } from "react-native-safe-area-context";
 import { useExtendedStyle } from "@hooks/extended_style_hook";
+import { StyledViewProps } from "./interface";
 
 
 export interface BaseViewProps extends KeyboardAvoidingViewProps,StyledViewProps {

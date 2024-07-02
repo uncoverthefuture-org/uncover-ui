@@ -1,14 +1,14 @@
 import React, { ReactNode } from "react";
 import { TouchableOpacityProps } from "react-native";
-import { BoldText, RegularTextProps } from '../text/styled';
+import { BoldText, StyledTextProps } from '../text/styled';
 import { useNavigation } from "@react-navigation/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useThemeMode } from "@providers/hooks";
 import { HeaderContainerProps } from "./interface";
 import { HeaderContainer, SideComponent } from "./styled";
-import { StyledViewProps } from "@components/view";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { useExtendedStyle } from '@hooks/extended_style_hook';
+import { StyledViewProps } from "@components/view/interface";
 
 
 export interface NavHeaderProps extends HeaderContainerProps {
@@ -23,7 +23,7 @@ export interface NavHeaderProps extends HeaderContainerProps {
   elevation?: number;
   backIconColor?: string;
   titleColor?: string;
-  titleProps?: RegularTextProps;
+  titleProps?: StyledTextProps;
 }
 
 export const NavHeader: React.FC<NavHeaderProps> = ({

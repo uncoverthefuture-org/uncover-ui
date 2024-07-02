@@ -2,42 +2,46 @@ import React, { useState } from "react";
 import {
   ActivityIndicator,
   ActivityIndicatorProps,
-  ColorValue, StyleProp,
-  TextStyle, TouchableOpacityProps
+  ColorValue,
+  StyleProp,
+  TextStyle,
 } from "react-native";
 import { ButtonOutlineView, ButtonSolidView, ButtonText } from "./styled";
 import { useThemeMode } from "@providers/hooks";
-import { StyledViewProps } from "@components/view";
-import { RegularTextProps } from "@components/text";
+import { StyledTextProps } from "@components/text";
 import { useExtendedStyle } from "@hooks/extended_style_hook";
+import { ButtonStylePropsExtra } from "./interface";
 
 
 
-export interface PrimaryButtonProps extends StyledViewProps,TouchableOpacityProps {
+export interface PrimaryButtonProps extends ButtonStylePropsExtra {
   text?: string;
   isLoading?: boolean;
-  textProps?: RegularTextProps,
-  color?: RegularTextProps['color'];
+  textProps?: StyledTextProps,
+  color?: StyledTextProps['color'];
   textStyle?: StyleProp<TextStyle>;
   isTransparent?: boolean;
   loadColor?: ColorValue;
   icon?: React.ReactElement;
   loaderProps?: ActivityIndicatorProps;
-  loaderComponennt?: React.ReactElement;
+  loaderComponennt?: React.ReactElement;  
 }
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   ...rest
 }) => {
+  const { colors } = useThemeMode();
   const { primaryButton: props } = useExtendedStyle({
     primaryButton: {
-      loadColor: "#fff",
+      backgroundColor: colors.primary,
+      focusedBackgroundColor: colors.primary,
+      loadColor: colors.white,
+      color: colors?.white,
       ...rest
     }
   });
-  const { colors } = useThemeMode();
   const [pressed, setPressed] = useState(false)
-  const activeBackgroundColor = (props?.isLoading || pressed) ? colors.primary : colors.primary;
+  const activeBackgroundColor = (props?.isLoading || pressed || props?.disabled) ? props?.focusedBackgroundColor : props?.backgroundColor;
 
   return (
     <ButtonSolidView
@@ -56,7 +60,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
           <>
             {props?.icon}
             <ButtonText
-              color={props?.color ?? colors.white}
+              color={props?.color}
               style={props?.textStyle}
               {...props?.textProps}
             >
@@ -66,7 +70,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         )
       ) : ((props?.loaderComponennt) ?? (
         <ActivityIndicator
-          color={props?.loadColor ?? colors.white}
+          color={props?.loadColor}
           animating={props?.isLoading}
           size="small"
           style={{ paddingVertical: 5 }}
@@ -80,13 +84,21 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
   ...rest
 }) => {
-  const { primaryButton: props } = useExtendedStyle({ primaryButton: { ...rest } });
   const { colors } = useThemeMode();
+  const { primaryButton: props } = useExtendedStyle({
+    primaryButton: {
+      borderColor: colors?.primary,
+      color: colors?.primary,
+      loadColor: colors?.primary,
+      ...rest
+    }
+  });
+
 
   return (
     <ButtonOutlineView
       backgroundColor="transparent"
-      borderColor={"#fff"}
+      borderColor={props?.borderColor}
       activeOpacity={0.7}
       onPress={props?.onPress}
       borderWidth={3}
@@ -97,7 +109,7 @@ export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
           <>
             {props?.icon}
             <ButtonText
-              color={colors.white}
+              color={props?.color}
               style={props?.textStyle}
               {...props?.textProps}
             >
@@ -107,6 +119,7 @@ export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
         )
       ) : ((props?.loaderComponennt) ?? (
         <ActivityIndicator
+          color={props?.loadColor}
           animating={props?.isLoading}
           size="small"
           {...props?.loaderProps}

@@ -9,6 +9,7 @@ export interface ThemeModesProviderProps {
 export interface ThemeModeProviderContextProps {
     theme: ExtendUncoverTheme;
     colors: ExtendUncoverTheme['colors'];
+    fonts: ExtendUncoverTheme['fonts'];
     styledProps: ExtendUncoverTheme['styledProps'];
     setThemeMode: (themeName: EmotionThemeName) => ExtendUncoverTheme
 }

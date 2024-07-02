@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react"
 import { ViewStyle } from "react-native";
-import { RegularText, RegularTextProps } from "../text/styled"
+import { RegularText, StyledTextProps } from "../text/styled"
 import { StyledTouchable } from "./styled"
 import { useExtendedStyle } from "@hooks/extended_style_hook";
 
 
-export interface TouchableTextProps extends RegularTextProps {
+export interface TouchableTextProps extends StyledTextProps {
     value?: string;
     onPress?: () => void;
     containerStyle?: ViewStyle
