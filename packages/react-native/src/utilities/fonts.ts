@@ -16,14 +16,23 @@ export interface ThemeFonts {
 
 
 export const font: ThemeFonts = {
-  light: 'RobotoLight',
-  regular: 'RobotoRegular',
-  medium: 'RobotoMedium',
-  semiBold: 'RobotoSemiBold',
-  bold: 'RobotoBold',
-  extraBold: 'RobotoExtraBold',
-  black: 'RobotoBlack',
+  light: 'PlusJakartaSansLight',
+  regular: 'PlusJakartaSansRegular',
+  medium: 'PlusJakartaSansMedium',
+  semiBold: 'PlusJakartaSansSemiBold',
+  bold: 'PlusJakartaSansBold',
+  extraBold: 'PlusJakartaSansExtraBold',
+  black: 'PlusJakartaSansBlack',
   ...themeFontJson
 }
 
 
+export const loadUncoverFonts = () => ({
+  PlusJakartaSansLight: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-Light.ttf"),
+  PlusJakartaSansRegular: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-Regular.ttf"),
+  PlusJakartaSansMedium: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-Medium.ttf"),
+  PlusJakartaSansSemiBold: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-SemiBold.ttf"),
+  PlusJakartaSansBold: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-Bold.ttf"),
+  PlusJakartaSansExtraBold: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-ExtraBold.ttf"),
+  PlusJakartaSansBlack: require("@assets/fonts/plus-jakarta-sans/PlusJakartaSans-Black.ttf"),
+})
