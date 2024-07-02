@@ -28,6 +28,7 @@ export interface PrimaryButtonProps extends ButtonStylePropsExtra {
 }
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  children,
   ...rest
 }) => {
   const { colors } = useThemeMode();
@@ -56,7 +57,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       {...props}
     >
       {!props?.isLoading ? (
-        (props?.children) ? (props?.children) : (
+        (children ?? props?.children) ?? (
           <>
             {props?.icon}
             <ButtonText
@@ -82,6 +83,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 };
 
 export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
+  children,
   ...rest
 }) => {
   const { colors } = useThemeMode();
@@ -105,7 +107,7 @@ export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
       {...rest}
     >
       {!props?.isLoading ? (
-        (props?.children) ? (props?.children) : (
+        (children ?? props?.children) ?? (
           <>
             {props?.icon}
             <ButtonText

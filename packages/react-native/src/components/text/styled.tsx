@@ -28,6 +28,8 @@ export const TextStyles = (rest: StyledTextProps) => ({
   position: rest?.position,
   flex: rest?.flex,
   flexGrow: rest?.flexGrow,
+  textAlign: rest?.textAlign,
+  ...rest
 })
 
 export const RegularText = styled.Text<StyledTextProps>(

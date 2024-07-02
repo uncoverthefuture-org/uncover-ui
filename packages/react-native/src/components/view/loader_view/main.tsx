@@ -1,11 +1,12 @@
 import React from "react"
-import { ActivityIndicator, ActivityIndicatorProps, ColorValue } from "react-native"
+import { ActivityIndicator, ActivityIndicatorProps, ColorValue, ViewProps } from "react-native"
 import { LoadingContainer, LoadingSection } from "./styled"
 import { hp } from "@utilities/general"
 import { useExtendedStyle } from "@hooks/extended_style_hook"
+import { StyledViewProps } from "../interface"
 
 
-export interface LoadingViewProps {
+export interface LoadingViewProps extends StyledViewProps, ViewProps {
     margin?: number,
     color?: ColorValue,
     bgColor?: ColorValue,
@@ -14,6 +15,7 @@ export interface LoadingViewProps {
 }
 
 export const LoadingView: React.FC<LoadingViewProps> = ({
+    children,
     ...rest
 }) => {
     const { loadingView: props } = useExtendedStyle({
@@ -30,12 +32,14 @@ export const LoadingView: React.FC<LoadingViewProps> = ({
             backgroundColor={props?.bgColor}
             {...props}
         >
-            <ActivityIndicator
-                animating
-                color={props?.color}
-                size={props?.loaderSize}
-                {...props?.lodaderProps}
-            />
+            {(children ?? props?.children) ?? (
+                <ActivityIndicator
+                    animating
+                    color={props?.color}
+                    size={props?.loaderSize}
+                    {...props?.lodaderProps}
+                />
+            )}
         </LoadingSection>
     )
 }

@@ -10,7 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
-   "@uncover-ui/react-native": "*",
+    "@react-native-community/cli": "^13.6.9",
+    "@uncover-ui/react-native": "*",
     "react": "18.2.0",
     "react-native": "0.74.2"
   },

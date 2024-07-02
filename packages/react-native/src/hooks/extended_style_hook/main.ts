@@ -1,5 +1,5 @@
 import { UncoverStyleProps } from "@components/interface";
-import { useThemeMode, useUncover } from "@providers/hooks"
+import { useThemeMode } from "@providers/hooks";
 import { useMemo } from "react"
 
 export const useExtendedStyle = (props: UncoverStyleProps = {}) => {
@@ -17,7 +17,6 @@ export const useExtendedStyle = (props: UncoverStyleProps = {}) => {
 
 
     return useMemo(() => ({
-        // styled,
         ...styled
     }), [styled])
 }

@@ -5,14 +5,14 @@ import { RFSpacingSize, spacingSize } from "./sizes";
 import { StyledViewProps } from "./interface";
 
 export const LinearGradient = () => {
-    if(inInExpoEnv()) {
+    if (inInExpoEnv()) {
         return require("expo-linear-gradient").LinearGradient;
-    }else{
+    } else {
         return require("react-native-linear-gradient");
     }
 }
 
-export const ViewStyles  = (rest: StyledViewProps) => ({
+export const ViewStyles = (rest: StyledViewProps) => ({
     paddingHorizontal: rest?.paddingHorizontal,
     paddingVertical: rest?.paddingVertical,
     borderRadius: rest?.borderRadius,
@@ -90,12 +90,9 @@ export const Card = styled.Pressable<{
 export const ViewContainer = styled(StyledView)(({
     paddingVertical = 0,
     paddingHorizontal = RFSpacingSize.i20,
-    backgroundColor,
-    ...rest
 }) => ({
     paddingHorizontal,
     paddingVertical,
-    backgroundColor,
 }));
 
 export const ActionSheetViewContainer = styled(StyledKeyboardAvoidingView)(({
@@ -108,19 +105,20 @@ export const ActionSheetViewContainer = styled(StyledKeyboardAvoidingView)(({
     paddingBottom,
 }));
 
-export const BaseViewContainer = styled(StyledKeyboardAvoidingView)<{
-}>(({ backgroundColor }) => ({
-    backgroundColor,
-    flex: 1,
+export const BaseViewContainer = styled(StyledKeyboardAvoidingView)(({
+    flex= 1,
+}) => ({
+    flex,
 }));
 
-export const CenterViewContainer = styled.KeyboardAvoidingView<{
-    backgroundColor?: string;
-}>(({ backgroundColor }) => ({
-    backgroundColor,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+export const CenterViewContainer = styled(StyledKeyboardAvoidingView)(({
+    flex = 1,
+    alignItems = "center",
+    justifyContent = "center"
+}) => ({
+    flex,
+    alignItems,
+    justifyContent,
 }));
 
 export const BaseLGView = styled(LinearGradient)({
@@ -132,44 +130,38 @@ export const RoundedActionSheet = {
     borderTopRightRadius: widthPixel(30),
 };
 
-export const Divider = styled.View<ViewStyle>(({
-    height = spacingSize.i20,
+export const Divider = styled(StyledView)(({
+    height = heightPixel(spacingSize.i20),
     backgroundColor = "#b5b6b7",
 }) => ({
-    height: (typeof height  === "number") ? heightPixel(height) : height,
+    height,
     backgroundColor,
 }));
 
-export const Spacer = styled.View<{
-    height?: number
-}>(({
-    height = spacingSize.i20
+export const Spacer = styled(StyledView)(({
+    height = heightPixel(spacingSize.i20)
 }) => ({
-    height: heightPixel(height),
+    height,
 }));
 
-export const HSpacer = styled.View<{
-    width?: number
-}>(({
-    width = spacingSize.i20
+export const HSpacer = styled(StyledView)(({
+    width = widthPixel(spacingSize.i20)
 }) => ({
-    width: widthPixel(width),
+    width,
 }));
 
-export const BottomContainer = styled(ViewContainer)<{
-    relative?: boolean,
-    display?: boolean,
-    backgroundColor?: ColorValue
-}>(({
-    relative,
-    display = true,
-    backgroundColor
+export const BottomContainer = styled(ViewContainer)(({
+    position = "absolute",
+    display = 'flex',
+    bottom = 0,
+    width = wp('100'),
+    paddingTop = heightPixel(spacingSize.i10),
+    paddingBottom = heightPixel(Platform.OS === "android" ? spacingSize.i40 : spacingSize.i32),
 }) => ({
-    paddingTop: heightPixel(spacingSize.i10),
-    paddingBottom: heightPixel(Platform.OS === "android" ? spacingSize.i40 : spacingSize.i32),
-    bottom: 0,
-    position: relative ? 'relative' : 'absolute',
-    display: display ? 'flex' : 'none',
-    width: wp('100'),
-    backgroundColor
+    paddingTop,
+    paddingBottom,
+    bottom,
+    position,
+    display,
+    width,
 }));

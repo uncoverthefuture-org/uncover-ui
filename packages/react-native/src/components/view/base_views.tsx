@@ -8,23 +8,24 @@ import { useExtendedStyle } from "@hooks/extended_style_hook";
 import { StyledViewProps } from "./interface";
 
 
-export interface BaseViewProps extends KeyboardAvoidingViewProps,StyledViewProps {
+export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProps {
     focusBarStyle?: StatusBarStyle,
     focusStatusBarProps?: StatusBarProps;
 }
 
 export const BaseView: React.FC<BaseViewProps> = ({
+    children,
     ...rest
 }) => {
     const { colors } = useThemeMode();
-    const { baseView: props } = useExtendedStyle({ baseView: {
-        focusBarStyle: 'dark-content',
-        backgroundColor: colors.background,
-         ...rest 
-    } });
+    const { baseView: props } = useExtendedStyle({
+        baseView: {
+            focusBarStyle: 'dark-content',
+            backgroundColor: colors.background,
+            ...rest
+        }
+    });
     const focusBarScheme = props?.focusBarStyle ?? "light-content";
-
-    // const height = useHeaderHeight();
 
     return (
         <BaseViewContainer
@@ -34,8 +35,6 @@ export const BaseView: React.FC<BaseViewProps> = ({
                 ios: 0,
                 // android: height + heightPixel(100)
             })}
-            enabled={true}
-            backgroundColor={props?.backgroundColor}
             {...props}
         >
             <FocusAwareStatusBar
@@ -45,7 +44,7 @@ export const BaseView: React.FC<BaseViewProps> = ({
                 {...props?.focusStatusBarProps}
             />
 
-            {props?.children}
+            {children ?? props?.children}
         </BaseViewContainer>
     )
 }
