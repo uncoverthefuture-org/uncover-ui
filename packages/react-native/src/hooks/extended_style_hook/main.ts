@@ -15,8 +15,11 @@ export const useExtendedStyle = (props: UncoverStyleProps = {}) => {
         }
     })
 
-
     return useMemo(() => ({
         ...styled
-    }), [styled])
+    }), [
+        props, 
+        styled, 
+        styledProps
+    ]);
 }

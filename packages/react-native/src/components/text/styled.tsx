@@ -29,7 +29,6 @@ export const TextStyles = (rest: StyledTextProps) => ({
   flex: rest?.flex,
   flexGrow: rest?.flexGrow,
   textAlign: rest?.textAlign,
-  ...rest
 })
 
 export const RegularText = styled.Text<StyledTextProps>(
@@ -50,7 +49,7 @@ export const RegularText = styled.Text<StyledTextProps>(
 );
 
 export const BoldText = styled(RegularText)(({ theme }) => ({
-  fontFamily: theme.fonts?.regular,
+  fontFamily: theme.fonts?.bold,
 }));
 
 export const SemiBoldText = styled(RegularText)(({ theme }) => ({

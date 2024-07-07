@@ -31,6 +31,10 @@ export const StyledInput = styled.TextInput<StyledInputProps>(({
   flex: rest?.flex,
   flexGrow: rest?.flexGrow,
   textTransform: rest?.textTransform,
+  fontSize: rest?.fontSize,
+  fontFamily: rest?.fontFamily,
+  lineHeight: rest?.lineHeight,
+  color: rest?.color,
 }))
 
 export const InputBox = styled(StyledInput)<InputBoxProps>(({

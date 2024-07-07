@@ -1,51 +1,52 @@
-import React, { useRef } from "react";
-import { fontPixel, heightPixel, widthPixel } from "@utilities/index";
+import React, { Ref, useRef } from "react";
+import { fontPixel, heightPixel, hp, widthPixel } from "@utilities/index";
 import { StyleSheet } from "react-native";
 import OTPTextInput from 'react-native-otp-textinput';
 import styled from "@emotion/native";
+import { ViewContainer } from "@components/view";
+import { StyledViewProps } from "@components/view/interface";
 
-const Container = styled.View({
-    paddingHorizontal: widthPixel(10),
-    marginVertical: heightPixel(20),
-});
 
-const styles = StyleSheet.create({
-    roundedTextInput: {
-        backgroundColor: "#E0E0E0",
-        borderRadius: widthPixel(15),
-        borderBottomWidth: 0,
-        paddingHorizontal: 0,
-        marginHorizontal: 0,
-        marginBottom: heightPixel(10),
-        fontSize: fontPixel(14),
-        height: fontPixel(59),
-        width: fontPixel(56)
-    }
-});
-
-export interface OTPHandlerProp {
-    cellsNum?: number;
-    onInput?: (text: string) => void
+export type OTPTextInputDefaultProps = Partial<OTPTextInput['props']>
+export interface OTPHandlerProp extends OTPTextInputDefaultProps {
+    value?: string;
+    innerRef?: Ref<OTPTextInput>;
+    containerProps?: StyledViewProps;
 }
 
 export const OTPHandler: React.FC<OTPHandlerProp> = ({
-    cellsNum = 4,
-    onInput
+    value,
+    innerRef,
+    containerProps,
+    ...rest
 }) => {
     const otpInput = useRef<any>(null);
 
     return (
-        <Container>
+        <ViewContainer {...containerProps}>
             <OTPTextInput
+                defaultValue={value}
                 inputCellLength={1}
-                textInputStyle={styles.roundedTextInput}
-                inputCount={cellsNum}
-                // secureTextEntry={false}
-                // editable={true}
-                handleTextChange={onInput}
+                inputCount={4}
                 ref={otpInput}
+                autoFocus={true}
+                textInputStyle={{
+                    height: hp(10),
+                    width: hp(10),
+                }}
+                {...rest}
             />
-        </Container>
+        </ViewContainer>
     )
 }
 
+
+export const TextInput = () => {
+    return (
+        <OTPHandler
+            defaultValue=""
+            inputCount={4}
+            inputCellLength={1}
+        />
+    )
+}

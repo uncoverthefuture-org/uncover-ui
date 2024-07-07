@@ -5,16 +5,19 @@ import {
   ColorValue,
   StyleProp,
   TextStyle,
+  TouchableOpacityProps,
+  ViewProps,
+  ViewStyle,
 } from "react-native";
 import { ButtonOutlineView, ButtonSolidView, ButtonText } from "./styled";
 import { useThemeMode } from "@providers/hooks";
 import { StyledTextProps } from "@components/text";
-import { useExtendedStyle } from "@hooks/extended_style_hook";
 import { ButtonStylePropsExtra } from "./interface";
+import { extendStyledProps } from "@themes/main";
 
 
 
-export interface PrimaryButtonProps extends ButtonStylePropsExtra {
+export interface PrimaryButtonProps extends ViewStyle, ViewProps, TouchableOpacityProps {
   text?: string;
   isLoading?: boolean;
   textProps?: StyledTextProps,
@@ -24,18 +27,21 @@ export interface PrimaryButtonProps extends ButtonStylePropsExtra {
   loadColor?: ColorValue;
   icon?: React.ReactElement;
   loaderProps?: ActivityIndicatorProps;
-  loaderComponennt?: React.ReactElement;  
+  loaderComponennt?: React.ReactElement;
+  focusedBackgroundColor?: string;
+  disabled?: boolean;
+  onPress?: ()=> void
 }
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   children,
   ...rest
 }) => {
-  const { colors } = useThemeMode();
-  const { primaryButton: props } = useExtendedStyle({
+  const { colors, styledProps } = useThemeMode();
+  const { primaryButton: props } = extendStyledProps(styledProps, {
     primaryButton: {
       backgroundColor: colors.primary,
-      focusedBackgroundColor: colors.primary,
+      // focusedBackgroundColor: colors.primary,
       loadColor: colors.white,
       color: colors?.white,
       ...rest
@@ -86,8 +92,8 @@ export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
   children,
   ...rest
 }) => {
-  const { colors } = useThemeMode();
-  const { primaryButton: props } = useExtendedStyle({
+  const { colors, styledProps } = useThemeMode();
+  const { primaryButton: props } = extendStyledProps(styledProps, {
     primaryButton: {
       borderColor: colors?.primary,
       color: colors?.primary,

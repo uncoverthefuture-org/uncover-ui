@@ -7,8 +7,8 @@ import { useThemeMode } from "@providers/hooks";
 import { HeaderContainerProps } from "./interface";
 import { HeaderContainer, SideComponent } from "./styled";
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { useExtendedStyle } from '@hooks/extended_style_hook';
 import { StyledViewProps } from "@components/view/interface";
+import { extendStyledProps } from "@themes/main";
 
 
 export interface NavHeaderProps extends HeaderContainerProps {
@@ -29,9 +29,9 @@ export interface NavHeaderProps extends HeaderContainerProps {
 export const NavHeader: React.FC<NavHeaderProps> = ({
   ...rest
 }) => {
-  const { colors } = useThemeMode();
+  const { colors, styledProps } = useThemeMode();
   const navigation = useNavigation();
-  const { navHeader: props } = useExtendedStyle({
+  const { navHeader: props } = extendStyledProps(styledProps, {
     navHeader: {
       backIconColor: colors.black,
       onBackPress: () => navigation.goBack(),

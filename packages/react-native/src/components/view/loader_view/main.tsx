@@ -1,9 +1,10 @@
 import React from "react"
 import { ActivityIndicator, ActivityIndicatorProps, ColorValue, ViewProps } from "react-native"
-import { LoadingContainer, LoadingSection } from "./styled"
+import { LoadingSection } from "./styled";
 import { hp } from "@utilities/general"
-import { useExtendedStyle } from "@hooks/extended_style_hook"
 import { StyledViewProps } from "../interface"
+import { useThemeMode } from "@providers/hooks"
+import { extendStyledProps } from "@themes/main"
 
 
 export interface LoadingViewProps extends StyledViewProps, ViewProps {
@@ -18,10 +19,11 @@ export const LoadingView: React.FC<LoadingViewProps> = ({
     children,
     ...rest
 }) => {
-    const { loadingView: props } = useExtendedStyle({
+    const { colors, styledProps } = useThemeMode();
+    const { loadingView: props } = extendStyledProps(styledProps, {
         loadingView: {
             margin: 5,
-            color: "#fff",
+            color: colors.white,
             ...rest
         }
     });

@@ -1,30 +1,30 @@
 import React from 'react';
-import { useTheme } from '@react-navigation/native';
 import { ColorValue, TouchableOpacityProps } from 'react-native';
 import { FloatingTouchableOpacity } from './styled';
 import { RFValue } from 'react-native-responsive-fontsize';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { useExtendedStyle } from '@hooks/extended_style_hook';
 import { StyledViewProps } from '@components/view/interface';
+import { extendStyledProps } from '@themes/main';
+import { useThemeMode } from '@providers/hooks';
 
 
-export interface FloatingButtonProps extends TouchableOpacityProps,StyledViewProps {
+export interface FloatingButtonProps extends TouchableOpacityProps, StyledViewProps {
   icon?: React.ReactElement;
-  iconColor?: ColorValue|string;
+  iconColor?: ColorValue | string;
 }
 
 export const FloatingButton: React.FC<FloatingButtonProps> = ({
   ...rest
 }) => {
-  const { colors } = useTheme();
-  const { floatingButton: props } = useExtendedStyle({ floatingButton: { 
-    backgroundColor: colors.primary,
-    activeOpacity: 0.8,
-    iconColor: "#fff", 
-    ...rest 
-  } });
-  
-
+  const { colors, styledProps } = useThemeMode();
+  const { floatingButton: props } = extendStyledProps(styledProps, {
+    floatingButton: {
+      backgroundColor: colors.primary,
+      activeOpacity: 0.8,
+      iconColor: "#fff",
+      ...rest
+    }
+  });
 
   return (
     <FloatingTouchableOpacity

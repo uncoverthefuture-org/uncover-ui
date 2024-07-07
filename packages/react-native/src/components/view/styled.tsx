@@ -53,6 +53,18 @@ export const StyledKeyboardAvoidingView = styled.KeyboardAvoidingView<StyledView
     ...ViewStyles(rest)
 }))
 
+export const StyledImageBackgroundView = styled.ImageBackground<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
+}))
+
+export const StyledModal = styled.Modal<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
+}))
+
 export const Row = styled(StyledTouchableOpacity)<StyledViewProps>(({
     flexDirection = "row",
     position = "relative",
@@ -106,6 +118,17 @@ export const ActionSheetViewContainer = styled(StyledKeyboardAvoidingView)(({
 }));
 
 export const BaseViewContainer = styled(StyledKeyboardAvoidingView)(({
+    flex= 1,
+}) => ({
+    flex,
+}));
+
+export const BaseModal = styled(StyledModal)(({
+}) => ({
+}));
+
+
+export const ImageBackgroundViewContainer = styled(StyledImageBackgroundView)(({
     flex= 1,
 }) => ({
     flex,

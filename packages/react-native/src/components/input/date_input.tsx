@@ -3,7 +3,8 @@ import DateTimePickerModal, { ReactNativeModalDateTimePickerProps } from 'react-
 import moment from 'moment';
 import { InputPlaceholder, InputPlaceholderProps } from "./placeholder";
 import Entypo from 'react-native-vector-icons/Entypo'
-import { useExtendedStyle } from '@hooks/extended_style_hook';
+import { useThemeMode } from "@providers/hooks";
+import { extendStyledProps } from "@themes/main";
 
 export interface PrimaryDateTimeInputProps extends Omit<InputPlaceholderProps, 'onChange'> {
     onChange?: (date: string) => void,
@@ -13,13 +14,16 @@ export interface PrimaryDateTimeInputProps extends Omit<InputPlaceholderProps, '
 
 
 export const PrimaryDateTimeInput: React.FC<PrimaryDateTimeInputProps> = ({
-    onChange = () => {},
+    onChange = () => { },
     ...rest
 }) => {
-    const { primaryDateTimeInput: props } = useExtendedStyle({ primaryDateTimeInput: {
-        dateFormat: "dddd, MMMM Do YYYY",
-         ...rest 
-    } });
+    const { colors, fonts, styledProps } = useThemeMode();
+    const { primaryDateTimeInput: props } = extendStyledProps(styledProps, {
+        primaryDateTimeInput: {
+            dateFormat: "dddd, MMMM Do YYYY",
+            ...rest
+        }
+    });
     const defaultDate = (props?.value && props?.value.length) ? moment(props?.value).format(props?.dateFormat) : undefined;
     const [inputValue, setInputValue] = useState<string>(defaultDate ?? '');
     const [open, setOpen] = useState(false)

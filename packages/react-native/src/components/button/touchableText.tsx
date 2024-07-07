@@ -3,6 +3,8 @@ import { ViewStyle } from "react-native";
 import { RegularText, StyledTextProps } from "../text/styled"
 import { StyledTouchable } from "./styled"
 import { useExtendedStyle } from "@hooks/extended_style_hook";
+import { useThemeMode } from "@providers/hooks";
+import { extendStyledProps } from "@themes/main";
 
 
 export interface TouchableTextProps extends StyledTextProps {
@@ -14,7 +16,8 @@ export interface TouchableTextProps extends StyledTextProps {
 export const TouchableText: React.FC<TouchableTextProps> = ({
     ...rest
 }) => {
-    const { touchableText: props } = useExtendedStyle({ touchableText: { ...rest } });
+    const { styledProps } = useThemeMode();
+    const { touchableText: props } = extendStyledProps(styledProps, { touchableText: { ...rest } });
 
     return (
         <StyledTouchable

@@ -1,11 +1,11 @@
-import { StyleProp, TextInputProps, TextProps, TextStyle, View, ViewStyle } from "react-native";
+import { TextInputProps, TextProps, TextStyle, View, ViewStyle } from "react-native";
 import { useEffect, useState } from "react";
 import { Theme } from "@emotion/react";
 import React from "react";
 import { useThemeMode } from "@providers/hooks";
 import { ActiveIconProp, InputBoxProps } from "./interface";
 import { BottomText, InputBox, InputWrapper, Label } from "./styled";
-import { useExtendedStyle } from "@hooks/extended_style_hook";
+import { extendStyledProps } from "@themes/main";
 
 
 
@@ -39,8 +39,8 @@ export interface PrimaryInputProps extends TextInputProps, Omit<InputBoxProps, '
 export const PrimaryInput: React.FC<PrimaryInputProps> = ({
   ...rest
 }) => {
-  const { colors } = useThemeMode();
-  const { primaryInput: props } = useExtendedStyle({
+  const { colors, styledProps } = useThemeMode();
+  const { primaryInput: props } = extendStyledProps(styledProps, {
     primaryInput: {
       editable: true,
       bottomTextOnError: true,
@@ -78,7 +78,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
       </InputWrapper>
       {(props?.bottomText && !props?.bottomTextOnError) ||
         (props?.bottomText && props?.bottomTextOnError && props?.inputError) ? (
-        <BottomText color={props?.inputError ? colors.primary : colors.text}>
+        <BottomText color={props?.inputError ? colors.danger : colors.text}>
           {props?.bottomText}
         </BottomText>
       ) : null}

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { SelectInputPlaceholder, SelectInputProps } from "./placeholder";
 import { ActionSheetDataOption } from "@components/select/interface";
 import { ActionSheetOptions, ActionSheetOptionsProps } from "@components/select/action_sheet_options";
-import { useExtendedStyle } from "@hooks/extended_style_hook";
+import { useThemeMode } from "@providers/hooks";
+import { extendStyledProps } from "@themes/main";
 
 
 export interface PrimarySelectProps extends SelectInputProps, ActionSheetOptionsProps {
@@ -13,9 +14,8 @@ export interface PrimarySelectProps extends SelectInputProps, ActionSheetOptions
 export const PrimarySelect: React.FC<PrimarySelectProps> = ({
   ...rest
 }) => {
-  const { primarySelect: props } = useExtendedStyle({ primarySelect: { 
-    ...rest
-  } });
+  const { colors, fonts, styledProps } = useThemeMode();
+  const { primarySelect: props } = extendStyledProps(styledProps, { primarySelect: { ...rest } });
   const [active, setActive] = useState<boolean>(false);
 
   return (
