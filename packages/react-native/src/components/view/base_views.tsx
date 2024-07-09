@@ -19,6 +19,8 @@ export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProp
     focusStatusBarProps?: StatusBarProps;
     backgroundImageSrc?: ImageBackgroundProps['src'];
     backgroundImage?: ImageBackgroundProps['source'];
+    backgroundImageColor?: StyledViewProps['backgroundColor'];
+    resizeMode?: ImageBackgroundProps['resizeMode'];
     imageBackgroundProps?: ImageBackgroundProps & StyledViewProps
 }
 
@@ -34,6 +36,8 @@ export const BaseView: React.FC<BaseViewProps> = ({
             imageBackgroundProps: { 
                 src: rest?.backgroundImageSrc, 
                 source: rest?.backgroundImage, 
+                backgroundColor: rest?.backgroundImageColor, 
+                resizeMode: rest?.resizeMode, 
                 ...rest?.imageBackgroundProps 
             },
             ...rest
