@@ -26,5 +26,6 @@ export interface ModalProviderProps {
 
 export type ModalComponent<T extends ComponentType<any>> = {
     Component: T;
+    id: string;
     props?: ComponentProps<T>;
 };

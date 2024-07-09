@@ -53,6 +53,7 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
             size={24}
             color={props?.backIconColor}
             style={{ marginTop: 3 }}
+            onPress={props?.onBackPress}
           />
         )}
       </SideComponent>
