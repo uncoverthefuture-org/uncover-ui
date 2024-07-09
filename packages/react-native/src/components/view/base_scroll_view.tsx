@@ -1,20 +1,20 @@
 import React from "react";
 import { ScrollView, ScrollViewProps } from "react-native";
-import { BaseSafeView, BaseViewProps } from "./base_views";
+import { BaseSafeView, BaseSafeViewProps, BaseViewProps } from "./base_views";
 import { SafeAreaViewProps } from "react-native-safe-area-context";
 
 
-export interface BaseScrollViewProps extends ScrollViewProps {
-    baseViewProps?: BaseViewProps;
+export interface BaseScrollViewProps extends BaseViewProps  {
+    scrollViewProps?: ScrollViewProps;
 }
 export const BaseScrollView: React.FC<BaseScrollViewProps> = ({
-    baseViewProps,
+    scrollViewProps,
     children,
     ...rest
 }) => {
     return (
-        <BaseSafeView baseViewProps={baseViewProps} >
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} {...rest}>
+        <BaseSafeView {...rest} >
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} {...scrollViewProps}>
                 {children}
             </ScrollView>
         </BaseSafeView>
@@ -22,19 +22,17 @@ export const BaseScrollView: React.FC<BaseScrollViewProps> = ({
 }
 
 
-export interface BaseSafeScrollViewProps extends ScrollViewProps {
-    baseViewProps?: BaseViewProps;
-    safeAreaViewProps?: SafeAreaViewProps;
+export interface BaseSafeScrollViewProps extends BaseSafeViewProps  {
+    scrollViewProps?: ScrollViewProps;
 }
 export const BaseSafeScrollView: React.FC<BaseSafeScrollViewProps> = ({
-    baseViewProps,
-    safeAreaViewProps,
+    scrollViewProps,
     children,
     ...rest
 }) => {
     return (
-        <BaseSafeView baseViewProps={baseViewProps} {...safeAreaViewProps}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} {...rest}>
+        <BaseSafeView {...rest}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} {...scrollViewProps}>
                 {children}
             </ScrollView>
         </BaseSafeView>

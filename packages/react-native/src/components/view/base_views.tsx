@@ -17,7 +17,8 @@ import { extendStyledProps } from "@themes/main";
 export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProps {
     focusBarStyle?: StatusBarStyle,
     focusStatusBarProps?: StatusBarProps;
-    useImageBackground?: boolean;
+    backgroundImageSrc?: ImageBackgroundProps['src'];
+    backgroundImage?: ImageBackgroundProps['source'];
     imageBackgroundProps?: ImageBackgroundProps & StyledViewProps
 }
 
@@ -30,6 +31,11 @@ export const BaseView: React.FC<BaseViewProps> = ({
         baseView: {
             focusBarStyle: 'dark-content',
             backgroundColor: colors.background,
+            imageBackgroundProps: { 
+                src: rest?.backgroundImageSrc, 
+                source: rest?.backgroundImage, 
+                ...rest?.imageBackgroundProps 
+            },
             ...rest
         }
     });
@@ -52,7 +58,7 @@ export const BaseView: React.FC<BaseViewProps> = ({
                 barStyle={focusBarScheme}
                 {...props?.focusStatusBarProps}
             />
-            {(props?.useImageBackground) ? (
+            {(props?.imageBackgroundProps?.src || props?.imageBackgroundProps?.source || props?.imageBackgroundProps?.defaultSource) ? (
                 <ImageBackgroundViewContainer
                     resizeMode="cover"
                     {...props?.imageBackgroundProps}
@@ -67,18 +73,18 @@ export const BaseView: React.FC<BaseViewProps> = ({
 }
 
 // base safe view
-export interface BaseSafeViewProps extends SafeAreaViewProps {
-    baseViewProps?: BaseViewProps;
+export interface BaseSafeViewProps extends  BaseViewProps{
+    safeAreaViewProps?:SafeAreaViewProps
 }
 
 export const BaseSafeView: React.FC<BaseSafeViewProps> = ({
-    baseViewProps,
+    safeAreaViewProps,
     children,
     ...rest
 }) => {
     return (
-        <BaseView {...baseViewProps}>
-            <SafeAreaView style={{ flex: 1 }} {...rest}>
+        <BaseView {...rest}>
+            <SafeAreaView style={{ flex: 1 }} {...safeAreaViewProps}>
                 {children}
             </SafeAreaView>
         </BaseView>
