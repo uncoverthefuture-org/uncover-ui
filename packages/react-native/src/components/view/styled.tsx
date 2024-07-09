@@ -65,6 +65,31 @@ export const StyledModal = styled.Modal<StyledViewProps>(({
     ...ViewStyles(rest)
 }))
 
+export const StyledScrollView = styled.ScrollView<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
+}))
+
+export const StyledFlatList = styled.FlatList<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
+}))
+
+export const StyledSectionList = styled.SectionList<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
+}))
+
+export const StyledSafeAreaView = styled.SafeAreaView<StyledViewProps>(({
+    ...rest
+}) => ({
+    ...ViewStyles(rest)
+}))
+
+
 export const Row = styled(StyledTouchableOpacity)<StyledViewProps>(({
     flexDirection = "row",
     position = "relative",
@@ -118,7 +143,7 @@ export const ActionSheetViewContainer = styled(StyledKeyboardAvoidingView)(({
 }));
 
 export const BaseViewContainer = styled(StyledKeyboardAvoidingView)(({
-    flex= 1,
+    flex = 1,
 }) => ({
     flex,
 }));
@@ -127,12 +152,28 @@ export const BaseModal = styled(StyledModal)(({
 }) => ({
 }));
 
+export const ScrollViewContainer = styled(StyledScrollView)(({
+}) => ({
+}));
+
+export const FlatListContainer = styled(StyledFlatList)(({
+}) => ({
+}));
+
+export const SectionListContainer = styled(StyledSectionList)(({
+}) => ({
+}));
+
+export const SafeAreaViewContainer = styled(StyledSafeAreaView)(({
+}) => ({
+}));
 
 export const ImageBackgroundViewContainer = styled(StyledImageBackgroundView)(({
-    flex= 1,
+    flex = 1,
 }) => ({
     flex,
 }));
+
 
 export const CenterViewContainer = styled(StyledKeyboardAvoidingView)(({
     flex = 1,

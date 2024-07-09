@@ -6,10 +6,10 @@ import {
     StatusBarProps,
     StatusBarStyle,
 } from "react-native";
-import { BaseViewContainer, ImageBackgroundViewContainer } from "./styled";
+import { SafeAreaViewContainer, BaseViewContainer, ImageBackgroundViewContainer } from "./styled";
 import { FocusAwareStatusBar } from "../status_bar";
 import { useThemeMode } from "@providers/hooks";
-import { SafeAreaView, SafeAreaViewProps } from "react-native-safe-area-context";
+import { SafeAreaViewProps } from "react-native-safe-area-context";
 import { StyledViewProps } from "./interface";
 import { extendStyledProps } from "@themes/main";
 
@@ -78,7 +78,7 @@ export const BaseView: React.FC<BaseViewProps> = ({
 
 // base safe view
 export interface BaseSafeViewProps extends  BaseViewProps{
-    safeAreaViewProps?:SafeAreaViewProps
+    safeAreaViewProps?: SafeAreaViewProps & StyledViewProps
 }
 
 export const BaseSafeView: React.FC<BaseSafeViewProps> = ({
@@ -88,9 +88,9 @@ export const BaseSafeView: React.FC<BaseSafeViewProps> = ({
 }) => {
     return (
         <BaseView {...rest}>
-            <SafeAreaView style={{ flex: 1 }} {...safeAreaViewProps}>
+            <SafeAreaViewContainer style={{ flex: 1 }} {...safeAreaViewProps}>
                 {children}
-            </SafeAreaView>
+            </SafeAreaViewContainer>
         </BaseView>
     )
 }
