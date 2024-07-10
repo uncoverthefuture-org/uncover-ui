@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/react-native",
-    "version": "1.1.68",
+    "version": "1.1.71",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -31,8 +31,10 @@
     },
     "dependencies": {
         "@react-native-picker/picker": "^2.5.1",
+        "@types/lodash": "^4.17.6",
         "expo-linear-gradient": "^12.3.0",
         "he": "^1.2.0",
+        "lodash": "^4.17.21",
         "moment": "^2.30.1",
         "react-native-actions-sheet": "^0.9.0",
         "react-native-fade-loading": "^1.0.1",
