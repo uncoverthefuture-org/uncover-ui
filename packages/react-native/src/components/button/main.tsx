@@ -17,7 +17,7 @@ import { extendStyledProps } from "@themes/main";
 
 
 
-export interface PrimaryButtonProps extends ViewStyle, ViewProps, TouchableOpacityProps {
+export interface PrimaryButtonProps extends ViewStyle, Omit<ViewProps, 'hitSlop'>, TouchableOpacityProps {
   text?: string;
   isLoading?: boolean;
   textProps?: StyledTextProps,
@@ -37,17 +37,17 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   children,
   ...rest
 }) => {
+  const [pressed, setPressed] = useState(false)
   const { colors, styledProps } = useThemeMode();
   const { primaryButton: props } = extendStyledProps(styledProps, {
     primaryButton: {
+      focusedBackgroundColor: colors.primary,
       backgroundColor: colors.primary,
-      // focusedBackgroundColor: colors.primary,
       loadColor: colors.white,
       color: colors?.white,
-      ...rest
+      ...rest,
     }
   });
-  const [pressed, setPressed] = useState(false)
   const activeBackgroundColor = (props?.isLoading || pressed || props?.disabled) ? props?.focusedBackgroundColor : props?.backgroundColor;
 
   return (

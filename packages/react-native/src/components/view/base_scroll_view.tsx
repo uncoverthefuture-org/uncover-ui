@@ -6,7 +6,7 @@ import { ScrollViewContainer } from "./styled";
 import { StyledViewProps } from "./interface";
 
 
-export interface BaseScrollViewProps extends BaseViewProps  {
+export interface BaseScrollViewProps extends BaseViewProps {
     scrollViewProps?: ScrollViewProps & StyledViewProps;
 }
 
@@ -17,7 +17,10 @@ export const BaseScrollView: React.FC<BaseScrollViewProps> = ({
 }) => {
     return (
         <BaseView {...rest} >
-            <ScrollViewContainer contentContainerStyle={{ flexGrow: 1 }} {...scrollViewProps}>
+            <ScrollViewContainer
+                contentContainerStyle={{ flexGrow: 1, flex: 1 }}
+                {...scrollViewProps}
+            >
                 {children}
             </ScrollViewContainer>
         </BaseView>
@@ -25,7 +28,7 @@ export const BaseScrollView: React.FC<BaseScrollViewProps> = ({
 }
 
 
-export interface BaseSafeScrollViewProps extends BaseSafeViewProps  {
+export interface BaseSafeScrollViewProps extends BaseSafeViewProps {
     scrollViewProps?: ScrollViewProps & StyledViewProps;
 }
 
@@ -36,7 +39,10 @@ export const BaseSafeScrollView: React.FC<BaseSafeScrollViewProps> = ({
 }) => {
     return (
         <BaseSafeView {...rest}>
-            <ScrollViewContainer contentContainerStyle={{ flexGrow: 1 }} {...scrollViewProps}>
+            <ScrollViewContainer
+                contentContainerStyle={{ flexGrow: 1, flex: 1 }}
+                {...scrollViewProps}
+            >
                 {children}
             </ScrollViewContainer>
         </BaseSafeView>

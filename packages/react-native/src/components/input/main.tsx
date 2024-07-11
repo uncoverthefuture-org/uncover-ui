@@ -9,13 +9,19 @@ import { extendStyledProps } from "@themes/main";
 
 
 
-export const InputColorState = (colors: Theme['colors'], active?: boolean, error?: boolean) => {
+export const InputColorState = (colors: Theme['colors'], active?: boolean, error?: boolean, disabled?: boolean) => {
+  let color = colors?.text;
   let borderColor = active ? colors.primary : colors.border;
   let backgroundColor = active ? colors.white : colors.white;
   borderColor = error ? colors.danger : borderColor;
   backgroundColor = error ? colors.white : backgroundColor;
+  color = disabled ? colors.label : color;
+  borderColor = disabled ? colors.border : borderColor;
+  backgroundColor = disabled ? colors.disabled : backgroundColor;
+
 
   return {
+    color,
     borderColor,
     backgroundColor,
   };
@@ -60,7 +66,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
           {props?.label}
         </Label>
       ) : null}
-      <InputWrapper style={{ ...props?.containerStyle, ...(InputColorState(colors, active, props?.inputError)) }}>
+      <InputWrapper  style={{ ...props?.containerStyle, ...(InputColorState(colors, active, props?.inputError, !props?.editable)) }} {...rest}>
         {((props?.leftIcon as ActiveIconProp)?.active) ? (
           (active) ? (props?.leftIcon as ActiveIconProp)?.active : (props?.leftIcon as ActiveIconProp)?.inActive
         ) : (props?.leftIcon as React.ReactElement)}
@@ -69,7 +75,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
           onBlur={() => setActive(false)}
           onPressIn={props?.onPress}
           hasIcon={Boolean(props?.leftIcon)}
-          style={[{ ...(InputColorState(colors, active, props?.inputError)) }, props?.textStyle, rest?.style]}
+          style={[{ ...(InputColorState(colors, active, props?.inputError, !props?.editable)) }, props?.textStyle, rest?.style]}
           {...props}
         />
         {((props?.rightIcon as ActiveIconProp)?.active) ? (

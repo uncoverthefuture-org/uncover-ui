@@ -10,6 +10,7 @@ import { PrimaryFlashMessageProps } from "./notify/flash";
 import { PrimarySelectProps } from "./select/main";
 import { BaseViewProps } from "./view/base_views";
 import { LoadingViewProps } from "./view/loader_view/main";
+import { LoadingModalProps } from "./modal/loading_modal";
 
 export interface UncoverStyleProps {
     primaryButton?: PrimaryButtonProps;
@@ -23,6 +24,7 @@ export interface UncoverStyleProps {
     primarySelect?: PrimarySelectProps;
     primaryFlashMessage?: PrimaryFlashMessageProps;
     loadingView?: LoadingViewProps;
+    loadingModal?: LoadingModalProps;
     baseView?: BaseViewProps;
 
 }

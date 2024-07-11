@@ -46,7 +46,7 @@ export const SelectInputPlaceholder: React.FC<SelectInputProps> = ({
           paddingVertical: heightPixel(12),
           width: rest?.width,
           ...rest?.containerStyle,
-          ...InputColorState(colors, rest?.inputFocused, rest?.inputError)
+          ...InputColorState(colors, rest?.inputFocused, rest?.inputError, !rest?.editable)
         }}
       >
         <InputSection>

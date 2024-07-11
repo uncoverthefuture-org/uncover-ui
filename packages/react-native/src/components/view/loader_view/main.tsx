@@ -23,7 +23,7 @@ export const LoadingView: React.FC<LoadingViewProps> = ({
     const { loadingView: props } = extendStyledProps(styledProps, {
         loadingView: {
             margin: 5,
-            color: colors.white,
+            color: colors.border,
             ...rest
         }
     });
@@ -31,6 +31,7 @@ export const LoadingView: React.FC<LoadingViewProps> = ({
     return (
         <LoadingSection
             size={hp(props?.margin ?? 5)}
+            flex={1}
             backgroundColor={props?.bgColor}
             {...props}
         >

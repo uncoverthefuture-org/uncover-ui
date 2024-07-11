@@ -12,6 +12,7 @@ import { useThemeMode } from "@providers/hooks";
 import { SafeAreaViewProps } from "react-native-safe-area-context";
 import { StyledViewProps } from "./interface";
 import { extendStyledProps } from "@themes/main";
+import { NavHeader, NavHeaderProps } from "@components/header";
 
 
 export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProps {
@@ -21,7 +22,11 @@ export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProp
     backgroundImage?: ImageBackgroundProps['source'];
     backgroundImageColor?: StyledViewProps['backgroundColor'];
     resizeMode?: ImageBackgroundProps['resizeMode'];
-    imageBackgroundProps?: ImageBackgroundProps & StyledViewProps
+    imageBackgroundProps?: ImageBackgroundProps & StyledViewProps;
+    showHeader?: boolean;
+    headerTitle?: NavHeaderProps['title'];
+    onBackPress?: NavHeaderProps['onBackPress'];
+    navHeaderProps?: NavHeaderProps;
 }
 
 export const BaseView: React.FC<BaseViewProps> = ({
@@ -33,12 +38,16 @@ export const BaseView: React.FC<BaseViewProps> = ({
         baseView: {
             focusBarStyle: 'dark-content',
             backgroundColor: colors.background,
-            imageBackgroundProps: { 
-                src: rest?.backgroundImageSrc, 
-                source: rest?.backgroundImage, 
-                backgroundColor: rest?.backgroundImageColor, 
-                resizeMode: rest?.resizeMode, 
-                ...rest?.imageBackgroundProps 
+            imageBackgroundProps: {
+                src: rest?.backgroundImageSrc,
+                source: rest?.backgroundImage ?? require('@assets/images/transparent-img.png'),
+                backgroundColor: rest?.backgroundImageColor,
+                resizeMode: rest?.resizeMode,
+                ...rest?.imageBackgroundProps
+            },
+            navHeaderProps: {
+                onBackPress: rest?.onBackPress,
+                title: rest?.headerTitle,
             },
             ...rest
         }
@@ -67,17 +76,30 @@ export const BaseView: React.FC<BaseViewProps> = ({
                     resizeMode="cover"
                     {...props?.imageBackgroundProps}
                 >
+                    {(props?.showHeader) && (
+                        <NavHeader
+                            {...props?.navHeaderProps}
+                        />
+                    )}
                     {children ?? props?.children}
                 </ImageBackgroundViewContainer>
             ) : (
-                <>{children ?? props?.children}</>
+                <>
+                    {(props?.showHeader) && (
+                        <NavHeader
+                            {...props?.navHeaderProps}
+                        />
+                    )}
+
+                    {children ?? props?.children}
+                </>
             )}
         </BaseViewContainer>
     )
 }
 
 // base safe view
-export interface BaseSafeViewProps extends  BaseViewProps{
+export interface BaseSafeViewProps extends BaseViewProps {
     safeAreaViewProps?: SafeAreaViewProps & StyledViewProps
 }
 

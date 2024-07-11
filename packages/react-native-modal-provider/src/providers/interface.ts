@@ -10,7 +10,7 @@ export interface ExtendedModalProps extends ModalProps{
 export type ModalComponentType = ComponentType<any>;
 
 export interface ShowModalResult<T extends ModalComponentType> {
-    index?: number;
+    id: string;
     update: (props?: ComponentProps<T>) => void;
     close: () => void;
 }

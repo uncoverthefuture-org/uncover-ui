@@ -42,7 +42,7 @@ export const InputPlaceholder: React.FC<InputPlaceholderProps> = ({
             ) : null}
             <InputPlaceholderPressable
                 onPress={onPlaceholderPress}
-                style={{ ...InputColorState(colors, active, props?.inputError), ...props?.containerStyle, }}
+                style={{ ...InputColorState(colors, active, props?.inputError, !props?.editable), ...props?.containerStyle, }}
             >
                 {props?.leftComponent}
                 <InputPlaceholderTextSection>

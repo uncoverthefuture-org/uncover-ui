@@ -34,7 +34,7 @@ export const PrimaryPhoneInput: React.FC<PrimaryPhoneInputProps> = ({
                 </Label>
             ) : null}
             <InputWrapper
-                style={{ paddingVertical: 0, ...(InputColorState(colors, active, props?.inputError)), ...props?.containerStyle }}
+                style={{ paddingVertical: 0, ...(InputColorState(colors, active, props?.inputError,  !props?.editable)), ...props?.containerStyle }}
             >
                 <PhoneInput
                     ref={phoneInput}

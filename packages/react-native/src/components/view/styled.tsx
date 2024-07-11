@@ -153,7 +153,9 @@ export const BaseModal = styled(StyledModal)(({
 }));
 
 export const ScrollViewContainer = styled(StyledScrollView)(({
+    flex = 1
 }) => ({
+    flex
 }));
 
 export const FlatListContainer = styled(StyledFlatList)(({
