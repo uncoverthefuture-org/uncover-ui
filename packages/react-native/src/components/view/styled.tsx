@@ -1,6 +1,6 @@
 import styled from "@emotion/native";
 import { Animated, ColorValue, DimensionValue, Platform, TouchableOpacity, ViewStyle } from "react-native";
-import { wp, heightPixel, widthPixel, inInExpoEnv } from "@utilities/index";
+import { wp, heightPixel, widthPixel, inInExpoEnv, hp } from "@utilities/index";
 import { RFSpacingSize, spacingSize } from "./sizes";
 import { StyledViewProps } from "./interface";
 
@@ -167,13 +167,31 @@ export const SectionListContainer = styled(StyledSectionList)(({
 }));
 
 export const SafeAreaViewContainer = styled(StyledSafeAreaView)(({
+    flex = 1
 }) => ({
+    flex
 }));
 
 export const ImageBackgroundViewContainer = styled(StyledImageBackgroundView)(({
     flex = 1,
 }) => ({
     flex,
+}));
+
+export const OverlayContainer = styled(StyledView)(({
+    flex = 1,
+    position = 'absolute',
+    width = wp(100),
+    height = hp(100),
+    zIndex = 99,
+    backgroundColor = 'rgba(0,0,0,0.5)'
+}) => ({
+    flex,
+    position,
+    width,
+    height,
+    zIndex,
+    backgroundColor,
 }));
 
 

@@ -1,0 +1,22 @@
+# Exclude all source files
+src
+
+
+# Exclude nx files
+.nx
+
+# Exclude config files
+tsconfig.json
+.eslintignore
+.eslintrc.js
+.prettierrc
+*.md
+*.log
+
+# Exclude build tools
+scripts
+*.sh
+
+# Exclude test files
+__tests__
+*.test.*

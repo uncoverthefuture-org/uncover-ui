@@ -15,6 +15,7 @@ import { extendStyledProps } from "@themes/main";
 import { NavHeader, NavHeaderProps } from "@components/header";
 
 
+// require('@assets/images/transparent-img.png')
 export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProps {
     focusBarStyle?: StatusBarStyle,
     focusStatusBarProps?: StatusBarProps;
@@ -22,7 +23,7 @@ export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProp
     backgroundImage?: ImageBackgroundProps['source'];
     backgroundImageColor?: StyledViewProps['backgroundColor'];
     resizeMode?: ImageBackgroundProps['resizeMode'];
-    imageBackgroundProps?: ImageBackgroundProps & StyledViewProps;
+    imageBackgroundProps?: Partial<ImageBackgroundProps> & StyledViewProps;
     showHeader?: boolean;
     headerTitle?: NavHeaderProps['title'];
     onBackPress?: NavHeaderProps['onBackPress'];
@@ -40,7 +41,7 @@ export const BaseView: React.FC<BaseViewProps> = ({
             backgroundColor: colors.background,
             imageBackgroundProps: {
                 src: rest?.backgroundImageSrc,
-                source: rest?.backgroundImage ?? require('@assets/images/transparent-img.png'),
+                source: rest?.backgroundImage,
                 backgroundColor: rest?.backgroundImageColor,
                 resizeMode: rest?.resizeMode,
                 ...rest?.imageBackgroundProps
@@ -56,7 +57,8 @@ export const BaseView: React.FC<BaseViewProps> = ({
 
     return (
         <BaseViewContainer
-            contentContainerStyle={{ flex: 1 }}
+            contentContainerStyle={[{ flex: 1 }, props?.style]}
+            style={props?.style}
             behavior={Platform.select({ ios: 'height', android: undefined })}
             keyboardVerticalOffset={Platform.select({
                 ios: 0,

@@ -1,18 +1,21 @@
 import React from "react"
 import { ActivityIndicator, ActivityIndicatorProps, ColorValue, ViewProps } from "react-native"
-import { LoadingSection } from "./styled";
-import { hp } from "@utilities/general"
 import { StyledViewProps } from "../interface"
 import { useThemeMode } from "@providers/hooks"
 import { extendStyledProps } from "@themes/main"
+import { CenterViewContainer, OverlayContainer } from "../styled";
 
 
 export interface LoadingViewProps extends StyledViewProps, ViewProps {
     margin?: number,
     color?: ColorValue,
-    bgColor?: ColorValue,
+    isLoading?: boolean;
+    showLoadedState?: boolean;
     loaderSize?: number | "small" | "large",
-    lodaderProps?: ActivityIndicatorProps
+    lodaderProps?: ActivityIndicatorProps;
+    loadingComponent?: React.ReactElement;
+    loadedComponent?: React.ReactElement;
+    centerContainerProps?: StyledViewProps & ViewProps;
 }
 
 export const LoadingView: React.FC<LoadingViewProps> = ({
@@ -22,27 +25,41 @@ export const LoadingView: React.FC<LoadingViewProps> = ({
     const { colors, styledProps } = useThemeMode();
     const { loadingView: props } = extendStyledProps(styledProps, {
         loadingView: {
-            margin: 5,
             color: colors.border,
             ...rest
         }
     });
 
     return (
-        <LoadingSection
-            size={hp(props?.margin ?? 5)}
-            flex={1}
-            backgroundColor={props?.bgColor}
-            {...props}
-        >
-            {(children ?? props?.children) ?? (
-                <ActivityIndicator
-                    animating
-                    color={props?.color}
-                    size={props?.loaderSize}
-                    {...props?.lodaderProps}
-                />
+        <>
+            {(props?.isLoading || props?.showLoadedState) && (
+                <OverlayContainer
+                    {...props}
+                >
+                    <CenterViewContainer
+                        {...props?.centerContainerProps}
+                    >
+                        {(props?.loadingComponent && props?.isLoading) ?? (
+                            <ActivityIndicator
+                                animating
+                                color={props?.color}
+                                size={props?.loaderSize}
+                                {...props?.lodaderProps}
+                            />
+                        )}
+
+                        {(props?.loadedComponent && !props?.isLoading) ?? (
+                            <>
+                                {props?.loadedComponent}
+                            </>
+                        )}
+                    </CenterViewContainer>
+                </OverlayContainer>
             )}
-        </LoadingSection>
+            {/* child component always in view */}
+            {children}
+        </>
     )
 }
+
+export const LoadingOverlay = LoadingView;
