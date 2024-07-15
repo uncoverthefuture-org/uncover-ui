@@ -1,0 +1,54 @@
+{
+    "name": "@uncover-ui/rn-preview-media",
+    "version": "0.1.2",
+    "description": "UncoverUI component library for React Native",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "keywords": [
+        "react-native",
+        "components",
+        "react-native-preview-media",
+        "provider",
+        "hooks",
+        "uncover-ui"
+    ],
+    "author": "uncoverthefuture",
+    "license": "MIT",
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "yarn clean && tsc",
+        "watch": "tsc --watch",
+        "clean": "rimraf lib",
+        "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
+        "prepublishOnly": "yarn build"
+    },
+    "dependencies": {
+        "@uncover-ui/rn-modal-provider": "^0.1.8",
+        "react-native-image-viewing": "^0.2.2",
+        "react-native-responsive-screen": "^1.4.2"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.3",
+        "@types/react-native": "^0.73.0",
+        "rimraf": "^5.0.7",
+        "typescript": "^4.0.0"
+    },
+    "peerDependencies": {
+        "@uncover-ui/rn-modal-provider": "^0.1.8",
+        "react": "^18.3.1",
+        "react-native": "^0.72.0",
+        "react-native-gesture-handler": "^2.17.1",
+        "react-native-image-viewing": "^0.2.2",
+        "react-native-responsive-screen": "^1.4.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react-native-preview-media"
+    },
+    "gitHead": "c90f25977c8058bd61a25f3109276a6d9a5d87fd"
+}
