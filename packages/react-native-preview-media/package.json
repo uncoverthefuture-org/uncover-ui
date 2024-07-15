@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/rn-preview-media",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -49,6 +49,5 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/react-native-preview-media"
-    },
-    "gitHead": "c90f25977c8058bd61a25f3109276a6d9a5d87fd"
+    }
 }
