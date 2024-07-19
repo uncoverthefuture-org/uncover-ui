@@ -1,6 +1,6 @@
 {
   "name": "react-native-usync",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "a package to auto sync different kind of data immediately with a on device or development manages storage automatically, and use the local storage by default while developing or after building",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.cjs",
