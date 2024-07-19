@@ -38,6 +38,7 @@
         "moment": "^2.30.1",
         "react-native-actions-sheet": "^0.9.0",
         "react-native-fade-loading": "^1.0.1",
+        "react-native-fast-image": "^8.6.3",
         "react-native-flash-message": "^0.4.2",
         "react-native-linear-gradient": "^2.8.3",
         "react-native-modal-datetime-picker": "^17.1.0",

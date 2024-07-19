@@ -1,8 +1,9 @@
 import styled from "@emotion/native";
 import { Animated, ColorValue, DimensionValue, Platform, TouchableOpacity, ViewStyle } from "react-native";
-import { wp, heightPixel, widthPixel, inInExpoEnv, hp } from "@utilities/index";
+import { wp, heightPixel, widthPixel, inInExpoEnv, hp, getViewSize } from "@utilities/index";
 import { RFSpacingSize, spacingSize } from "./sizes";
 import { StyledViewProps } from "./interface";
+import { size } from "lodash";
 
 export const LinearGradient = () => {
     if (inInExpoEnv()) {

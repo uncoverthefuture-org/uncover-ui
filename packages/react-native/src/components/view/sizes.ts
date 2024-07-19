@@ -1,5 +1,18 @@
 import { RFValue } from "react-native-responsive-fontsize";
 
+export const viewSize = {
+    xxxs: 4,
+    xxs: 5,
+    xs: 8,
+    sm: 10,
+    md: 12,
+    lg: 14,
+    xl: 16,
+    xxl: 18,
+    xxxl: 20,
+}
+
+
 export const spacingSize = {
     i4: 4,
     i5: 5,
@@ -15,6 +28,10 @@ export const spacingSize = {
     i32: 32,
     i40: 40
 }
+
+export type ViewSizeType = typeof viewSize;
+
+export type ViewSizeKeys = keyof ViewSizeType;
 
 export type SpacingSizesPropsType = typeof spacingSize;
 

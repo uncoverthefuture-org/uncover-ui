@@ -1,0 +1,5 @@
+export * from './image_avatar'
+export * from './interface'
+export * from './main'
+export * from './styled'
+export * from './text_avatar'
