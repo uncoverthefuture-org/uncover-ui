@@ -13,9 +13,9 @@ import { SafeAreaViewProps } from "react-native-safe-area-context";
 import { StyledViewProps } from "./interface";
 import { extendStyledProps } from "@themes/main";
 import { NavHeader, NavHeaderProps } from "@components/header";
+import TransparentImage from '@assets/images/transparent-img.png';
 
 
-// require('@assets/images/transparent-img.png')
 export interface BaseViewProps extends KeyboardAvoidingViewProps, StyledViewProps {
     focusBarStyle?: StatusBarStyle,
     focusStatusBarProps?: StatusBarProps;
@@ -76,6 +76,7 @@ export const BaseView: React.FC<BaseViewProps> = ({
             {(props?.imageBackgroundProps?.src || props?.imageBackgroundProps?.source || props?.imageBackgroundProps?.defaultSource) ? (
                 <ImageBackgroundViewContainer
                     resizeMode="cover"
+                    source={TransparentImage}
                     {...props?.imageBackgroundProps}
                 >
                     {(props?.showHeader) && (

@@ -2,7 +2,7 @@ import { useModal } from "@uncover-ui/rn-modal-provider";
 import { PreviewMedia, PreviewMediaProps } from "../main";
 import { useMemo } from "react";
 
-const usePreviewMedia = (onRequestClose: () => void) => {
+export const usePreviewMedia = () => {
     const { showModal } = useModal();
 
     const previewMedia = (props?: PreviewMediaProps) => {
@@ -15,5 +15,3 @@ const usePreviewMedia = (onRequestClose: () => void) => {
         previewMedia,
     ]);
 };
-
-export default usePreviewMedia
