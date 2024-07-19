@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/rn-preview-media",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
