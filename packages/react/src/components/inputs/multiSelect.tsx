@@ -1,7 +1,7 @@
-import './styles.scss';
+import '../../assets/css/input.scss';
 import { FormControl, FormControlProps, FormErrorMessage, FormErrorMessageProps, FormHelperText, FormLabel, FormLabelProps, FormHelperTextProps, InputElementProps, InputGroup, InputLeftElement, InputRightElement, InputLeftAddon, InputRightAddon, InputAddonProps } from "@chakra-ui/react";
 import { ActionMeta, InputActionMeta, MultiValue, SingleValue, Select, useChakraSelectProps } from 'chakra-react-select';
-import { SizeProp } from 'chakra-react-select/dist/types/types';
+import { SizeProp } from 'chakra-react-select';
 import React from 'react';
 
 

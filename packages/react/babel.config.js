@@ -3,5 +3,21 @@ module.exports = {
       '@babel/preset-env',
       '@babel/preset-react',
       '@babel/preset-typescript'
-    ]
+    ],
+    plugins: [
+      ["module-resolver", {
+        "root": ["./src"],
+        "alias": {
+          "@/*": "./src/*",
+          "@assets": "./src/assets",
+          "@components": "./src/components",
+          "@utilities": "./src/utilities",
+          "@providers": "./src/providers",
+          "@themes": "./src/themes",
+          "@hooks": "./src/hooks",
+          "@labs": "./src/labs",
+          // Add other aliases as needed
+        }
+      }]
+    ],
   };

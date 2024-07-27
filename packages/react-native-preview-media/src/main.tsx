@@ -184,8 +184,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const EnhancedPeviewMedia = (props: PreviewMediaProps) => (
+export const EnhancedPeviewMedia = (props: PreviewMediaProps) => (
   <PreviewMedia key={props.imageIndex} {...props} />
 );
 
-export default EnhancedPeviewMedia;

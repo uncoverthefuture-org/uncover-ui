@@ -18,7 +18,7 @@ export const BaseScrollView: React.FC<BaseScrollViewProps> = ({
     return (
         <BaseView {...rest} >
             <ScrollViewContainer
-                contentContainerStyle={{ flexGrow: 1, flex: 1 }}
+                contentContainerStyle={[{ flexGrow: 1, flex: 1, }, scrollViewProps?.contentContainerStyle]}
                 {...scrollViewProps}
             >
                 {children}
@@ -40,7 +40,7 @@ export const BaseSafeScrollView: React.FC<BaseSafeScrollViewProps> = ({
     return (
         <BaseSafeView {...rest}>
             <ScrollViewContainer
-                contentContainerStyle={{ flexGrow: 1, flex: 1 }}
+                contentContainerStyle={[{ flexGrow: 1, flex: 1, }, scrollViewProps?.contentContainerStyle]}
                 {...scrollViewProps}
             >
                 {children}
