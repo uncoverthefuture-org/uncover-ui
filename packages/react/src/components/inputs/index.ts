@@ -1,4 +1,4 @@
-export * from './default';
+export * from './main';
 export * from './select';
 export * from './phone'
 export * from './textarea'

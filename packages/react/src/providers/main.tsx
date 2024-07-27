@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/css/app.scss"
+import "../assets/css/app.css"
 import React from "react";
 import { createContext, useContext } from "react";
 import { ChakraProviderLoader } from "./chakra_provider";

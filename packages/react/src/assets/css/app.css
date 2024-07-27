@@ -1,4 +1,6 @@
-@import "./bootstrap-extend.scss";
+@import "./bootstrap-extend.css";
+@import "./input.css";
+
 
 @font-face {
   font-family: "PlusJakartaSans";

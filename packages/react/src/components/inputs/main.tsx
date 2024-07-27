@@ -48,6 +48,7 @@ export const PrimaryInput: React.FC<PrimaryInputProp> = ({
     ...rest
 }) => {
     const { colors } = useThemeMode();
+
     return (
         <FormControl
             isInvalid={error}
@@ -55,7 +56,13 @@ export const PrimaryInput: React.FC<PrimaryInputProp> = ({
             isReadOnly={rest.isReadOnly}
             {...formControlProps}
         >
-            {Boolean(label) && (<FormLabel {...labelProps}>{label}</FormLabel>)}
+            {Boolean(label) && (
+                <FormLabel
+                    aria-invalid={error}
+                    _invalid={{ color: colors.danger_tint_3 }}
+                    {...labelProps}
+                >{label}</FormLabel>
+            )}
             <InputGroup
                 size={rest.size}
                 {...inputGroupProps}
@@ -86,7 +93,7 @@ export const PrimaryInput: React.FC<PrimaryInputProp> = ({
                         boxShadow: 'none',
                         borderColor: colors.primary,
                         ...rest?._focusVisible
-                    }}                    
+                    }}
                     {...rest}
                 />
 
