@@ -1,7 +1,7 @@
 {
     "name": "@uncover-ui/react",
     "author": "uncoverthefuture",
-    "version": "0.2.19",
+    "version": "0.2.20",
     "description": "Resuable ui component for react web development",
     "license": "MIT",
     "main": "lib/index.js",
