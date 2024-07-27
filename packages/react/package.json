@@ -2,7 +2,7 @@
     "name": "@uncover-ui/react",
     "author": "uncoverthefuture",
     "module": "lib/react.esm.js",
-    "version": "0.2.12",
+    "version": "0.2.13",
     "description": "Resuable ui component for react web development",
     "license": "MIT",
     "main": "lib/index.js",
@@ -115,6 +115,7 @@
         "react": ">=18",
         "react-bootstrap": "^2.10.3",
         "react-dropzone": "^14.2.3",
+        "framer-motion": "*",
         "react-icons": "^5.2.1"
     },
     "gitHead": "bd208d8e7a9b75a840515fea709649fc286ae063",
