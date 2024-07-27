@@ -2,7 +2,7 @@
     "name": "@uncover-ui/react",
     "author": "uncoverthefuture",
     "module": "lib/react.esm.js",
-    "version": "0.2.14",
+    "version": "0.2.15",
     "description": "Resuable ui component for react web development",
     "license": "MIT",
     "main": "lib/index.js",
@@ -17,7 +17,10 @@
         "access": "public"
     },
     "scripts": {
-        "build": "yarn clean && rollup -c --bundleConfigAsCjs",
+        "build": "yarn clean && yarn build:js && yarn build:types && yarn copy-assets",
+        "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+        "build:types": "tsc --emitDeclarationOnly",
+        "copy-assets": "cpx \"src/assets/**/*\" lib/assets",
         "clean": "rimraf ./lib",
         "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
         "prepare": "yarn build",
