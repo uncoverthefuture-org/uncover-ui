@@ -22,7 +22,6 @@
     "rimraf": "^5.0.7",
     "standard-version": "^9.5.0"
   },
-  "resolutions": {},
   "husky": {
     "hooks": {
       "pre-commit": "yarn workspaces run precommit",
@@ -32,5 +31,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/uncoverthefuture-org/uncover-ui"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }

@@ -44,12 +44,16 @@ export const BaseView: React.FC<BaseViewProps> = ({
                 source: rest?.backgroundImage,
                 backgroundColor: rest?.backgroundImageColor,
                 resizeMode: rest?.resizeMode,
+                // ...styledProps?.baseView?.imageBackgroundProps,
                 ...rest?.imageBackgroundProps
             },
             navHeaderProps: {
                 onBackPress: rest?.onBackPress,
                 title: rest?.headerTitle,
+                // ...styledProps?.baseView?.navHeaderProps,
+                ...rest?.navHeaderProps
             },
+            ...styledProps?.baseView,
             ...rest
         }
     });

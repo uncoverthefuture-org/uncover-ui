@@ -1,6 +1,6 @@
 {
     "name": "@uncover-ui/rn-preview-media",
-    "version": "0.1.9",
+    "version": "0.1.11",
     "description": "UncoverUI component library for React Native",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -25,7 +25,8 @@
         "watch": "tsc --watch",
         "clean": "rimraf lib",
         "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
-        "prepublishOnly": "yarn build"
+        "prepublish": "yarn version patch && yarn build",
+        "publish": "yarn npm publish"
     },
     "dependencies": {
         "@uncover-ui/rn-modal-provider": "^0.1.8",

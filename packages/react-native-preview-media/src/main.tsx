@@ -25,11 +25,11 @@ import useRequestClose from "./hooks/useRequestClose";
 import { ImageSource } from "./@types";
 
 export type PreviewMediaProps = {
-  images: ImageSource[];
+  images?: ImageSource[];
   keyExtractor?: (imageSrc: ImageSource, index: number) => string;
-  imageIndex: number;
-  visible: boolean;
-  onRequestClose: () => void;
+  imageIndex?: number;
+  visible?: boolean;
+  onRequestClose?: () => void;
   onLongPress?: (image: ImageSource) => void;
   onImageIndexChange?: (imageIndex: number) => void;
   presentationStyle?: ModalProps["presentationStyle"];
@@ -42,18 +42,18 @@ export type PreviewMediaProps = {
   FooterComponent?: ComponentType<{ imageIndex: number }>;
 };
 
-const DEFAULT_ANIMATION_TYPE = "fade";
-const DEFAULT_BG_COLOR = "#000";
-const DEFAULT_DELAY_LONG_PRESS = 800;
-const SCREEN = Dimensions.get("screen");
-const SCREEN_WIDTH = SCREEN.width;
+export const DEFAULT_ANIMATION_TYPE = "fade";
+export const DEFAULT_BG_COLOR = "#000";
+export const DEFAULT_DELAY_LONG_PRESS = 800;
+export const SCREEN = Dimensions.get("screen");
+export const SCREEN_WIDTH = SCREEN.width;
 
 export const PreviewMedia:React.FC<PreviewMediaProps> = ({
   images = [], 
   keyExtractor,
-  imageIndex,
-  visible,
-  onRequestClose,
+  imageIndex = 0,
+  visible = false,
+  onRequestClose = () => {},
   onLongPress = () => {},
   onImageIndexChange,
   animationType = DEFAULT_ANIMATION_TYPE,

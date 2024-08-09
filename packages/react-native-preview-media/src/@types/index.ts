@@ -7,6 +7,7 @@
  */
 
 import { ImageURISource, ImageRequireSource } from "react-native";
+export { ShowModalResult } from '@uncover-ui/rn-modal-provider';
 
 export type Dimensions = {
   width: number;

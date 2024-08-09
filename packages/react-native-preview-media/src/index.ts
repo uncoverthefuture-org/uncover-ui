@@ -3,7 +3,7 @@ export * from './hooks'
 export * from './providers'
 export * from './utils'
 export * from './@types'
-
+export * from './main'
 
 /**
  * Copyright (c) JOB TODAY S.A. and its affiliates.
