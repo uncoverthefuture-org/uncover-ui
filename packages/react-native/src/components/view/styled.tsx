@@ -6,17 +6,21 @@ import { StyledViewProps } from "./interface";
 import { size } from "lodash";
 
 export const LinearGradient = () => {
-    if (inInExpoEnv()) {
-        return require("expo-linear-gradient").LinearGradient;
-    } else {
+    // if (inInExpoEnv()) {
+    //     return require("expo-linear-gradient").LinearGradient;
+    // } else {
         return require("react-native-linear-gradient");
-    }
+    // }
 }
 
 export const ViewStyles = (rest: StyledViewProps) => ({
     paddingHorizontal: rest?.paddingHorizontal,
     paddingVertical: rest?.paddingVertical,
     borderRadius: rest?.borderRadius,
+    borderBottomEndRadius: rest?.borderBottomEndRadius,
+    borderBottomStartRadius: rest?.borderBottomStartRadius,
+    borderBottomLeftRadius: rest?.borderBottomLeftRadius,
+    borderBottomRightRadius: rest?.borderBottomRightRadius,
     alignItems: rest?.alignItems,
     justifyContent: rest?.justifyContent,
     backgroundColor: rest?.bgColor ?? rest?.backgroundColor,
@@ -24,6 +28,18 @@ export const ViewStyles = (rest: StyledViewProps) => ({
     height: rest?.height,
     borderColor: rest?.borderColor,
     borderWidth: rest?.borderWidth,
+    borderBottomColor: rest?.borderBottomColor,
+    borderBottomWidth: rest?.borderBottomWidth,
+    borderTopColor: rest?.borderTopColor,
+    borderTopWidth: rest?.borderTopWidth,
+    borderLeftColor: rest?.borderLeftColor,
+    borderLeftWidth: rest?.borderLeftWidth,
+    borderRightColor: rest?.borderRightColor,
+    borderRightWidth: rest?.borderRightWidth,
+    shadowOpacity: rest?.shadowOpacity,
+    shadowOffset: rest?.shadowOffset,
+    shadowColor: rest?.shadowColor,
+    shadowRadius: rest?.shadowRadius,
     marginTop: rest?.mt ?? rest?.marginTop,
     marginBottom: rest?.mb ?? rest?.marginBottom,
     marginLeft: rest?.ml ?? rest?.marginLeft,
@@ -91,7 +107,7 @@ export const StyledSafeAreaView = styled.SafeAreaView<StyledViewProps>(({
 }))
 
 
-export const Row = styled(StyledTouchableOpacity)<StyledViewProps>(({
+export const Row = styled(StyledTouchableOpacity)(({
     flexDirection = "row",
     position = "relative",
 }) => ({

@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.scss';
 import { FormControl, FormControlProps, FormErrorMessage, FormErrorMessageProps, FormHelperText, FormLabel, FormLabelProps, FormHelperTextProps, Select, InputElementProps, InputGroup, InputLeftElement, SelectProps, InputRightElement, InputLeftAddon, InputRightAddon, InputAddonProps } from "@chakra-ui/react"
 
 

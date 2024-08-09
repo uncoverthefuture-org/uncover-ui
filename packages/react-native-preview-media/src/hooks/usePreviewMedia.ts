@@ -5,13 +5,13 @@ import { useMemo } from "react";
 export const usePreviewMedia = () => {
     const { showModal } = useModal();
 
-    const previewMedia = (props?: PreviewMediaProps) => {
+    let previewMedia = (props?: PreviewMediaProps) => {
         return showModal(PreviewMedia, props)
     }
 
-    return useMemo(() => {
+    return useMemo(() => ({
         previewMedia
-    }, [
+    }), [
         previewMedia,
     ]);
 };

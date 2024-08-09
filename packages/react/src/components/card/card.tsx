@@ -1,27 +1,24 @@
 import React from "react";
-import { useTheme } from "@emotion/react";
+import { Card, CardBody, CardHeader, CardProps, Heading } from "@chakra-ui/react";
 
-interface CardProps {
-  houseImage: string;
-  profileimage: string;
-  location: string;
-  guestsNumber: string;
-  price: string;
-  onClick?: () => void;
+export interface PrimaryCardProps extends CardProps {
+
 }
 
-export const Card: React.FC<CardProps> = ({
-  houseImage,
-  profileimage,
-  location,
-  price,
-  guestsNumber,
-  onClick,
+export const PrimaryCard: React.FC<PrimaryCardProps> = ({
+  ...rest
 }) => {
-  const theme = useTheme();
+  // const { colors } = useThemeMode();
+
   return (
-    <div className="profile-card  mb-5 col" onClick={onClick}>
-     
-    </div>
+    <Card {...rest}>
+      <CardHeader>
+        <Heading size='md'>Client Report</Heading>
+      </CardHeader>
+
+      <CardBody>
+
+      </CardBody>
+    </Card>
   );
 };

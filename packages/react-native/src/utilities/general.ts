@@ -59,14 +59,13 @@ export const convertObjectToURLParams = (data: any) => {
     // console.log(params)
     return params;
 }
-
 export const inInExpoEnv = () => {
-    try {
-        require('expo');
+    if (typeof global?.expo !== 'undefined') {
         return true;
-        // Code to be executed if `expo` package is present (likely Expo environment)
-    } catch (e) {
-        // Code to be executed if `expo` package is not found (not necessarily not Expo)
-        return false;
     }
+    if (typeof process?.env?.EXPO_ENVIRONMENT !== 'undefined') {
+        return true;
+    }
+    // Additional checks could be added here
+    return false;
 }

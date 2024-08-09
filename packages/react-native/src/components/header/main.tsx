@@ -9,6 +9,7 @@ import { HeaderContainer, SideComponent } from "./styled";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { StyledViewProps } from "@components/view/interface";
 import { extendStyledProps } from "@themes/main";
+import { fontSize } from "@components/text";
 
 
 export interface NavHeaderProps extends HeaderContainerProps {
@@ -35,6 +36,7 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
     navHeader: {
       backIconColor: colors.black,
       onBackPress: rest?.onBackPress ?? (() => navigation.goBack()),
+      ...styledProps?.navHeader,
       ...rest
     }
   });
@@ -63,7 +65,7 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
       >
         {(props?.centerComponent) ? props?.centerComponent : (
           <BoldText
-            fontSize={RFValue(12)}
+            fontSize={fontSize.md}
             textAlign="center"
             color={props?.titleColor}
             {...props?.titleProps}

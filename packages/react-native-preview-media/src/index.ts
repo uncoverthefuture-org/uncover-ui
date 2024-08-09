@@ -3,7 +3,7 @@ export * from './hooks'
 export * from './providers'
 export * from './utils'
 export * from './@types'
-
+export * from './main'
 
 /**
  * Copyright (c) JOB TODAY S.A. and its affiliates.
@@ -12,5 +12,3 @@ export * from './@types'
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-export { default } from "./main";

@@ -1,3 +1,4 @@
+import { Theme } from "@emotion/react";
 import { ThemeFonts } from "@utilities/fonts";
 
 export enum EmotionThemeName {
@@ -5,7 +6,7 @@ export enum EmotionThemeName {
     DARK = "dark",
 }
 
-export type EmotionThemeColors = {
+export interface EmotionThemeColors  {
     white: string;
     danger: string;
     warning: string;
@@ -21,7 +22,7 @@ export type EmotionThemeColors = {
     placeholder: string;
     label: string;
     // other color types  can come in from here 
-    [x:string]: string;
+    // [x:string]: string;
 };
 
 export interface ExtendEmotionTheme {
