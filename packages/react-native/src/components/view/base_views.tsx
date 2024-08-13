@@ -39,22 +39,19 @@ export const BaseView: React.FC<BaseViewProps> = ({
         baseView: {
             focusBarStyle: 'dark-content',
             backgroundColor: colors.background,
+            ...rest,
             imageBackgroundProps: {
                 src: rest?.backgroundImageSrc,
                 source: rest?.backgroundImage,
                 backgroundColor: rest?.backgroundImageColor,
                 resizeMode: rest?.resizeMode,
-                // ...styledProps?.baseView?.imageBackgroundProps,
                 ...rest?.imageBackgroundProps
             },
             navHeaderProps: {
                 onBackPress: rest?.onBackPress,
                 title: rest?.headerTitle,
-                // ...styledProps?.baseView?.navHeaderProps,
                 ...rest?.navHeaderProps
             },
-            ...styledProps?.baseView,
-            ...rest
         }
     });
     const focusBarScheme = props?.focusBarStyle ?? "light-content";

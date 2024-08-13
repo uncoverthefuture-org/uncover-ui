@@ -6,6 +6,9 @@ import { useThemeMode } from "@providers/hooks";
 import { ActiveIconProp, InputBoxProps } from "./interface";
 import { BottomText, InputBox, InputWrapper, Label } from "./styled";
 import { extendStyledProps } from "@themes/main";
+import { StyledTextProps } from "@components/text";
+import { ViewContainer } from "@components/view";
+import { StyledViewProps } from "@components/view/interface";
 
 
 
@@ -32,7 +35,9 @@ export interface PrimaryInputProps extends TextInputProps, Omit<InputBoxProps, '
   rightIcon?: React.ReactElement | ActiveIconProp;
   editable?: boolean;
   label?: string;
-  labelProps?: TextProps & { color: string };
+  labelProps?: StyledTextProps;
+  containerProps?: StyledViewProps;
+  wrapperProps?: StyledViewProps;
   containerStyle?: ViewStyle;
   bottomText?: string;
   inputError?: boolean;
@@ -60,13 +65,13 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
   useEffect(() => { props?.isFocused && props?.isFocused(active) }, [active]);
 
   return (
-    <View style={{ flexGrow: 1 }}>
+    <ViewContainer paddingHorizontal={0} style={{ flexGrow: 1 }} {...props?.containerProps}>
       {props?.label ? (
         <Label color={colors.label} {...props?.labelProps}>
           {props?.label}
         </Label>
       ) : null}
-      <InputWrapper  style={{ ...props?.containerStyle, ...(InputColorState(colors, active, props?.inputError, !props?.editable)) }} {...rest}>
+      <InputWrapper  style={{ ...props?.containerStyle, ...(InputColorState(colors, active, props?.inputError, !props?.editable)) }} {...props?.wrapperProps}>
         {((props?.leftIcon as ActiveIconProp)?.active) ? (
           (active) ? (props?.leftIcon as ActiveIconProp)?.active : (props?.leftIcon as ActiveIconProp)?.inActive
         ) : (props?.leftIcon as React.ReactElement)}
@@ -88,7 +93,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
           {props?.bottomText}
         </BottomText>
       ) : null}
-    </View>
+    </ViewContainer>
   );
 };
 

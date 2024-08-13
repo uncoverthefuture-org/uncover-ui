@@ -27,5 +27,5 @@ export interface EmotionThemeColors  {
 
 export interface ExtendEmotionTheme {
     colors: EmotionThemeColors;
-    fonts?: ThemeFonts
+    fonts?: ThemeFonts;
 }

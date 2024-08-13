@@ -45,13 +45,11 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       backgroundColor: colors.primary,
       loadColor: colors.white,
       color: colors?.white,
-      ...styledProps?.primaryButton,
       ...rest,
     }
   });
   const activeBackgroundColor = (props?.isLoading || pressed || props?.disabled) ? props?.focusedBackgroundColor : props?.backgroundColor;
 
-  
   return (
     <ButtonSolidView
       activeOpacity={0.7}

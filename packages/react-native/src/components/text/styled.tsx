@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import { TextProps, TextStyle } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { fontSize as fSize } from './sizes';
+import { fontSize, fontSize as fSize } from './sizes';
 
 export interface StyledTextProps extends TextStyle, TextProps {
 
@@ -29,6 +29,7 @@ export const TextStyles = (rest: StyledTextProps) => ({
   flex: rest?.flex,
   flexGrow: rest?.flexGrow,
   textAlign: rest?.textAlign,
+  // fontSize: rest?.fontSize,
 })
 
 export const RegularText = styled.Text<StyledTextProps>(

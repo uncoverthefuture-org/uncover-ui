@@ -26,7 +26,9 @@
         "size": "size-limit",
         "analyze": "size-limit --why",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
+        "build-storybook": "build-storybook",
+        "prepublish": "yarn version patch && yarn build",
+        "publish": "yarn npm publish"
     },
     "husky": {
         "hooks": {

@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 import { heightPixel, widthPixel } from "@utilities/index";
 import { Platform } from "react-native";
 import { StyledInputProps, InputBoxProps } from "./interface";
-import { spacingSize } from "@components/view";
+import { spacingSize, StyledView } from "@components/view";
 
 
 
@@ -55,19 +55,24 @@ export const InputBox = styled(StyledInput)<InputBoxProps>(({
   color
 }));
 
-export const InputWrapper = styled.View<{
-
-}>(({
-
+export const InputWrapper = styled(StyledView)(({
+  paddingHorizontal = widthPixel(spacingSize.i14),
+  paddingVertical = heightPixel(Platform.OS == "android" ? spacingSize.i12 : spacingSize.i14),
+  marginBottom = heightPixel(spacingSize.i10),
+  borderWidth = 1,
+  borderRadius = 8,
+  flexDirection = "row",
+  justifyContent = "space-between",
+  alignItems = "center",
 }) => ({
-  paddingHorizontal: widthPixel(spacingSize.i14),
-  paddingVertical: heightPixel(Platform.OS == "android" ? spacingSize.i12 : spacingSize.i14),
-  marginBottom: heightPixel(spacingSize.i10),
-  borderWidth: 1,
-  borderRadius: 8,
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
+  paddingHorizontal,
+  paddingVertical,
+  marginBottom,
+  borderWidth,
+  borderRadius,
+  flexDirection,
+  justifyContent,
+  alignItems,
 }));
 
 export const BottomText = styled(RegularText)({
@@ -78,12 +83,16 @@ export const BottomText = styled(RegularText)({
 
 export const Label = styled(RegularText)(({
   color,
-  theme
+  theme,
+  fontFamily = theme?.fonts?.medium,
+  fontSize = RFFontSize.xs,
+  lineHeight = RFLineHeight.xs,
+  paddingBottom = heightPixel(spacingSize.i10),
 }) => ({
-  fontFamily: theme?.fonts?.medium,
-  fontSize: RFFontSize.xs,
-  lineHeight: RFLineHeight.xs,
-  paddingBottom: heightPixel(spacingSize.i10),
+  fontFamily,
+  fontSize,
+  lineHeight,
+  paddingBottom,
   color,
   // paddingLeft: widthPixel(15),
 }));

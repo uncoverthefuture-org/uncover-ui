@@ -1,8 +1,8 @@
-export const currencyFormatter = (number: number | string) => {
+export const currencyFormatter = (number: number | string, code?: string): string => {
   const numberString = String(number)
   const newArray: Array<string> = []
-  const splitedNumberStringArray = numberString.split('.')
-  const mainNumber = splitedNumberStringArray[0]
+  const splitNumberStringArray = numberString.split('.')
+  const mainNumber = splitNumberStringArray[0]
   const reversedNumber = mainNumber.split('').reverse()
   reversedNumber.forEach((element, index) => {
     if (index % 3 === 0 && index !== 0) {
@@ -10,9 +10,24 @@ export const currencyFormatter = (number: number | string) => {
     }
     newArray.push(element)
   })
-  return splitedNumberStringArray.length > 1
-    ? newArray.reverse().join('') + '.' + splitedNumberStringArray[1]
-    : newArray.reverse().join('')
+
+  newArray.reverse();
+
+  let result = newArray.join('')
+  if(splitNumberStringArray.length > 1){
+    result = result + '.' + splitNumberStringArray[1]
+  }
+
+  return code ? code + result : result;
 }
 
-export default currencyFormatter
+
+export const IntlAmountFmt = (amount: number = 0, options?: Intl.NumberFormatOptions) => {
+  return new Intl.NumberFormat('en-US', { 
+    style: 'currency',
+    currency: 'CAD',
+    minimumFractionDigits: 2, // Ensures at least 2 decimal places
+    maximumFractionDigits: 2, // Limits to 2 decimal places
+    ...options
+  }).format(amount);
+}

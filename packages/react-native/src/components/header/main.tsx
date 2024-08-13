@@ -1,15 +1,13 @@
 import React, { ReactNode } from "react";
-import { TouchableOpacityProps } from "react-native";
 import { BoldText, StyledTextProps } from '../text/styled';
 import { useNavigation } from "@react-navigation/native";
-import { RFValue } from "react-native-responsive-fontsize";
 import { useThemeMode } from "@providers/hooks";
 import { HeaderContainerProps } from "./interface";
 import { HeaderContainer, SideComponent } from "./styled";
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { StyledViewProps } from "@components/view/interface";
 import { extendStyledProps } from "@themes/main";
 import { fontSize } from "@components/text";
+import { StyledTouchableOpacityProps } from "@components/view/types";
 
 
 export interface NavHeaderProps extends HeaderContainerProps {
@@ -17,9 +15,9 @@ export interface NavHeaderProps extends HeaderContainerProps {
   rightComponent?: ReactNode;
   centerComponent?: ReactNode;
   leftComponent?: React.ReactElement;
-  rightComponentProps?: TouchableOpacityProps & StyledViewProps;
-  centerComponentProps?: TouchableOpacityProps & StyledViewProps;
-  leftComponentProps?: TouchableOpacityProps & StyledViewProps;
+  rightComponentProps?: StyledTouchableOpacityProps;
+  centerComponentProps?: StyledTouchableOpacityProps;
+  leftComponentProps?: StyledTouchableOpacityProps;
   onBackPress?: () => void;
   elevation?: number;
   backIconColor?: string;
@@ -36,13 +34,16 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
     navHeader: {
       backIconColor: colors.black,
       onBackPress: rest?.onBackPress ?? (() => navigation.goBack()),
-      ...styledProps?.navHeader,
       ...rest
     }
   });
 
+  // console.log("Merged Props", props)
+  // console.log("Passed Props", rest)
+  // console.log("Styled  Props", styledProps)
+
   return (
-    <HeaderContainer  {...rest}>
+    <HeaderContainer  {...props}>
       <SideComponent
         onPress={props?.onBackPress}
         height={'100%'}

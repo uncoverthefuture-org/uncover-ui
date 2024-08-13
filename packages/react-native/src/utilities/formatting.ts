@@ -1,5 +1,3 @@
-import he from 'he';
-
 
 export const filterWordLength = (name: string, length: number = 2) => {
     let splitNames = name.split(" ").filter(text => text.length);
@@ -61,13 +59,22 @@ export const getInitials = (fullName: string) => {
     return initials;
 }
 
-
-export const stripHTMLAttributes = (text: string) => {
-    const regex = /<[a-zA-Z]+\s*([^>]*)>/g;
-    return text.replace(regex, '<$1>');
+export const stripExtension = (filename: string, extension: string) => {
+    const extPattern = new RegExp(`${extension}$`, 'i');
+    return filename.replace(extPattern, '');
 }
 
-export const stripHTMLTags = (html: string) => {
-    const decodedText = he.decode(html);
-    return decodedText.replace(/<[^>]+>/g, '');
+export const formatBytes = (bytes: number, decimals: number = 2): string => {
+    if (bytes === 0) return '0 Bytes';
+
+    const k: number = 1024;
+    const dm: number = decimals < 0 ? 0 : decimals;
+    const sizes: string[] = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i: number = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
+
+
+  

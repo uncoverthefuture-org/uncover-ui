@@ -6,9 +6,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { StyledViewProps } from '@components/view/interface';
 import { extendStyledProps } from '@themes/main';
 import { useThemeMode } from '@providers/hooks';
+import { StyledTouchableOpacityProps } from '@components/view';
 
 
-export interface FloatingButtonProps extends TouchableOpacityProps, StyledViewProps {
+export interface FloatingButtonProps extends StyledTouchableOpacityProps {
   icon?: React.ReactElement;
   iconColor?: ColorValue | string;
 }

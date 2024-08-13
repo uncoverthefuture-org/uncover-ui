@@ -49,16 +49,6 @@ export const maxItems = (data: any[] = [], count?: number) => {
     return data;
 }
 
-export const convertObjectToURLParams = (data: any) => {
-    const params = Object.keys(data).map(key => {
-        const rc = data[key];
-        if (rc !== undefined && rc !== null) {
-            return `${key}=${encodeURIComponent(rc)}`;
-        }
-    }).join('&');
-    // console.log(params)
-    return params;
-}
 export const inInExpoEnv = () => {
     if (typeof global?.expo !== 'undefined') {
         return true;

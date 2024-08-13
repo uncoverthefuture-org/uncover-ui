@@ -1,9 +1,10 @@
 import { formatName } from "@utilities/formatting";
-import { ComponentProps } from "react"
+import React, { ComponentProps } from "react"
 import { AvatarText } from "./styled";
+import { AvatarTextProps } from "./types";
 
 
-export interface TextAvatarProps extends ComponentProps<typeof AvatarText> {
+export interface TextAvatarProps extends AvatarTextProps {
     text?: string
 }
 

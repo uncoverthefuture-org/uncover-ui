@@ -82,24 +82,39 @@ export const ThemedButtonInner = styled.View<{
 }))
 
 export const FloatingTouchableOpacity = styled(StyledTouchableOpacity)(({
-    backgroundColor
+    backgroundColor,
+    width = wp(12),
+    height = wp(12),
+    borderRadius = wp(6),
+    padding = 5,
+    borderWidth = 1,
+    borderColor = 'transparent',
+    justifyContent = 'center',
+    alignItems = 'center',
+    elevation = 30,
+    zIndex = 999,
+    shadowColor = '#c4c4c4',
+    shadowOpacity = 0.3,
+    bottom = 30,
+    right = wp(5),
+    position = 'absolute'
 }) => ({
     backgroundColor,
-    width: wp(12),
-    height: wp(12),
-    borderRadius: wp(6),
-    padding: 5,
-    borderWidth: 1,
-    borderColor: 'transparent',
+    width,
+    height,
+    borderRadius,
+    padding,
+    borderWidth,
+    borderColor,
     justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 30,
-    zIndex: 999,
-    shadowColor: '#c4c4c4',
-    shadowOpacity: 0.3,
-    bottom: 30,
-    right: wp(5),
-    position: 'absolute'
+    alignItems,
+    elevation,
+    zIndex,
+    shadowColor,
+    shadowOpacity,
+    bottom,
+    right,
+    position
 }));
 
 export const IconButton = styled(StyledTouchableOpacity)(({
