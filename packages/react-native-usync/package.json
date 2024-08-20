@@ -172,5 +172,8 @@
   "create-react-native-library": {
     "type": "library",
     "version": "0.38.1"
+  },
+  "dependencies": {
+    "expo-sqlite": "^14.0.6"
   }
 }
