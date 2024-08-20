@@ -83,7 +83,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "expo-sqlite": "^14.0.6"
   },
   "jest": {
     "preset": "react-native",
