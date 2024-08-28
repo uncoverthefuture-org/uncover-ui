@@ -15,8 +15,21 @@ export type SheetHideProps<T extends SheetID> = Sheets[T]['returnValue'];
 
 export type SheetHideOtherOptions<T extends SheetID> = Omit<Sheets[T], 'payload' | 'onClose'>;
 
-export type Sheet<T extends ComponentType<any>> = {
-    // id: string;
+export type SheetComponentType = ComponentType<any>;
+
+export type SheetComponent<T extends ComponentType<any>> = {
     Component: T;
+    id: string;
     props?: ComponentProps<T>;
 };
+
+export interface ShowSheetResult<T extends SheetComponentType> {
+    id: string;
+    update: (props?: ComponentProps<T>) => void;
+    close: () => void;
+}
+
+export interface SheetProviderContextProps {
+    showSheet: <T extends SheetComponentType>(component: T, props?: ComponentProps<T>) => ShowSheetResult<T>,
+    hideSheet: <T extends SheetID>(id: T, payload?: SheetHideProps<T>, otherOptions?: SheetHideOtherOptions<T>) => void,
+}

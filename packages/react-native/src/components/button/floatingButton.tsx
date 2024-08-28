@@ -9,7 +9,7 @@ import { useThemeMode } from '@providers/hooks';
 import { StyledTouchableOpacityProps } from '@components/view';
 
 
-export interface FloatingButtonProps extends StyledTouchableOpacityProps {
+export interface FloatingButtonProps extends StyledTouchableOpacityProps, TouchableOpacityProps {
   icon?: React.ReactElement;
   iconColor?: ColorValue | string;
 }

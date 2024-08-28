@@ -1,6 +1,6 @@
 {
   "name": "@uncover-ui/rn-sheet-provider",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "UncoverUI component library for React Native",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -20,7 +20,8 @@
     "watch": "tsc --watch",
     "clean": "rimraf lib",
     "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
-    "prepublishOnly": "yarn build"
+    "prepublish": "yarn version patch && yarn build",
+    "publish": "yarn npm publish"
   },
   "dependencies": {
     "lodash": "^4.17.21",

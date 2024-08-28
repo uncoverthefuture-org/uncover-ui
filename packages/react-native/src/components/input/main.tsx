@@ -71,10 +71,15 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
           {props?.label}
         </Label>
       ) : null}
-      <InputWrapper  style={{ ...props?.containerStyle, ...(InputColorState(colors, active, props?.inputError, !props?.editable)) }} {...props?.wrapperProps}>
-        {((props?.leftIcon as ActiveIconProp)?.active) ? (
-          (active) ? (props?.leftIcon as ActiveIconProp)?.active : (props?.leftIcon as ActiveIconProp)?.inActive
+      <InputWrapper
+        style={{ ...props?.containerStyle, ...(InputColorState(colors, active, props?.inputError, !props?.editable)) }}
+        {...props?.wrapperProps}
+      >
+
+        {((props?.leftIcon as ActiveIconProp)?.active || (props?.leftIcon as ActiveIconProp)?.inActive) ? (
+          (active && (props?.leftIcon as ActiveIconProp)?.active) ? (props?.leftIcon as ActiveIconProp)?.active : (props?.leftIcon as ActiveIconProp)?.inActive
         ) : (props?.leftIcon as React.ReactElement)}
+
         <InputBox
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
@@ -83,10 +88,11 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
           style={[{ ...(InputColorState(colors, active, props?.inputError, !props?.editable)) }, props?.textStyle, rest?.style]}
           {...props}
         />
-        {((props?.rightIcon as ActiveIconProp)?.active) ? (
-          (active) ? (props?.rightIcon as ActiveIconProp)?.active : (props?.rightIcon as ActiveIconProp)?.inActive
+        {((props?.rightIcon as ActiveIconProp)?.active || (props?.rightIcon as ActiveIconProp)?.inActive) ? (
+          (active && (props?.rightIcon as ActiveIconProp)?.active) ? (props?.rightIcon as ActiveIconProp)?.active : (props?.rightIcon as ActiveIconProp)?.inActive
         ) : (props?.rightIcon as React.ReactElement)}
       </InputWrapper>
+
       {(props?.bottomText && !props?.bottomTextOnError) ||
         (props?.bottomText && props?.bottomTextOnError && props?.inputError) ? (
         <BottomText color={props?.inputError ? colors.danger : colors.text}>

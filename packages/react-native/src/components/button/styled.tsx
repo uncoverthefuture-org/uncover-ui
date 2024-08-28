@@ -106,7 +106,7 @@ export const FloatingTouchableOpacity = styled(StyledTouchableOpacity)(({
     padding,
     borderWidth,
     borderColor,
-    justifyContent: 'center',
+    justifyContent,
     alignItems,
     elevation,
     zIndex,

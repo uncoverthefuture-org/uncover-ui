@@ -1,0 +1,12 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useSheet = void 0;
+var _react = require("react");
+var _main = require("./main");
+var useSheet = exports.useSheet = function useSheet() {
+  return (0, _react.useContext)(_main.SheetProviderContext);
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfcmVhY3QiLCJyZXF1aXJlIiwiX21haW4iLCJ1c2VTaGVldCIsImV4cG9ydHMiLCJ1c2VDb250ZXh0IiwiU2hlZXRQcm92aWRlckNvbnRleHQiXSwic291cmNlcyI6WyIuLi8uLi9zcmMvcHJvdmlkZXJzL2hvb2tzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZUNvbnRleHQgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCB7IFNoZWV0UHJvdmlkZXJDb250ZXh0IH0gZnJvbSBcIi4vbWFpblwiO1xuXG5leHBvcnQgY29uc3QgdXNlU2hlZXQgPSAoKSA9PiB1c2VDb250ZXh0KFNoZWV0UHJvdmlkZXJDb250ZXh0KTtcblxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSxJQUFBQSxNQUFBLEdBQUFDLE9BQUE7QUFDQSxJQUFBQyxLQUFBLEdBQUFELE9BQUE7QUFFTyxJQUFNRSxRQUFRLEdBQUFDLE9BQUEsQ0FBQUQsUUFBQSxHQUFHLFNBQVhBLFFBQVFBLENBQUE7RUFBQSxPQUFTLElBQUFFLGlCQUFVLEVBQUNDLDBCQUFvQixDQUFDO0FBQUEiLCJpZ25vcmVMaXN0IjpbXX0=

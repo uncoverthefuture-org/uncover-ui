@@ -14,7 +14,7 @@ export interface PrimarySelectProps extends SelectInputProps, ActionSheetOptions
 export const PrimarySelect: React.FC<PrimarySelectProps> = ({
   ...rest
 }) => {
-  const { colors, fonts, styledProps } = useThemeMode();
+  const { styledProps } = useThemeMode();
   const { primarySelect: props } = extendStyledProps(styledProps, { primarySelect: { ...rest } });
   const [active, setActive] = useState<boolean>(false);
 
