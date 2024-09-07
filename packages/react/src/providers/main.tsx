@@ -13,16 +13,25 @@ export const UncoverUIProviderContext = createContext<UncoverUIProviderProv>({
     initNotification: () => { },
 });
 
-export const UncoverUIProvider: React.FC<UIMainProviderProps> = ({ 
+export const UncoverUIProvider: React.FC<UIMainProviderProps> = ({
+    chakraTheme,
+    chakraProviderProps,
+    extendEmotionTheme,
     themeModesProviderProps,
-    children 
+    children
 }) => {
     return (
         <UncoverUIProviderContext.Provider
             value={{}}
         >
-            <ChakraProviderLoader>
-                <ThemeModesProvider {...themeModesProviderProps}>
+            <ChakraProviderLoader
+                theme={chakraTheme}
+                {...chakraProviderProps}
+            >
+                <ThemeModesProvider
+                    extendTheme={extendEmotionTheme}
+                    {...themeModesProviderProps}
+                >
                     {children}
                 </ThemeModesProvider>
             </ChakraProviderLoader>

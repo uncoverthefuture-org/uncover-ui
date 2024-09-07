@@ -7,9 +7,10 @@ import { StyledViewProps } from '@components/view/interface';
 import { extendStyledProps } from '@themes/main';
 import { useThemeMode } from '@providers/hooks';
 import { StyledTouchableOpacityProps } from '@components/view';
+import { StyledButtonProps } from './interface';
 
 
-export interface FloatingButtonProps extends StyledTouchableOpacityProps, TouchableOpacityProps {
+export interface FloatingButtonProps extends StyledButtonProps {
   icon?: React.ReactElement;
   iconColor?: ColorValue | string;
 }

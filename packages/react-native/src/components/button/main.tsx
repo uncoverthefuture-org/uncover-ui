@@ -12,7 +12,6 @@ import {
 import { ButtonOutlineView, ButtonSolidView, ButtonText } from "./styled";
 import { useThemeMode } from "@providers/hooks";
 import { StyledTextProps } from "@components/text";
-import { ButtonStylePropsExtra } from "./interface";
 import { extendStyledProps } from "@themes/main";
 
 

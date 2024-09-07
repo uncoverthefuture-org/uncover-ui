@@ -2,7 +2,8 @@ import { SQLError } from "expo-sqlite/legacy";
 
 export type ResultError = SQLError | null;
 
- export interface DBNote {
+
+export interface DBNote {
     id: number;
     title: string;
     content: string;

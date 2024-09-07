@@ -1,5 +1,5 @@
 import { DORM } from "../utilities";
 
-export class Model extends DORM {
+export class Model<T  = {}> extends DORM<T> {
 
 }

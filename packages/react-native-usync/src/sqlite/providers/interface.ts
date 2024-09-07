@@ -7,6 +7,8 @@ export interface SqliteDatabaseProviderProps {
 }
 
 export interface SqliteDatabaseProviderContextProps {
+    isLoading?: boolean;
+    isClearing?: boolean;
     database?: SQLite.SQLiteDatabase,
     clearDatabase: () => Promise<boolean>,
 }

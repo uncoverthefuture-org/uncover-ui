@@ -1,10 +1,14 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ChakraProviderProps } from "@chakra-ui/react";
 import React from "react";
 import { ChakraTheme } from "../../themes";
 
-export const ChakraProviderLoader: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
+export interface ChakraProviderLoaderProps extends ChakraProviderProps {
+
+}
+export const ChakraProviderLoader: React.FC<ChakraProviderLoaderProps> = ({ 
+  children,
+  ...rest 
+}) => {
   return (
     <ChakraProvider
       toastOptions={{
@@ -22,6 +26,7 @@ export const ChakraProviderLoader: React.FC<{
         },
       }}
       theme={ChakraTheme}
+      {...rest}
     >
       {children}
     </ChakraProvider>
