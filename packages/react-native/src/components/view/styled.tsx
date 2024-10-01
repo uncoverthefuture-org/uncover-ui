@@ -54,6 +54,8 @@ export const ViewStyles = (rest: StyledViewProps) => ({
     position: rest?.position,
     flex: rest?.flex,
     flexGrow: rest?.flexGrow,
+    gap: rest?.gap,
+    rowGap: rest?.rowGap,
 })
 
 export const StyledView = styled(Animated.View)<StyledViewProps>(({

@@ -33,7 +33,7 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
   const { navHeader: props } = extendStyledProps(styledProps, {
     navHeader: {
       backIconColor: colors.black,
-      onBackPress: rest?.onBackPress ?? (() => navigation.goBack()),
+      onBackPress: () => navigation.goBack(),
       ...rest
     }
   });

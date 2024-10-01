@@ -1,7 +1,6 @@
-import { StyledViewProps } from "@components/view/interface";
-import { ViewProps } from "react-native";
+import { ViewContainerProps } from "@components/view/types";
 
-export interface HeaderContainerProps extends ViewProps, StyledViewProps {
+export interface HeaderContainerProps extends ViewContainerProps {
     elevation?: number,
     floating?: boolean;
     hasBorderBottom?: boolean;
