@@ -1,7 +1,7 @@
 {
     "name": "@uncover-ui/react",
     "author": "uncoverthefuture",
-    "version": "0.2.25",
+    "version": "0.2.27",
     "description": "Resuable ui component for react web development",
     "license": "MIT",
     "main": "lib/index.js",
@@ -81,7 +81,7 @@
         "@emotion/styled": "^11.11.0",
         "autoprefixer": "^10.4.16",
         "bootstrap": "^5.3.2",
-        "chakra-react-select": "^4.9.2",
+        "chakra-react-select": "5.0.0-rc.8",
         "framer-motion": "^11.2.12",
         "lodash": "^4.17.21",
         "lodash-es": "^4.17.21",
@@ -95,7 +95,7 @@
     "peerDependencies": {
         "@emotion/react": "*",
         "@emotion/styled": "*",
-        "chakra-react-select": "^4.9.2",
+        "chakra-react-select": "5.0.0-rc.8",
         "framer-motion": "^11.2.12",
         "he": "^1.2.0",
         "moment": "^2.30.1",

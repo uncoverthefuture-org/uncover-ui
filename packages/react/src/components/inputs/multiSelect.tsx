@@ -94,7 +94,7 @@ export const PrimaryMultiSelect: React.FC<PrimaryMultiSelectProp> = ({
         name,
         size,
         isMulti,
-        useBasicStyles,
+        // useBasicStyles,
         value,
         inputValue,
         onInputChange,
@@ -131,7 +131,7 @@ export const PrimaryMultiSelect: React.FC<PrimaryMultiSelectProp> = ({
                 )}
 
                 <Select
-                    colorScheme="purple"
+                    // colorScheme="purple"
                     tagVariant="solid"
                     className={`w-100 primary-multi-select ${leftAddonClass} ${rightAddonClass} bg-white`}
                     {...selectProps}
