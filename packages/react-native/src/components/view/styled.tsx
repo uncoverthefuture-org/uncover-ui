@@ -54,6 +54,7 @@ export const ViewStyles = (rest: StyledViewProps) => ({
     position: rest?.position,
     flex: rest?.flex,
     flexGrow: rest?.flexGrow,
+    flexShrink: rest?.flexShrink,
     gap: rest?.gap,
     rowGap: rest?.rowGap,
 })

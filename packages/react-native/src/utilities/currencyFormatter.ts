@@ -31,3 +31,9 @@ export const IntlAmountFmt = (amount: number = 0, options?: Intl.NumberFormatOpt
     ...options
   }).format(amount);
 }
+
+export const  parseCurrencyAmount = (str: string)  => {
+  const cleanedStr = str.replace(/[^\d.-]/g, '');
+  const amount = parseFloat(cleanedStr);
+  return isNaN(amount) ? null : amount;
+}

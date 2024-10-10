@@ -77,7 +77,7 @@ export class DORM<T = {}> {
             const insertValues = Object.values(values).map((value) => value) as SQLite.SQLStatementArg[];
 
             const query = `${cmd.update} ${this.tableName} SET ${insertKeys} ${this.whereQuery}`
-            if (debug) console.log(query);
+            if (debug) console.log(query, insertValues, this.whereVariables);
 
             this._db.transaction((txn) => {
                 return txn.executeSql(query, [...insertValues, ...this.whereVariables],
@@ -95,21 +95,24 @@ export class DORM<T = {}> {
         })
     }
 
-    delete(callback?: DBCallbackTypes["default"], debug: boolean = false) {
-        const query = `${cmd.delete} ${this.tableName} WHERE ${this.whereQuery}`
-        if (debug) console.log(query);
+    delete(debug: boolean = false) {
+        return new Promise<boolean | undefined>((resolve, reject) => {
+            const query = `${cmd.delete} ${this.tableName} ${this.whereQuery}`
+            if (debug) console.log(query, this.whereVariables);
 
-        this._db.transaction((txn) => {
-            return txn.executeSql(query, [...this.whereVariables],
-                (_stx, res) => {
-                    if (debug) console.log(res);
-                    success(res.rowsAffected ? true : false, callback)
-                },
-                (_etx, err) => {
-                    if (debug) console.log(err);
-                    return error(err, callback)
-                }
-            )
+            this._db.transaction((txn) => {
+                return txn.executeSql(query, [...this.whereVariables],
+                    (_stx, res) => {
+                        if (debug) console.log(res);
+                        resolve(res.rowsAffected ? true : false)
+                    },
+                    (_etx, err) => {
+                        if (debug) console.log(err);
+                        reject(err)
+                        return false;
+                    }
+                )
+            })
         })
     }
 
