@@ -1,5 +1,5 @@
 export const currencyFormatter = (number: number | string, code?: string): string => {
-  const numberString = String(number)
+  const numberString = parseCurrencyAmount(String(number))?.toString() ?? "";
   const newArray: Array<string> = []
   const splitNumberStringArray = numberString.split('.')
   const mainNumber = splitNumberStringArray[0]

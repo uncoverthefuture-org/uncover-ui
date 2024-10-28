@@ -1,4 +1,4 @@
-import { TextInputProps, TextProps, TextStyle, View, ViewStyle } from "react-native";
+import { TextInput, TextInputProps, TextProps, TextStyle, View, ViewStyle } from "react-native";
 import { useEffect, useState } from "react";
 import { Theme } from "@emotion/react";
 import React from "react";
@@ -31,6 +31,7 @@ export const InputColorState = (colors: Theme['colors'], active?: boolean, error
 }
 
 export interface PrimaryInputProps extends TextInputProps, Omit<InputBoxProps, 'textAlign'> {
+  inputRef?:React.Ref<TextInput>; 
   leftIcon?: React.ReactElement | ActiveIconProp;
   rightIcon?: React.ReactElement | ActiveIconProp;
   editable?: boolean;
@@ -81,6 +82,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
         ) : (props?.leftIcon as React.ReactElement)}
 
         <InputBox
+          ref={props?.inputRef}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
           onPressIn={props?.onPress}

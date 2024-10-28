@@ -73,8 +73,8 @@ export class DORM<T = {}> {
                 if (debug) console.log(fillableValues)
                 throw new Error(`Fillable values not found!`);
             }
-            const insertKeys = Object.entries(values).map(([key]) => (`${key}=?`)).join(', ');
-            const insertValues = Object.values(values).map((value) => value) as SQLite.SQLStatementArg[];
+            const insertKeys = Object.entries(fillableValues).map(([key]) => (`${key}=?`)).join(', ');
+            const insertValues = Object.values(fillableValues).map((value) => value) as SQLite.SQLStatementArg[];
 
             const query = `${cmd.update} ${this.tableName} SET ${insertKeys} ${this.whereQuery}`
             if (debug) console.log(query, insertValues, this.whereVariables);
