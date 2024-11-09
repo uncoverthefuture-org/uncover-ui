@@ -29,6 +29,7 @@ export const TextStyles = (rest: StyledTextProps) => ({
   flex: rest?.flex,
   flexGrow: rest?.flexGrow,
   textAlign: rest?.textAlign,
+  textTransform: rest?.textTransform,
   // fontSize: rest?.fontSize,
 })
 
