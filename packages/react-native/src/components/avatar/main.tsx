@@ -29,13 +29,14 @@ export const Avatar: React.FC<AvatarProps> = ({
   const [imageLoaded, setImageLoaded] = useState<{ width: number; height: number; }>()
   const imageSource = source ?? (uri ? { uri } : undefined);
 
+  console.log(imageLoaded)
 
   return (
     <AvatarContainer
       size={size}
       {...rest}
     >
-      {(!imageLoaded) ? (
+      {(!imageLoaded || (!source && !uri)) ? (
         <TextAvatar
           text={text}
           fontSize={rest?.fontSize}
@@ -47,6 +48,7 @@ export const Avatar: React.FC<AvatarProps> = ({
           size={size}
           source={imageSource}
           onLoad={({ nativeEvent }) => setImageLoaded(nativeEvent)}
+          
           {...imageProps}
         />
       )}
