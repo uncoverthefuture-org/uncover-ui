@@ -1,11 +1,13 @@
 import { PixelRatio, Dimensions, ScaledSize } from 'react-native';
 
-enum BASE {
+const { width, height }: ScaledSize = Dimensions.get('window');
+
+
+export enum BASEDIMENSIONS {
   HEIGHT = 'height',
   WIDTH = 'width'
 }
 
-const { width, height }: ScaledSize = Dimensions.get('window');
 enum baseScreen {
   WIDTH = 414,
   HEIGHT = 896
@@ -14,20 +16,20 @@ enum baseScreen {
 const widthBaseScale = width / baseScreen.WIDTH;
 const heightBaseScale = height / baseScreen.HEIGHT;
 
-export const calcDevicePx = (px: number, base: BASE = BASE.WIDTH): number => {
+export const calcDevicePx = (px: number, base: BASEDIMENSIONS = BASEDIMENSIONS.WIDTH): number => {
   const newSize =
-    base === BASE.HEIGHT ? px * heightBaseScale : px * widthBaseScale;
+    base === BASEDIMENSIONS.HEIGHT ? px * heightBaseScale : px * widthBaseScale;
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 };
 
 //for width  pixel
 export const widthPixel = (size: number) => {
-  return calcDevicePx(size, BASE.WIDTH);
+  return calcDevicePx(size, BASEDIMENSIONS.WIDTH);
 };
 
 //for height  pixel
 export const heightPixel = (size: number) => {
-  return calcDevicePx(size, BASE.HEIGHT);
+  return calcDevicePx(size, BASEDIMENSIONS.HEIGHT);
 };
 
 //for font  pixel

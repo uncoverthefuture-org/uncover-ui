@@ -1,7 +1,6 @@
 import { AvatarImage } from "./styled";
-import { FastImageProps } from "react-native-fast-image";
-import { AvatarImageStyleProps } from "./interface";
 import { ComponentProps } from "react";
+import React from 'react';
 
 
 export interface ImageAvatarProps extends ComponentProps<typeof AvatarImage> {

@@ -1,0 +1,53 @@
+{
+    "name": "@uncover-ui/expo",
+    "version": "0.1.2",
+    "description": "UncoverUI component library for Expo packaged React Native",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "keywords": [
+        "react-native",
+        "components",
+        "expo",
+        "provider",
+        "hooks",
+        "uncover-ui"
+    ],
+    "author": "uncoverthefuture",
+    "license": "MIT",
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "yarn clean && tsc",
+        "watch": "tsc --watch",
+        "clean": "rimraf lib",
+        "reinstall": "rimraf ./node_modules && rimraf ./yarn.lock && yarn",
+        "prepublish": "yarn version patch && yarn build",
+        "publish": "yarn npm publish"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.3",
+        "@types/react-native": "^0.73.0",
+        "rimraf": "^5.0.7",
+        "typescript": "^4.0.0"
+    },
+    "peerDependencies": {
+        "@uncover-ui/react-native": "*",
+        "expo": "^50",
+        "expo-image": "*",
+        "react": "^18.2.0",
+        "react-native": "^0.72.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/uncoverthefuture-org/uncover-ui/tree/master/packages/expo"
+    },
+    "dependencies": {
+        "@uncover-ui/react-native": "workspace:^",
+        "expo": "^52.0.7",
+        "expo-image": "~2.0.0"
+    }
+}

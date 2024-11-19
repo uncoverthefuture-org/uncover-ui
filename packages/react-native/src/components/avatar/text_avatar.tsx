@@ -13,7 +13,7 @@ export const TextAvatar: React.FC<TextAvatarProps> = ({
 }) => {
     const nameInitial = (name: string | undefined) => {
         // const nameArr = name?.replace("  ", ' ').trim().split(' ');
-        const nameArr = formatName(name ?? '').normal.split(' ');
+        const nameArr = formatName(name ?? '').normal.trim().split(' ');
         if (nameArr) {
             return nameArr.length > 1
                 ? `${nameArr[0][0]}${nameArr[1][0]}`

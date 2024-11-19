@@ -7,10 +7,11 @@ import { HeaderContainer, SideComponent } from "./styled";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { extendStyledProps } from "@themes/main";
 import { fontSize } from "@components/text";
-import { StyledTouchableOpacityProps } from "@components/view/types";
+import { StyledTouchableOpacityProps, ViewContainerProps } from "@components/view/types";
+import { StyledViewProps } from "@components/view/interface";
 
 
-export interface NavHeaderProps extends HeaderContainerProps {
+export interface NavHeaderProps extends HeaderContainerProps, StyledViewProps {
   title?: string;
   rightComponent?: ReactNode;
   centerComponent?: ReactNode;

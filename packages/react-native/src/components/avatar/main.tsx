@@ -1,4 +1,4 @@
-import React, { ComponentProps, useState } from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { ImageAvatar, ImageAvatarProps } from './image_avatar';
 import { AvatarContainer } from './styled';
@@ -36,20 +36,25 @@ export const Avatar: React.FC<AvatarProps> = ({
       size={size}
       {...rest}
     >
-      {(!imageLoaded || (!source && !uri)) ? (
+      {(!imageLoaded || !imageSource) && (
         <TextAvatar
           text={text}
           fontSize={rest?.fontSize}
           color={rest?.color}
+          
           {...textProps}
         />
-      ) : (
+      )}
+      {((imageSource)) && (
         <ImageAvatar
           size={size}
+          display={imageLoaded ? undefined : 'none'}
           source={imageSource}
-          onLoad={({ nativeEvent }) => setImageLoaded(nativeEvent)}
-          
           {...imageProps}
+          onLoad={(event) => {
+            setImageLoaded(event?.nativeEvent);
+            imageProps?.onLoad && imageProps?.onLoad(event)
+          }}
         />
       )}
     </AvatarContainer>
