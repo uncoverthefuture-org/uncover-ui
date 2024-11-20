@@ -1,2 +1,3 @@
-import  * as rn from './rn'
+import  {PrimaryButton, PrimaryButtonProps} from './rn'
+
 
