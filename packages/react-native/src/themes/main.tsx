@@ -51,7 +51,7 @@ export const createUncoverTheme = (theme: CreateUncoverThemeProps) => {
     Object.keys(theme).map((key) => {
         // extend the colors for each color profiles
         if (theme[key]?.colors) {
-            newTheme[key]['colors'] = merge({ ...(newTheme[key]['colors'] ?? {}), ...theme[key]?.colors });
+            newTheme[key]['colors'] = { ...(newTheme[key]['colors'] ?? {}), ...theme[key]?.colors };
         }
 
         // extend the styledProps for each styledProps profiles

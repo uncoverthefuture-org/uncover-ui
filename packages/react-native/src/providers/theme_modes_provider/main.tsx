@@ -5,44 +5,55 @@ import { ThemeModeProviderContextProps, ThemeModesProviderProps } from "./interf
 import { EmotionThemeName, ExtendUncoverTheme, getDefaultTheme } from "@themes/index";
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { app_theme_color_storage } from '@utilities/constants';
+import { merge } from 'lodash';
 
 const externalDefaultTheme = getDefaultTheme();
 
 export const ThemeModeProviderContext: React.Context<ThemeModeProviderContextProps> = createContext({
+    isLoadingTheme: false,
     theme: externalDefaultTheme.light,
     colors: externalDefaultTheme.light.colors,
     fonts: externalDefaultTheme.light.fonts,
     styledProps: externalDefaultTheme?.light?.styledProps,
     setThemeMode: (themeName) => externalDefaultTheme[themeName],
-});
+} as ThemeModeProviderContextProps);
 
 export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
     extendTheme,
     children
 }) => {
     const uncoverTheme = getDefaultTheme();
-    const lightTheme = { ...uncoverTheme?.light, ...extendTheme?.light };
-    const darkTheme = { ...uncoverTheme?.dark, ...extendTheme?.dark };
     const { getItem, setItem } = useAsyncStorage(app_theme_color_storage);
-    const [activeTheme, setActiveTheme] = useState<ExtendUncoverTheme>(lightTheme);
+    const [isLoadingTheme, setIsLoadingTheme] = useState(true);
+    const [activeTheme, setActiveTheme] = useState<ExtendUncoverTheme>(merge(uncoverTheme?.light ?? {}, extendTheme?.light ?? {}));
 
-    useEffect(() => {
-        getItem().then((theme) => {
-            if (theme) {
-                const defaultTheme = ((theme != null) ? ((theme === "dark") ? darkTheme : lightTheme) : lightTheme)
-                setActiveTheme(defaultTheme)
-            }
-        });
-    }, [])
+
+    const lightTheme = () => merge(uncoverTheme?.light ?? {}, extendTheme?.light ?? {});
+
+    const darkTheme = () => merge(uncoverTheme?.dark ?? {}, extendTheme?.dark ?? {});
 
     const setThemeMode = (themeName: EmotionThemeName = EmotionThemeName.LIGHT) => {
-        const uncoverThemeMode = ((themeName === "dark") ? darkTheme : lightTheme);
+        setIsLoadingTheme(true)
+        const uncoverThemeMode = ((themeName === "dark") ? darkTheme() : lightTheme());
         setActiveTheme(uncoverThemeMode);
         setItem(themeName);
-
+        
         return uncoverThemeMode
     }
 
+    useEffect(() => {
+        getItem().then((theme) => {
+            let defaultTheme = lightTheme();
+            if (theme) {
+                defaultTheme = ((theme === "dark") ? darkTheme() : defaultTheme)
+                setActiveTheme(defaultTheme)
+            }
+        });
+    }, [extendTheme])
+
+    useEffect(() => {
+        setIsLoadingTheme(false)
+    }, [activeTheme])
 
     return (
         <ThemeModeProviderContext.Provider
@@ -51,6 +62,7 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
                 colors: activeTheme.colors,
                 fonts: activeTheme.fonts,
                 styledProps: activeTheme.styledProps,
+                isLoadingTheme,
                 setThemeMode,
             }}
         >

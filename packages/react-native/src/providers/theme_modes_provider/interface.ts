@@ -8,9 +8,10 @@ export interface ThemeModesProviderProps {
 }
 
 export interface ThemeModeProviderContextProps {
+    isLoadingTheme: boolean;
     theme: ExtendUncoverTheme;
     colors: Theme['colors'];
     fonts: ExtendUncoverTheme['fonts'];
     styledProps: ExtendUncoverTheme['styledProps'];
-    setThemeMode: (themeName: EmotionThemeName) => ExtendUncoverTheme
+    setThemeMode: (themeName: EmotionThemeName) => ExtendUncoverTheme;
 }
