@@ -39,6 +39,7 @@ export const BaseView: React.FC<BaseViewProps> = ({
         baseView: {
             focusBarStyle: 'dark-content',
             backgroundColor: colors.background,
+            ...styledProps?.baseView,
             ...rest,
             imageBackgroundProps: {
                 src: rest?.backgroundImageSrc,

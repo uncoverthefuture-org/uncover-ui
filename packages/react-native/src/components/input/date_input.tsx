@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DateTimePickerModal, { ReactNativeModalDateTimePickerProps } from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import { InputPlaceholder, InputPlaceholderProps } from "./placeholder";
@@ -17,16 +17,22 @@ export const PrimaryDateTimeInput: React.FC<PrimaryDateTimeInputProps> = ({
     onChange = () => { },
     ...rest
 }) => {
+    const [open, setOpen] = useState(false)
     const { colors, fonts, styledProps } = useThemeMode();
+    const [inputValue, setInputValue] = useState<string>('');
     const { primaryDateTimeInput: props } = extendStyledProps(styledProps, {
         primaryDateTimeInput: {
             dateFormat: "dddd, MMMM Do YYYY",
+            ...styledProps?.primaryDateTimeInput,
             ...rest
         }
     });
-    const defaultDate = (props?.value && props?.value.length) ? moment(props?.value).format(props?.dateFormat) : undefined;
-    const [inputValue, setInputValue] = useState<string>(defaultDate ?? '');
-    const [open, setOpen] = useState(false)
+
+    const defaultDate = () => (props?.value && props?.value.length) ? moment(props?.value).format(props?.dateFormat) : undefined;
+
+    useEffect(() => {
+        setInputValue(defaultDate() ?? '')
+    }, [])
 
     return (
         <>

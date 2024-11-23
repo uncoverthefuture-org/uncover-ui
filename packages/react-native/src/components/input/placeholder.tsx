@@ -18,9 +18,14 @@ export const InputPlaceholder: React.FC<InputPlaceholderProps> = ({
     onPress = () => { },
     ...rest
 }) => {
-    const { colors, styledProps } = useThemeMode();
-    const { inputPlaceholder: props } = extendStyledProps(styledProps, { inputPlaceholder: { ...rest } });
     const [active, setActive] = useState<boolean>(false);
+    const { colors, styledProps } = useThemeMode();
+    const { inputPlaceholder: props } = extendStyledProps(styledProps, {
+        inputPlaceholder: {
+            ...styledProps?.inputPlaceholder,
+            ...rest
+        }
+    });
 
     const onPlaceholderPress = () => {
         setActive(true);

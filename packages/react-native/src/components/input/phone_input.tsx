@@ -20,6 +20,7 @@ export const PrimaryPhoneInput: React.FC<PrimaryPhoneInputProps> = ({
     const { primaryPhoneInput: props } = extendStyledProps(styledProps, {
         primaryPhoneInput: {
             placeholder: "Phone Number",
+            ...styledProps?.primaryPhoneInput,
             ...rest
         }
     });

@@ -37,38 +37,42 @@ export const ThemeModesProvider: React.FC<ThemeModesProviderProps> = ({
         const uncoverThemeMode = ((themeName === "dark") ? darkTheme() : lightTheme());
         setActiveTheme(uncoverThemeMode);
         setItem(themeName);
-        
+        // console.log(`Updated theme too ${themeName}: `, uncoverThemeMode)
         return uncoverThemeMode
     }
 
     useEffect(() => {
+        // console.log("Reloading theme as extendtheme updates...")
+        setIsLoadingTheme(true)
         getItem().then((theme) => {
-            let defaultTheme = lightTheme();
-            if (theme) {
-                defaultTheme = ((theme === "dark") ? darkTheme() : defaultTheme)
-                setActiveTheme(defaultTheme)
-            }
+            // console.log("Reloading using theme defined in storage...")
+            const storedThemeMode = theme ?? undefined
+            setThemeMode(storedThemeMode as EmotionThemeName)
+        }).catch(() => {
+            // console.log("Reloading using default defined...")
+            setThemeMode()
         });
-    }, [extendTheme])
+}, [extendTheme])
 
     useEffect(() => {
         setIsLoadingTheme(false)
+        // console.log("Finalized Loading Theme")
     }, [activeTheme])
 
-    return (
-        <ThemeModeProviderContext.Provider
-            value={{
-                theme: activeTheme,
-                colors: activeTheme.colors,
-                fonts: activeTheme.fonts,
-                styledProps: activeTheme.styledProps,
-                isLoadingTheme,
-                setThemeMode,
-            }}
-        >
-            <ThemeProvider theme={activeTheme}>
-                {children}
-            </ThemeProvider>
-        </ThemeModeProviderContext.Provider>
-    )
+return (
+    <ThemeModeProviderContext.Provider
+        value={{
+            theme: activeTheme,
+            colors: activeTheme.colors,
+            fonts: activeTheme.fonts,
+            styledProps: activeTheme.styledProps,
+            isLoadingTheme,
+            setThemeMode,
+        }}
+    >
+        <ThemeProvider theme={activeTheme}>
+            {children}
+        </ThemeProvider>
+    </ThemeModeProviderContext.Provider>
+)
 }

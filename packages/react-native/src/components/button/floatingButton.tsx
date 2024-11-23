@@ -24,6 +24,7 @@ export const FloatingButton: React.FC<FloatingButtonProps> = ({
       backgroundColor: colors.primary,
       activeOpacity: 0.8,
       iconColor: "#fff",
+      ...styledProps?.floatingButton,
       ...rest
     }
   });

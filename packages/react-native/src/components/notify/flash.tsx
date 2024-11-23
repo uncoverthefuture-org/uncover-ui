@@ -12,7 +12,12 @@ export const PrimaryFlashMessage: React.FC<PrimaryFlashMessageProps> = ({
     ...rest
 }) => {
     const { fonts, styledProps } = useThemeMode();
-    const { primaryFlashMessage: props } = extendStyledProps(styledProps, { primaryFlashMessage: { ...rest } });
+    const { primaryFlashMessage: props } = extendStyledProps(styledProps, {
+        primaryFlashMessage: {
+            ...styledProps?.primaryFlashMessage,
+            ...rest
+        }
+    });
 
     return (
         <FlashMessage

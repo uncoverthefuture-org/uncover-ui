@@ -58,6 +58,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
       bottomTextOnError: true,
       solid: false,
       placeholderTextColor: colors.placeholder,
+      ...styledProps?.primaryInput,
       ...rest
     }
   });

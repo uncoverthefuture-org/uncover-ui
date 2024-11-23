@@ -24,6 +24,7 @@ export interface NavHeaderProps extends HeaderContainerProps, StyledViewProps {
   backIconColor?: string;
   titleColor?: string;
   titleProps?: StyledTextProps;
+  useDefaultBackButon?: boolean;
 }
 
 export const NavHeader: React.FC<NavHeaderProps> = ({
@@ -34,14 +35,12 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
   const { navHeader: props } = extendStyledProps(styledProps, {
     navHeader: {
       backIconColor: colors.black,
+      useDefaultBackButon: true,
+      ...styledProps?.navHeader,
       onBackPress: () => navigation.goBack(),
       ...rest
     }
   });
-
-  // console.log("Merged Props", props)
-  // console.log("Passed Props", rest)
-  // console.log("Styled  Props", styledProps)
 
   return (
     <HeaderContainer  {...props}>
@@ -51,7 +50,7 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
         width={"15%"}
         {...props?.leftComponentProps}
       >
-        {(props?.leftComponent) ? props?.leftComponent : (
+        {(props?.leftComponent) ? props?.leftComponent : ((props?.useDefaultBackButon) && (
           <AntDesign
             name="arrowleft"
             size={24}
@@ -59,7 +58,7 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
             style={{ marginTop: 3 }}
             onPress={props?.onBackPress}
           />
-        )}
+        ))}
       </SideComponent>
       <SideComponent
         flexGrow={3}

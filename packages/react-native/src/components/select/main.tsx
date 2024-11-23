@@ -15,8 +15,13 @@ export const PrimarySelect: React.FC<PrimarySelectProps> = ({
   ...rest
 }) => {
   const { styledProps } = useThemeMode();
-  const { primarySelect: props } = extendStyledProps(styledProps, { primarySelect: { ...rest } });
   const [active, setActive] = useState<boolean>(false);
+  const { primarySelect: props } = extendStyledProps(styledProps, {
+    primarySelect: {
+      ...styledProps?.primarySelect,
+      ...rest
+    }
+  });
 
   return (
     <ActionSheetOptions
