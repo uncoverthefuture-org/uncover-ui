@@ -1,7 +1,7 @@
 // Import everything from the module
+export * from "@uncover-ui/react-native/lib/themes";
 export * from "@uncover-ui/react-native/lib/hooks";
 export * from "@uncover-ui/react-native/lib/providers";
-export * from "@uncover-ui/react-native/lib/themes";
 export * from "@uncover-ui/react-native/lib/utilities";
 // export * from "@uncover-ui/react-native/lib/components";
 export * from "@uncover-ui/react-native/lib/components/button";

@@ -51,17 +51,17 @@ export const createUncoverTheme = (theme: CreateUncoverThemeProps) => {
     Object.keys(theme).map((key) => {
         // extend the colors for each color profiles
         if (theme[key]?.colors) {
-            newTheme[key]['colors'] = { ...(newTheme[key]['colors'] ?? {}), ...theme[key].colors };
+            newTheme[key]['colors'] = merge({ ...(newTheme[key]['colors'] ?? {}), ...theme[key]?.colors });
         }
 
         // extend the styledProps for each styledProps profiles
         if (theme[key]?.styledProps) {
-            newTheme[key]['styledProps'] = merge((newTheme[key]['styledProps'] ?? {}), (theme[key].styledProps ?? {}));
+            newTheme[key]['styledProps'] = merge((newTheme[key]['styledProps'] ?? {}), (theme[key]?.styledProps ?? {}));
         }
 
         // extend the fonts for each fonts profiles
         if (theme[key]?.fonts) {
-            newTheme[key]['fonts'] = { ...(newTheme[key]['fonts'] ?? font), ...theme[key].fonts };
+            newTheme[key]['fonts'] = merge({ ...(newTheme[key]['fonts'] ?? font), ...theme[key]?.fonts });
         }
     })
 
