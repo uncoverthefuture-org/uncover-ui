@@ -14,10 +14,10 @@ jobs:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies and build 🔧
-        run: yarn
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
-      - name: Install dependencies and build 🔧
+      - name: Version changes
         run: yarn changeset version
 
       - name: Publish package on NPM 📦
