@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.1.1...v1.1.2) (2024-11-25)
+
+
+### Performance Improvements
+
+* updated the  installing of dependenncies to be fixed to the lockfile of yarn and the contextual name  to match the given action in the action script ([75320f1](https://github.com/uncoverthefuture-org/uncover-ui/commit/75320f1a1f6be2903a11e1d368f17956ea0b0d69))
+
+
+
 ## [1.1.1](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.1.0...v1.1.1) (2024-11-24)
 
 
@@ -21,10 +30,6 @@
 
 
 ## [0.2.6](https://github.com/uncoverthefuture-org/uncover-ui/compare/v0.2.5...v0.2.6) (2024-06-11)
-
-
-
-## [0.2.5](https://github.com/uncoverthefuture-org/uncover-ui/compare/v0.2.4...v0.2.5) (2024-06-11)
 
 
 
