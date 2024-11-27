@@ -74,7 +74,7 @@
         "@emotion/react": "*",
         "@react-native-async-storage/async-storage": "^1.21.0",
         "@react-native-community/datetimepicker": "^8.0.0",
-        "@react-native-picker/picker": "^2.6.1",
+        "@react-native-picker/picker": "*",
         "@react-navigation/native": "*",
         "he": "^1.2.0",
         "moment": "^2.30.1",
