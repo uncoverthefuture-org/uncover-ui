@@ -2,16 +2,14 @@ import React, { ReactNode } from "react";
 import { BoldText, StyledTextProps } from '../text/styled';
 import { useNavigation } from "@react-navigation/native";
 import { useThemeMode } from "@providers/hooks";
-import { HeaderContainerProps } from "./interface";
 import { HeaderContainer, SideComponent } from "./styled";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { extendStyledProps } from "@themes/main";
 import { fontSize } from "@components/text";
 import { StyledTouchableOpacityProps, ViewContainerProps } from "@components/view/types";
-import { StyledViewProps } from "@components/view/interface";
 
 
-export interface NavHeaderProps extends HeaderContainerProps, StyledViewProps {
+export interface NavHeaderProps extends ViewContainerProps {
   title?: string;
   rightComponent?: ReactNode;
   centerComponent?: ReactNode;
@@ -20,7 +18,9 @@ export interface NavHeaderProps extends HeaderContainerProps, StyledViewProps {
   centerComponentProps?: StyledTouchableOpacityProps;
   leftComponentProps?: StyledTouchableOpacityProps;
   onBackPress?: () => void;
-  elevation?: number;
+  elevation?: number,
+  floating?: boolean;
+  hasBorderBottom?: boolean;
   backIconColor?: string;
   titleColor?: string;
   titleProps?: StyledTextProps;

@@ -1,6 +1,6 @@
-import { StyledViewProps } from "@components/view/interface";
+import { ViewContainerProps } from "@components/view";
 
-export interface HeaderContainerProps extends StyledViewProps {
+export interface HeaderContainerProps extends ViewContainerProps {
   elevation?: number,
   floating?: boolean;
   hasBorderBottom?: boolean;
