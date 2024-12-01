@@ -1,3 +1,12 @@
+## [1.1.3](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.1.2...v1.1.3) (2024-12-01)
+
+
+### Bug Fixes
+
+* updated nav header to include viewcontainerprops ([927d2dc](https://github.com/uncoverthefuture-org/uncover-ui/commit/927d2dcc5afada9d98b940c8112027b73e7bbd74))
+
+
+
 ## [1.1.2](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.1.1...v1.1.2) (2024-11-25)
 
 
@@ -26,10 +35,6 @@
 
 
 ## [0.2.7](https://github.com/uncoverthefuture-org/uncover-ui/compare/v0.2.6...v0.2.7) (2024-06-11)
-
-
-
-## [0.2.6](https://github.com/uncoverthefuture-org/uncover-ui/compare/v0.2.5...v0.2.6) (2024-06-11)
 
 
 
