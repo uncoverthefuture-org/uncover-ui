@@ -2,7 +2,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 export const fontSize = {
     xxs: 10.5,
-    xs: 13,
+    xs: 12,
     sm: 14,
     base: 16,
     md: 18,

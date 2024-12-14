@@ -22,7 +22,7 @@ export const SheetsProvider: React.FC<SheetsProviderProps> = ({
         });
     }
 
-    const showSheet = <T extends ComponentType<any>>(Component: T, props?: Omit<ComponentProps<T>, 'sheetId'>) => {
+    const showSheet = <T extends ComponentType<any>>(Component: T, props?: Omit<ComponentProps<T>, 'sheetId'>, delay: number = 100) => {
         const id = `sheet-${sheets.length}`; // Unique ID for each sheet
         try {
             // console.info('DEBUG: adding sheet ...');
@@ -43,7 +43,7 @@ export const SheetsProvider: React.FC<SheetsProviderProps> = ({
                 });
 
                 console.info(_sheet)
-            }, 500);
+            }, delay);
         } catch (err) {
             console.warn('SheetProvider Error: ', err);
         }

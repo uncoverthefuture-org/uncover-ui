@@ -28,6 +28,7 @@ export interface PrimaryButtonProps extends ViewStyle, Omit<ViewProps, 'hitSlop'
   loaderProps?: ActivityIndicatorProps;
   loaderComponennt?: React.ReactElement;
   focusedBackgroundColor?: string;
+  focusedOpacity?: string;
   disabled?: boolean;
   onPress?: ()=> void
 }
