@@ -58,6 +58,7 @@ export const ViewStyles = (rest: StyledViewProps) => ({
     gap: rest?.gap,
     rowGap: rest?.rowGap,
     pointerEvents: rest?.pointerEvents,
+    overflow: rest?.overflow,
 })
 
 export const StyledView = styled(Animated.View)<StyledViewProps>(({
@@ -114,6 +115,13 @@ export const StyledSafeAreaView = styled.SafeAreaView<StyledViewProps>(({
     ...ViewStyles(rest)
 }))
 
+export const RowView = styled(StyledView)(({
+    flexDirection = "row",
+    position = "relative",
+}) => ({
+    flexDirection,
+    position,
+}))
 
 export const Row = styled(StyledTouchableOpacity)(({
     flexDirection = "row",

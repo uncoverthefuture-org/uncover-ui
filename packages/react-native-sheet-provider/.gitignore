@@ -1,0 +1,16 @@
+# TypeScript compiled output
+/lib
+/tsconfig.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+.yarn-debug.log*
+
+# Output of 'npm run build'
+build
+.cache
+tmp
+
+# Dependency directories
+/node_modules
