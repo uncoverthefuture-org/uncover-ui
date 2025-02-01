@@ -31,10 +31,11 @@ export const InputColorState = (colors: Theme['colors'], active?: boolean, error
 }
 
 export interface PrimaryInputProps extends TextInputProps, Omit<InputBoxProps, 'textAlign'> {
-  inputRef?:React.Ref<TextInput>; 
+  inputRef?: React.Ref<TextInput>;
   leftIcon?: React.ReactElement | ActiveIconProp;
   rightIcon?: React.ReactElement | ActiveIconProp;
   editable?: boolean;
+  disabledOpacity?: InputBoxProps['opacity'],
   label?: string;
   labelProps?: StyledTextProps;
   containerProps?: StyledViewProps;
@@ -58,6 +59,7 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
       bottomTextOnError: true,
       solid: false,
       placeholderTextColor: colors.placeholder,
+      disabledOpacity: 0.7,
       ...styledProps?.primaryInput,
       ...rest
     }
@@ -67,7 +69,11 @@ export const PrimaryInput: React.FC<PrimaryInputProps> = ({
   useEffect(() => { props?.isFocused && props?.isFocused(active) }, [active]);
 
   return (
-    <ViewContainer paddingHorizontal={0} style={{ flexGrow: 1 }} {...props?.containerProps}>
+    <ViewContainer
+      paddingHorizontal={0}
+      flexGrow={1}
+      {...props?.containerProps}
+    >
       {props?.label ? (
         <Label color={colors.label} {...props?.labelProps}>
           {props?.label}

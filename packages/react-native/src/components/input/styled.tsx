@@ -39,10 +39,13 @@ export const StyledInput = styled.TextInput<StyledInputProps>(({
 
 export const InputBox = styled(StyledInput)<InputBoxProps>(({
   theme,
+  editable, 
+  disabledOpacity,
   hasIcon = false,
   fontSize = RFFontSize.sm,
   lineHeight = fontSize * 1.2,
   fontFamily = theme?.fonts?.medium,
+  opacity = editable ? 1 : disabledOpacity,
   color = theme.colors.text
 }) => ({
   paddingLeft: widthPixel((!hasIcon) ? 0 : spacingSize.i10),
@@ -52,7 +55,8 @@ export const InputBox = styled(StyledInput)<InputBoxProps>(({
   flexGrow: 1,
   lineHeight,
   backgroundColor: "transparent",
-  color
+  opacity,
+  color,
 }));
 
 export const InputWrapper = styled(StyledView)(({

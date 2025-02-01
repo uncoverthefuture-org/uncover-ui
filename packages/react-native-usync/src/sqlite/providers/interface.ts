@@ -1,8 +1,7 @@
-import * as SQLite from 'expo-sqlite/legacy';
+import * as SQLite from 'expo-sqlite';
 
-export interface SqliteDatabaseProviderProps {
+export interface SqliteDatabaseProviderProps extends SQLite.SQLiteProviderProps {
     source?: SQLite.SQLiteDatabase; 
-    defaultSourceFile?: string;
     children: React.ReactNode;
 }
 

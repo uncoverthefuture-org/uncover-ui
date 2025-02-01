@@ -11,4 +11,5 @@ export type ActiveIconProp = {
 
 export interface InputBoxProps extends StyledInputProps {
     hasIcon?: boolean,
+    disabledOpacity?: InputBoxProps['opacity'],
 }

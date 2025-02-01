@@ -27,3 +27,10 @@ export interface DBBibleVersion {
     updated_at: string;
     created_at: string;
 }
+
+// export type CMDOperations = cmd.values
+
+export interface DBCreateAdditionalConfig {
+    hasTimeStamps?: boolean, 
+    hasDeletedTimestamp?: boolean,
+}

@@ -39,64 +39,64 @@ export const BaseView: React.FC<BaseViewProps> = ({
         baseView: {
             focusBarStyle: 'dark-content',
             backgroundColor: colors.background,
-            ...styledProps?.baseView,
-            ...rest,
             imageBackgroundProps: {
                 src: rest?.backgroundImageSrc,
                 source: rest?.backgroundImage,
                 backgroundColor: rest?.backgroundImageColor,
                 resizeMode: rest?.resizeMode,
-                ...rest?.imageBackgroundProps
             },
             navHeaderProps: {
                 onBackPress: rest?.onBackPress,
                 title: rest?.headerTitle,
-                ...rest?.navHeaderProps
             },
         }
     });
-    const focusBarScheme = props?.focusBarStyle ?? "light-content";
+    const _props = { ...props, ...styledProps?.baseView, ...rest};
+    const focusBarScheme = _props?.focusBarStyle ?? "light-content";
 
     return (
         <BaseViewContainer
-            contentContainerStyle={[{ flex: 1 }, props?.style]}
-            style={props?.style}
+            contentContainerStyle={[{ flex: 1 }, _props?.style]}
+            style={_props?.style}
             behavior={Platform.select({ ios: 'height', android: undefined })}
             keyboardVerticalOffset={Platform.select({
                 ios: 0,
                 // android: height + heightPixel(100)
             })}
-            {...props}
+            {..._props}
         >
 
             <FocusAwareStatusBar
                 backgroundColor={'transparent'}
                 translucent={true}
                 barStyle={focusBarScheme}
-                {...props?.focusStatusBarProps}
+                {..._props?.focusStatusBarProps}
+                {...rest?.focusStatusBarProps}
             />
-            {(props?.imageBackgroundProps?.src || props?.imageBackgroundProps?.source || props?.imageBackgroundProps?.defaultSource) ? (
+            {(_props?.imageBackgroundProps?.src || _props?.imageBackgroundProps?.source || _props?.imageBackgroundProps?.defaultSource) ? (
                 <ImageBackgroundViewContainer
                     resizeMode="cover"
                     source={TransparentImage}
-                    {...props?.imageBackgroundProps}
+                    {..._props?.imageBackgroundProps}
+                    {...rest?.imageBackgroundProps}
                 >
-                    {(props?.showHeader) && (
+                    {(_props?.showHeader) && (
                         <NavHeader
-                            {...props?.navHeaderProps}
+                            {..._props?.navHeaderProps}
                         />
                     )}
-                    {children ?? props?.children}
+                    {children ?? _props?.children}
                 </ImageBackgroundViewContainer>
             ) : (
                 <>
-                    {(props?.showHeader) && (
+                    {(_props?.showHeader) && (
                         <NavHeader
-                            {...props?.navHeaderProps}
+                            {..._props?.navHeaderProps}
+                            {...rest?.navHeaderProps}
                         />
                     )}
 
-                    {children ?? props?.children}
+                    {children}
                 </>
             )}
         </BaseViewContainer>

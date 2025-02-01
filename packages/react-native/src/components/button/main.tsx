@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   ActivityIndicator,
   ActivityIndicatorProps,
@@ -26,11 +26,14 @@ export interface PrimaryButtonProps extends ViewStyle, Omit<ViewProps, 'hitSlop'
   loadColor?: ColorValue;
   icon?: React.ReactElement;
   loaderProps?: ActivityIndicatorProps;
-  loaderComponennt?: React.ReactElement;
+  loaderComponent?: React.ReactElement;
+  inactiveBackgroundColor?: string;
   focusedBackgroundColor?: string;
+  inactiveBorderColor?: string;
+  focusedBorderColor?: string;
   focusedOpacity?: string;
   disabled?: boolean;
-  onPress?: ()=> void
+  onPress?: () => void
 }
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -41,50 +44,75 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   const { colors, styledProps } = useThemeMode();
   const { primaryButton: props } = extendStyledProps(styledProps, {
     primaryButton: {
+      inactiveBackgroundColor: colors.disabled,
       focusedBackgroundColor: colors.primary,
       backgroundColor: colors.primary,
+      inactiveBorderColor: colors.disabled,
+      focusedBorderColor: colors.primary,
+      borderColor: colors.primary,
       loadColor: colors.white,
       color: colors?.white,
-      ...styledProps?.primaryButton,
-      ...rest,
+      activeOpacity: 0.7,
+      // ...styledProps?.primaryButton,
+      // ...rest,
     }
   });
-  const activeBackgroundColor = (props?.isLoading || pressed || props?.disabled) ? props?.focusedBackgroundColor : props?.backgroundColor;
+  const _props = useMemo(() => ({
+    ...props,
+    ...styledProps?.primaryButton,
+    ...rest
+  }), [props, styledProps?.primaryButton, rest]);
+
+  const isDisabled = useMemo(() => (_props?.isLoading || _props?.disabled), [_props]);
+
+  const backgroundColor = useMemo(() => {
+    if(_props?.disabled) return _props?.inactiveBackgroundColor;
+    if(pressed || _props?.isLoading ) return _props?.focusedBackgroundColor;
+
+    return _props?.backgroundColor;
+  }, [_props]);
+
+  const borderColor = useMemo(() => {
+    if(_props?.disabled) return _props?.inactiveBorderColor;
+    if(pressed || _props?.isLoading ) return _props?.focusedBorderColor;
+
+    return _props?.borderColor;
+  }, [_props]);
 
   // console.log("button props: ", props)
-  
+
   return (
     <ButtonSolidView
-      activeOpacity={0.7}
+      opacity={isDisabled ? _props?.activeOpacity : 1}
       onPress={props?.onPress}
       disabled={props?.isLoading || props?.disabled}
-      backgroundColor={activeBackgroundColor}
-      borderColor={activeBackgroundColor}
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
       borderWidth={1}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
-      {...props}
+      {..._props}
     >
-      {!props?.isLoading ? (
-        (children ?? props?.children) ?? (
+      {(!_props?.isLoading) ? (
+        (children ?? _props?.children) ?? (
           <>
-            {props?.icon}
+            {_props?.icon}
             <ButtonText
-              color={props?.color}
-              style={props?.textStyle}
-              {...props?.textProps}
+              color={_props?.color}
+              style={_props?.textStyle}
+              {..._props?.textProps}
             >
-              {props?.text}
+              {_props?.text}
             </ButtonText>
           </>
         )
-      ) : ((props?.loaderComponennt) ?? (
+      ) : ((_props?.loaderComponent) ?? (
         <ActivityIndicator
-          color={props?.loadColor}
-          animating={props?.isLoading}
+          color={_props?.loadColor}
+          animating={_props?.isLoading}
           size="small"
           style={{ paddingVertical: 5 }}
-          {...props?.loaderProps}
+          {..._props?.loaderProps}
         />
       ))}
     </ButtonSolidView>
@@ -95,47 +123,14 @@ export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
   children,
   ...rest
 }) => {
-  const { colors, styledProps } = useThemeMode();
-  const { primaryButton: props } = extendStyledProps(styledProps, {
-    primaryButton: {
-      borderColor: colors?.primary,
-      color: colors?.primary,
-      loadColor: colors?.primary,
-      ...rest
-    }
-  });
+  const { colors } = useThemeMode();
 
 
   return (
-    <ButtonOutlineView
-      backgroundColor="transparent"
-      borderColor={props?.borderColor}
-      activeOpacity={0.7}
-      onPress={props?.onPress}
-      borderWidth={3}
+    <PrimaryButton
+      backgroundColor={colors.transparent}
+      color={colors.primary}
       {...rest}
-    >
-      {!props?.isLoading ? (
-        (children ?? props?.children) ?? (
-          <>
-            {props?.icon}
-            <ButtonText
-              color={props?.color}
-              style={props?.textStyle}
-              {...props?.textProps}
-            >
-              {props?.text}
-            </ButtonText>
-          </>
-        )
-      ) : ((props?.loaderComponennt) ?? (
-        <ActivityIndicator
-          color={props?.loadColor}
-          animating={props?.isLoading}
-          size="small"
-          {...props?.loaderProps}
-        />
-      ))}
-    </ButtonOutlineView>
+    />
   );
 };

@@ -21,6 +21,7 @@ export interface EmotionThemeColors  {
     border: string;
     placeholder: string;
     label: string;
+    transparent: string;
     // other color types  can come in from here 
     // [x:string]: string;
 };

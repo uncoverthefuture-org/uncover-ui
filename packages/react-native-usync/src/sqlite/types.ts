@@ -1,1 +1,1 @@
-export * from 'expo-sqlite/legacy';
+export * from 'expo-sqlite';

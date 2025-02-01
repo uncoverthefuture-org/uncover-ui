@@ -15,6 +15,7 @@ export const EmotionThemeColorBase: ExtendEmotionTheme['colors'] = {
   border: "#909293",
   placeholder: "#909293",
   label: "#46494b",
+  transparent: "transparent",
   // others
 }
 
