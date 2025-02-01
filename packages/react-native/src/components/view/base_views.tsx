@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
     ImageBackgroundProps,
     KeyboardAvoidingViewProps,
@@ -51,8 +51,13 @@ export const BaseView: React.FC<BaseViewProps> = ({
             },
         }
     });
-    const _props = { ...props, ...styledProps?.baseView, ...rest};
-    const focusBarScheme = _props?.focusBarStyle ?? "light-content";
+    const _props = useMemo(() => ({ 
+        ...props, 
+        ...styledProps?.baseView, 
+        ...rest
+    }), [props, styledProps?.baseView, rest]);
+
+    const focusBarScheme = useMemo(() => _props?.focusBarStyle, [_props]);
 
     return (
         <BaseViewContainer
@@ -65,20 +70,17 @@ export const BaseView: React.FC<BaseViewProps> = ({
             })}
             {..._props}
         >
-
             <FocusAwareStatusBar
                 backgroundColor={'transparent'}
                 translucent={true}
                 barStyle={focusBarScheme}
                 {..._props?.focusStatusBarProps}
-                {...rest?.focusStatusBarProps}
             />
             {(_props?.imageBackgroundProps?.src || _props?.imageBackgroundProps?.source || _props?.imageBackgroundProps?.defaultSource) ? (
                 <ImageBackgroundViewContainer
                     resizeMode="cover"
                     source={TransparentImage}
                     {..._props?.imageBackgroundProps}
-                    {...rest?.imageBackgroundProps}
                 >
                     {(_props?.showHeader) && (
                         <NavHeader
@@ -92,7 +94,6 @@ export const BaseView: React.FC<BaseViewProps> = ({
                     {(_props?.showHeader) && (
                         <NavHeader
                             {..._props?.navHeaderProps}
-                            {...rest?.navHeaderProps}
                         />
                     )}
 

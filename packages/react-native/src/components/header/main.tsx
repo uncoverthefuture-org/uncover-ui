@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { BoldText, StyledTextProps } from '../text/styled';
 import { useNavigation } from "@react-navigation/native";
 import { useThemeMode } from "@providers/hooks";
@@ -36,50 +36,54 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
     navHeader: {
       backIconColor: colors.black,
       useDefaultBackButon: true,
-      ...styledProps?.navHeader,
       onBackPress: () => navigation.goBack(),
-      ...rest
     }
   });
 
+  const _props = useMemo(() => ({
+    ...props,
+    ...styledProps?.navHeader,
+    ...rest
+  }), [props, styledProps?.navHeader, rest]);
+
   return (
-    <HeaderContainer  {...props}>
+    <HeaderContainer {..._props}>
       <SideComponent
-        onPress={props?.onBackPress}
+        onPress={_props?.onBackPress}
         height={'100%'}
         width={"15%"}
-        {...props?.leftComponentProps}
+        {..._props?.leftComponentProps}
       >
-        {(props?.leftComponent) ? props?.leftComponent : ((props?.useDefaultBackButon) && (
+        {(_props?.leftComponent) ? _props?.leftComponent : ((_props?.useDefaultBackButon) && (
           <AntDesign
             name="arrowleft"
             size={24}
-            color={props?.backIconColor}
+            color={_props?.backIconColor}
             style={{ marginTop: 3 }}
-            onPress={props?.onBackPress}
+            onPress={_props?.onBackPress}
           />
         ))}
       </SideComponent>
       <SideComponent
         flexGrow={3}
-        {...props?.centerComponentProps}
+        {..._props?.centerComponentProps}
       >
-        {(props?.centerComponent) ? props?.centerComponent : (
+        {(_props?.centerComponent) ? _props?.centerComponent : (
           <BoldText
             fontSize={fontSize.md}
             textAlign="center"
-            color={props?.titleColor}
-            {...props?.titleProps}
-          >{props?.title}</BoldText>
+            color={_props?.titleColor}
+            {..._props?.titleProps}
+          >{_props?.title}</BoldText>
         )}
       </SideComponent>
       <SideComponent
         alignItems="flex-end"
         height={'100%'}
         width={"15%"}
-        {...props?.rightComponentProps}
+        {..._props?.rightComponentProps}
       >
-        {(props?.rightComponent) ? props?.rightComponent : (
+        {(_props?.rightComponent) ? _props?.rightComponent : (
           <>
           </>
         )}
