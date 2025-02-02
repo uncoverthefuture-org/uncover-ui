@@ -67,6 +67,7 @@ export const SqliteDatabaseProvider: React.FC<SqliteDatabaseProviderProps> = ({
         }}>
             <SQLiteProvider
                 databaseName={databaseName}
+                onInit={async (db) => setDatabase(db)}
                 {...rest}
             >
                 {children}
