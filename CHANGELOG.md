@@ -1,3 +1,13 @@
+## [1.2.1](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.2.0...v1.2.1) (2025-02-02)
+
+
+### Bug Fixes
+
+* update version and optimize props handling in NavHeader and BaseView components ([ce22524](https://github.com/uncoverthefuture-org/uncover-ui/commit/ce22524266bafa8877bdc4c74dac467093f05aae))
+* update version to 0.1.21 and enhance useSqlite hook with database context ([ce14430](https://github.com/uncoverthefuture-org/uncover-ui/commit/ce144301a3bf3d941125305a2964978c01c9b3b1))
+
+
+
 # [1.2.0](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.1.3...v1.2.0) (2024-12-14)
 
 
@@ -31,15 +41,6 @@
 ### Bug Fixes
 
 * allow changeset to be installed by yarn before calling methods ([79fa23d](https://github.com/uncoverthefuture-org/uncover-ui/commit/79fa23d64a6573f6c8ab3494b997c26342930ff8))
-
-
-
-# [1.1.0](https://github.com/uncoverthefuture-org/uncover-ui/compare/v0.2.7...v1.1.0) (2024-11-24)
-
-
-### Features
-
-* using changeset to deploy changes to npm ([107ab4c](https://github.com/uncoverthefuture-org/uncover-ui/commit/107ab4c37b687d4ab5c18fb862ee8cac79c050c2))
 
 
 
