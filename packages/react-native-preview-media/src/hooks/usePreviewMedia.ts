@@ -1,4 +1,4 @@
-import { useModal } from "@uncover-ui/rn-modal-provider";
+import { useModal } from '@uncover-ui/rn-modal-provider';
 import { PreviewMedia, PreviewMediaProps } from "../main";
 import { useMemo } from "react";
 
