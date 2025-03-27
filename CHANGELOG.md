@@ -1,3 +1,12 @@
+## [1.2.2](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.2.1...v1.2.2) (2025-03-27)
+
+
+### Bug Fixes
+
+* update version to 0.1.14 and improve import style in usePreviewMedia hook ([6a76c57](https://github.com/uncoverthefuture-org/uncover-ui/commit/6a76c5725a31011662595f8568ecdb636ac2b3b8))
+
+
+
 ## [1.2.1](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.2.0...v1.2.1) (2025-02-02)
 
 
@@ -32,15 +41,6 @@
 ### Performance Improvements
 
 * updated the  installing of dependenncies to be fixed to the lockfile of yarn and the contextual name  to match the given action in the action script ([75320f1](https://github.com/uncoverthefuture-org/uncover-ui/commit/75320f1a1f6be2903a11e1d368f17956ea0b0d69))
-
-
-
-## [1.1.1](https://github.com/uncoverthefuture-org/uncover-ui/compare/v1.1.0...v1.1.1) (2024-11-24)
-
-
-### Bug Fixes
-
-* allow changeset to be installed by yarn before calling methods ([79fa23d](https://github.com/uncoverthefuture-org/uncover-ui/commit/79fa23d64a6573f6c8ab3494b997c26342930ff8))
 
 
 
