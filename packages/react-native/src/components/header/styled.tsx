@@ -26,5 +26,5 @@ export const HeaderContainer = styled(StyledView)<HeaderContainerProps>(({
   export const SideComponent = styled(StyledTouchableOpacity)(({
     flexGrow = 1,
   }) => ({
-    flexGrow
+    flexGrow,
   }));

@@ -59,7 +59,6 @@ export const NavHeader: React.FC<NavHeaderProps> = ({
             name="arrowleft"
             size={24}
             color={_props?.backIconColor}
-            style={{ marginTop: 3 }}
             onPress={_props?.onBackPress}
           />
         ))}

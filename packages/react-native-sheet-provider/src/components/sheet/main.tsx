@@ -6,7 +6,8 @@ import { useWindowDimensions } from "react-native";
 export interface PrimarySheetProps extends ActionSheetProps {
     sheetId?: string,
     innerRef?: Ref<ActionSheetRef>,
-    isFullScreen?: boolean
+    isFullScreen?: boolean;
+    isOpen?: boolean;
 }
 
 

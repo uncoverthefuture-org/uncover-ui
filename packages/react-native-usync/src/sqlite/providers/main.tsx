@@ -1,7 +1,7 @@
 
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { createContext, useState } from "react";
-import { deleteDatabaseAsync, openDatabaseAsync, SQLiteProvider, type SQLiteOpenOptions } from 'expo-sqlite'
+import { deleteDatabaseAsync } from 'expo-sqlite';
 import type { SqliteDatabaseProviderContextProps, SqliteDatabaseProviderProps } from './interface';
 
 
@@ -16,10 +16,10 @@ export const SqliteDatabaseProvider: React.FC<SqliteDatabaseProviderProps> = ({
     databaseName = "app.testDb",
     source,
     children,
-    ...rest
+    // ...rest
 }) => {
     const [states, setStates] = useState({ isLoading: true, isClearing: false })
-    const [database, setDatabase] = useState(source);
+    const database = useMemo(() => source, []);
 
     const clearDatabase = () => {
         setStates((prev) => ({ ...prev, isClearing: true }));
@@ -27,7 +27,7 @@ export const SqliteDatabaseProvider: React.FC<SqliteDatabaseProviderProps> = ({
             if (database) {
                 database.closeAsync();
                 deleteDatabaseAsync(databaseName).then(() => {
-                    openDatabase(databaseName);
+                    // openDatabase(databaseName);
                     resolve(true)
                 }).catch(() => {
                     reject(false)
@@ -38,26 +38,6 @@ export const SqliteDatabaseProvider: React.FC<SqliteDatabaseProviderProps> = ({
         })
     }
 
-    const openDatabase = (dbName: string = databaseName, options?: SQLiteOpenOptions) => {
-        setStates((prev) => ({ ...prev, isLoading: true }))
-        openDatabaseAsync(dbName, options).then((db) => {
-            setDatabase(db);
-            setStates((prev) => ({ ...prev, isLoading: false }))
-        }).finally(() => {
-            setStates((prev) => ({ ...prev, isLoading: false }))
-        })
-    }
-
-    useEffect(() => {
-        if (database && states.isLoading) {
-            setStates((prev) => ({ ...prev, isLoading: false }));
-        }
-    }, [database])
-
-    useEffect(() => {
-        openDatabase();
-    }, [])
-
 
     return (
         <SqliteDatabaseProviderContext.Provider value={{
@@ -65,13 +45,13 @@ export const SqliteDatabaseProvider: React.FC<SqliteDatabaseProviderProps> = ({
             clearDatabase,
             ...states,
         }}>
-            <SQLiteProvider
+            {/* <SQLiteProvider
                 databaseName={databaseName}
                 onInit={async (db) => setDatabase(db)}
                 {...rest}
-            >
+            > */}
                 {children}
-            </SQLiteProvider>
+            {/* </SQLiteProvider> */}
         </SqliteDatabaseProviderContext.Provider>
     )
 };

@@ -120,7 +120,6 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 };
 
 export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
-  children,
   ...rest
 }) => {
   const { colors } = useThemeMode();

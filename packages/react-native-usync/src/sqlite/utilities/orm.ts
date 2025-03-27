@@ -50,7 +50,7 @@ export class DORM<T = {}> {
     constructor(
         private _db: SQLite.SQLiteDatabase,
     ) {
-
+        // _db.
     }
 
 
@@ -122,7 +122,7 @@ export class DORM<T = {}> {
     create(config: { [x: string]: string }, extraConfig: DBCreateAdditionalConfig = {
         hasTimeStamps: true, hasDeletedTimestamp: true,
     }) {
-        return new Promise<number | undefined>((resolve, reject) => {
+        return new Promise<boolean | undefined>((resolve, reject) => {
             const insertConfig = Object.entries(config).map(([key, value]) => {
                 if (extraConfig.hasTimeStamps && (['updated_at', 'created_at']).includes(key)) return '';
                 if (extraConfig.hasDeletedTimestamp && key == 'deleted_at') return '';
@@ -135,10 +135,10 @@ export class DORM<T = {}> {
             const query = `${queryCommands.create} ${this.tableName} (${insertConfig}) `
             if (this.isInDebug) console.log(query);
 
-            this._db.withExclusiveTransactionAsync(async (txn) => {
-                txn.runAsync(query).then((res) => {
+            this._db.withTransactionAsync(async () => {
+                this._db.execAsync(query).then((res) => {
                     if (this.isInDebug) console.log(res);
-                    resolve(res?.changes)
+                    resolve(true)
                 }, (err) => {
                     if (this.isInDebug) console.log(err);
                     reject(err)
@@ -164,8 +164,8 @@ export class DORM<T = {}> {
             const query = `${queryCommands.insert} ${this.tableName} (${insertKeys}) VALUES (${insertValuesIdentifier})`
             if (this.isInDebug) console.log(query);
 
-            this._db.withExclusiveTransactionAsync(async (txn) => {
-                txn.runAsync(query, insertValues).then((res) => {
+            this._db.withTransactionAsync(async () => {
+                this._db.runAsync(query, insertValues).then((res) => {
                     if (this.isInDebug) console.log(res);
                     resolve(res?.lastInsertRowId)
                 }, (err) => {
@@ -205,8 +205,8 @@ export class DORM<T = {}> {
             const query = `${queryCommands.update} ${this.tableName} SET ${insertKeys} ${this.whereQuery}`
             if (this.isInDebug) console.log(query, insertValues, this.whereVariables);
 
-            this._db.withExclusiveTransactionAsync(async (txn) => {
-                txn.runAsync(query, [...insertValues, ...this.whereVariables]).then((res) => {
+            this._db.withTransactionAsync(async () => {
+                this._db.runAsync(query, [...insertValues, ...this.whereVariables]).then((res) => {
                     if (this.isInDebug) console.log(res);
                     resolve(res.changes ? true : false)
                 }, (err) => {
@@ -233,8 +233,8 @@ export class DORM<T = {}> {
             const query = `${queryCommands.delete} ${this.tableName} ${this.whereQuery}`
             if (this.isInDebug) console.log(query, this.whereVariables);
 
-            this._db.withExclusiveTransactionAsync(async (txn) => {
-                txn.runAsync(query, this.whereVariables).then((res) => {
+            this._db.withTransactionAsync(async () => {
+                this._db.runAsync(query, this.whereVariables).then((res) => {
                     if (this.isInDebug) console.log(res);
                     resolve(res.changes ? true : false)
                 }, (err) => {
@@ -291,8 +291,8 @@ export class DORM<T = {}> {
             const query = `${this.selectQuery} ${this.tableName} ${this.joinQuery} ${this.whereQuery} ${this.orderQuery} ${this.limitQuery}`;
             if (this.isInDebug) console.log(query);
 
-            this._db.withExclusiveTransactionAsync(async (txn) => {
-                txn.getAllAsync<T>(query, this.whereVariables).then((res) => {
+            this._db.withTransactionAsync(async () => {
+                this._db.getAllAsync<T>(query, this.whereVariables).then((res) => {
                     if (this.isInDebug) console.log(res);
                     success<T[]>(res, callback)
                     resolve(res)
