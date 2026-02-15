@@ -86,7 +86,7 @@
     "@types/react": "^18.2.44"
   },
   "peerDependencies": {
-    "expo-sqlite": "^14.0.6",
+    "expo-sqlite": "^16.0.10",
     "react": "*",
     "react-native": "*"
   },
@@ -179,6 +179,6 @@
     "version": "0.38.1"
   },
   "dependencies": {
-    "expo-sqlite": "^14.0.6"
+    "expo-sqlite": "~16.0.10"
   }
 }

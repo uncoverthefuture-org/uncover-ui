@@ -36,10 +36,10 @@
     },
     "peerDependencies": {
         "@uncover-ui/react-native": "*",
-        "expo": "^50",
+        "expo": "^54.0.0",
         "expo-image": "*",
-        "react": "^18.2.0",
-        "react-native": "^0.72.0"
+        "react": "^18.3.1",
+        "react-native": "^0.81.0"
     },
     "repository": {
         "type": "git",
@@ -47,7 +47,7 @@
     },
     "dependencies": {
         "@uncover-ui/react-native": "workspace:^",
-        "expo": "^52.0.7",
-        "expo-image": "~2.0.0"
+        "expo": "^54.0.0",
+        "expo-image": "~3.0.11"
     }
 }
